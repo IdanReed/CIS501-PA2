@@ -1,0 +1,12 @@
+c:\users\jarod\documents\visual studio 2015\Projects\Ticker501\Ticker501\bin\Debug\Ticker501.exe.config
+c:\users\jarod\documents\visual studio 2015\Projects\Ticker501\Ticker501\bin\Debug\Ticker501.exe
+c:\users\jarod\documents\visual studio 2015\Projects\Ticker501\Ticker501\bin\Debug\Ticker501.pdb
+c:\users\jarod\documents\visual studio 2015\Projects\Ticker501\Ticker501\obj\Debug\Ticker501.csprojResolveAssemblyReference.cache
+c:\users\jarod\documents\visual studio 2015\Projects\Ticker501\Ticker501\obj\Debug\Ticker501.exe
+c:\users\jarod\documents\visual studio 2015\Projects\Ticker501\Ticker501\obj\Debug\Ticker501.pdb
+C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\bin\Debug\Ticker501.exe.config
+C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\obj\Debug\Ticker501.exe
+C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\obj\Debug\Ticker501.pdb
+C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\bin\Debug\Ticker501.exe
+C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\bin\Debug\Ticker501.pdb
+C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\obj\Debug\Ticker501.csprojResolveAssemblyReference.cache
