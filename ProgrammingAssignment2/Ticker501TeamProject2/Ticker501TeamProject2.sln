@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticker501TeamProject2", "Ticker501TeamProject2\Ticker501TeamProject2.csproj", "{654544BD-9994-4618-A6CD-1582BFDDD72A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticker501-GUI", "Ticker501TeamProject2\Ticker501-GUI.csproj", "{654544BD-9994-4618-A6CD-1582BFDDD72A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticker501-Console", "PA2Console\Ticker501-Console.csproj", "{E095BA3F-A15F-465E-A0D9-BC96B37AE47A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class-Library", "Class-Library\Class-Library.csproj", "{4A39A390-69CF-426C-86B0-965AD6E0F4E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{654544BD-9994-4618-A6CD-1582BFDDD72A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{654544BD-9994-4618-A6CD-1582BFDDD72A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{654544BD-9994-4618-A6CD-1582BFDDD72A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E095BA3F-A15F-465E-A0D9-BC96B37AE47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E095BA3F-A15F-465E-A0D9-BC96B37AE47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E095BA3F-A15F-465E-A0D9-BC96B37AE47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E095BA3F-A15F-465E-A0D9-BC96B37AE47A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A39A390-69CF-426C-86B0-965AD6E0F4E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A39A390-69CF-426C-86B0-965AD6E0F4E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A39A390-69CF-426C-86B0-965AD6E0F4E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A39A390-69CF-426C-86B0-965AD6E0F4E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
