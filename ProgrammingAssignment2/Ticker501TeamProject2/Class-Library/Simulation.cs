@@ -1,18 +1,12 @@
-﻿///Jarod Honas
-///501SF17
-///A1
-///Simulation
-///Simulates the volatility of the stock market by returning new prices
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ticker501
+namespace Class_Library
 {
-    class Simulation
+    public class Simulation
     {
         string volatility; 
         
@@ -64,6 +58,7 @@ namespace Ticker501
             }
             return price + ((price*percent)*pos);
         }//getadjustedprice
+
 
     }
 }

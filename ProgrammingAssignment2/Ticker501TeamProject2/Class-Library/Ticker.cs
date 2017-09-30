@@ -1,22 +1,12 @@
-﻿///Jarod Honas
-///501SF17
-///A1
-///Ticker
-///Holds the name, tag, price for a company
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
-namespace Ticker501
+namespace Class_Library
 {
-    
-
-    class Ticker
+    public class Ticker
     {
         string name;
         string tag;
@@ -55,6 +45,7 @@ namespace Ticker501
         {
             return (tag + " - " + name + " - " + price.ToString("C"));
         }
+
 
     }
 }
