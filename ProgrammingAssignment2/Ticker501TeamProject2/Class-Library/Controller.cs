@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Class_Library
 {
-    public delegate void PortfolioInputHandler<T>(Portfolio p, T data); 
+    public delegate void PortfolioTransactionHandler<T>(Portfolio p, Ticker t, T data);
+    public delegate void PortfolioHandler<T>(Portfolio p);
     public delegate void InputHandler<T>(T data);
     public delegate void Observer();
     public delegate void ErrorHandler(Error e);
@@ -95,13 +96,21 @@ namespace Class_Library
         #endregion Account Level
 
         #region Portfolio Level
-        public void EditPortfolio(string name)
-        {
-           //_acct.Portfolios.Find(p => p.Name))
-        }
         public void PortView(Portfolio p)
         {
-            for
+            if(p.Stocks.Count > 0)
+            {
+                foreach(StockPurchase s in p.Stocks)
+                {
+                    double percent = s.TotalPrice / p.CashValue;
+                    double numPercent = s.Amount / (double)p.AmountStocks;
+                    //Output the stuff
+                }
+            }
+            else
+            {
+                _errorHandler(new Error("You have no stocks to view. Use 'buy' to start investing."));
+            }
         }
         public void PortBuy(Portfolio p, Ticker t, int amt)
         {
@@ -113,7 +122,7 @@ namespace Class_Library
             else
             {
                 p.AmountStocks += amt;
-                Transaction stock = new Class_Library.Transaction(t, amt);
+                StockPurchase stock = new StockPurchase(t, amt);
                 p.Stocks.Add(stock);
                 _acct.Funds -= totalCost;
                 //Say transfer has occured with output view
@@ -122,7 +131,7 @@ namespace Class_Library
         } 
         public void PortSell(Portfolio p, Ticker t, double amt)
         {
-            foreach(Transaction s in p.Stocks)
+            foreach(StockPurchase s in p.Stocks)
             {
                 if(s.Ticker.Tag == t.Tag)
                 {

@@ -8,7 +8,7 @@ namespace Class_Library
 {
     public class Portfolio
     {
-        private List<Transaction> _stocks;
+        private List<StockPurchase> _stocks;
         private string _name;
         private double _cashValue = 0;
         private int _amountStocks = 0;
@@ -17,14 +17,14 @@ namespace Class_Library
         public Portfolio(string name)
         {
             _name = name;
-            _stocks = new List<Transaction>();
+            _stocks = new List<StockPurchase>();
         }
 
         public int AmountStocks
         {
             get {
                 int count = 0;
-                foreach(Transaction s in _stocks)
+                foreach(StockPurchase s in _stocks)
                 {
                     count += s.Amount;
                 }
@@ -38,7 +38,7 @@ namespace Class_Library
             get { return _name; }
             set { _name = value; }
         }
-        public List<Transaction> Stocks
+        public List<StockPurchase> Stocks
         {
             get
             {
@@ -54,7 +54,7 @@ namespace Class_Library
         {
             get {
                 double count = 0;
-                foreach(Transaction s in _stocks)
+                foreach(StockPurchase s in _stocks)
                 {
                     count += s.TotalPrice;
                 }
@@ -68,7 +68,7 @@ namespace Class_Library
         {
             string temp = "";
             temp += "Portfolio: " + _name + "\n";
-            foreach (Transaction s in _stocks)
+            foreach (StockPurchase s in _stocks)
             {
                 temp += "\t"+s.ToString();
                 temp += "\n\t\tGains/Losses: ";

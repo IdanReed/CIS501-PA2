@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Class_Library
 {
-    public class Transaction
+    public class StockPurchase
     {
         private int _amount;
         private double _totalPrice;
         private Ticker _ticker;
         private double _initPrice;
 
-        public Transaction()
+        public StockPurchase()
         {
 
         }
 
-        public Transaction(Ticker t, int a)
+        public StockPurchase(Ticker t, int a)
         {
             _ticker = t;
             _amount = a;
