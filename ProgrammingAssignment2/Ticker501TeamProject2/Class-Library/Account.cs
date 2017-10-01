@@ -8,27 +8,31 @@ namespace Class_Library
 {
     public class Account
     {
-        private static double _funds = 0;
-        private static List<Ticker> _tickers = new List<Ticker>();
-        private static List<Portfolio> _portfolios = new List<Portfolio>();
-        private static Simulation sim = new Simulation("low");
+        private double _funds = 0;
+        private List<Ticker> _tickers = new List<Ticker>();
+        private List<Portfolio> _portfolios = new List<Portfolio>();
+        private Simulation _sim = new Simulation("low");
         
         #region Getters/Setters
-        public static double Funds
+        public double Funds
         {
             get
             {
                 return _funds;
             }
+            set
+            {
+                _funds = value;
+            }
         }
-        public static List<Ticker> Tickers
+        public List<Ticker> Tickers
         {
             get
             {
                 return _tickers;
             }
         }
-        public static List<Portfolio> Portfolios
+        public List<Portfolio> Portfolios
         {
             get
             {
@@ -41,14 +45,5 @@ namespace Class_Library
         }
 
         #endregion Getters/Setters
-
-        public static void Deposit(double amt)
-        {
-            _funds += amt;
-        } 
-        public static void Withdraw(double amt)
-        {
-            _funds -= amt;
-        }
     }
 }

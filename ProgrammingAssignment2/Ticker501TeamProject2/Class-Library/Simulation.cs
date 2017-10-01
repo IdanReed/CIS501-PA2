@@ -8,17 +8,17 @@ namespace Class_Library
 {
     public class Simulation
     {
-        string volatility; 
+        private string _volatility; 
         
         public Simulation (string vol)
         {
-            volatility = vol;
+            _volatility = vol;
         }
 
         public string Volatility
         {
-            get { return volatility; }
-            set { volatility = value; }
+            get { return _volatility; }
+            set { _volatility = value; }
         }
 
      
@@ -32,17 +32,17 @@ namespace Class_Library
         {
             Random rand = new Random();
             double percent = 0;
-            if (volatility == "high")
+            if (_volatility == "high")
             {
                 percent = rand.Next(3, 16);
                 percent /= 100;
             }
-            else if (volatility == "med")
+            else if (_volatility == "med")
             {
                 percent = rand.Next(2, 9);
                 percent /= 100;
             }
-            else if (volatility == "low")
+            else if (_volatility == "low")
             {
                 percent = rand.Next(1, 5);
                 percent /= 100;

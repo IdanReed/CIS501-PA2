@@ -6,47 +6,53 @@ using System.Threading.Tasks;
 
 namespace Class_Library
 {
-    public class Stock
+    public class Transaction
     {
-        int amount;
-        private double totalPrice;
-        public Ticker ticker;
-        private double initPrice;
+        private int _amount;
+        private double _totalPrice;
+        private Ticker _ticker;
+        private double _initPrice;
 
-        public Stock()
+        public Transaction()
         {
 
         }
 
-        public Stock(Ticker t, int a)
+        public Transaction(Ticker t, int a)
         {
-            ticker = t;
-            amount = a;
-            totalPrice = ticker.Price * amount;
-            initPrice = totalPrice;
+            _ticker = t;
+            _amount = a;
+            _totalPrice = _ticker.Price * _amount;
+            _initPrice = _totalPrice;
         }
 
         public double InitPrice
         {
-            get { return initPrice; }
+            get { return _initPrice; }
         }
 
         public double TotalPrice
         {
             get {
-                totalPrice = ticker.Price * amount;
-                return ticker.Price * amount; }
+                _totalPrice = _ticker.Price * _amount;
+                return _ticker.Price * _amount; }
         }
         public int Amount
         {
-            get { return amount; }
-            set { amount = value; }
+            get { return _amount; }
+            set { _amount = value; }
         }
-
+        public Ticker Ticker
+        {
+            get
+            {
+                return Ticker;
+            }
+        }
         public override string ToString()
         {
-            totalPrice = ticker.Price * amount;
-            return ticker.Tag + " - " + ticker.Name + " - " + totalPrice.ToString("C");
+            _totalPrice = _ticker.Price * _amount;
+            return _ticker.Tag + " - " + _ticker.Name + " - " + _totalPrice.ToString("C");
         }
 
 

@@ -8,26 +8,26 @@ namespace Class_Library
 {
     public class Ticker
     {
-        string name;
-        string tag;
-        double price;
+        private string _name;
+        private string _tag;
+        private double _price;
 
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return _name; }
+            set { _name = value; }
         }
 
         public string Tag
         {
-            get { return tag; }
-            set { tag = value; }
+            get { return _tag; }
+            set { _tag = value; }
         }
 
         public double Price
         {
-            get { return price; }
-            set { price = value; }
+            get { return _price; }
+            set { _price = value; }
         }
 
         /// <summary>
@@ -37,13 +37,13 @@ namespace Class_Library
         /// <param name="sim"></param>
         public void UpdatePrice(Simulation sim)
         {
-            price = sim.GetAdjustedPrice(price);
+            _price = sim.GetAdjustedPrice(_price);
         }
         
         
         public override string ToString()
         {
-            return (tag + " - " + name + " - " + price.ToString("C"));
+            return (_tag + " - " + _name + " - " + _price.ToString("C"));
         }
 
 

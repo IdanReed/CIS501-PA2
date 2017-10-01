@@ -8,44 +8,57 @@ namespace Class_Library
 {
     public class Portfolio
     {
-        public List<Stock> stocks;
-        string name;
-        double cashValue = 0;
-        int amountStocks = 0;
+        private List<Transaction> _stocks;
+        private string _name;
+        private double _cashValue = 0;
+        private int _amountStocks = 0;
+        
 
-        public Portfolio()
+        public Portfolio(string name)
         {
-            stocks = new List<Stock>();
+            _name = name;
+            _stocks = new List<Transaction>();
         }
 
         public int AmountStocks
         {
             get {
                 int count = 0;
-                foreach(Stock s in stocks)
+                foreach(Transaction s in _stocks)
                 {
                     count += s.Amount;
                 }
-                amountStocks = count;
-                return amountStocks; }
-            set { amountStocks = value; }
+                _amountStocks = count;
+                return _amountStocks; }
+            set { _amountStocks = value; }
         }
 
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return _name; }
+            set { _name = value; }
+        }
+        public List<Transaction> Stocks
+        {
+            get
+            {
+                return _stocks;
+            }
+            set
+            {
+                _stocks = value;
+            }
         }
 
         public double CashValue
         {
             get {
                 double count = 0;
-                foreach(Stock s in stocks)
+                foreach(Transaction s in _stocks)
                 {
                     count += s.TotalPrice;
                 }
-                cashValue = count;
+                _cashValue = count;
                 return count;
                 }
             
@@ -54,8 +67,8 @@ namespace Class_Library
         public override string ToString()
         {
             string temp = "";
-            temp += "Portfolio: " + name + "\n";
-            foreach (Stock s in stocks)
+            temp += "Portfolio: " + _name + "\n";
+            foreach (Transaction s in _stocks)
             {
                 temp += "\t"+s.ToString();
                 temp += "\n\t\tGains/Losses: ";
