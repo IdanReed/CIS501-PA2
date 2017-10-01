@@ -65,6 +65,7 @@ namespace Class_Library
         public void Deposit(double amount)
         {
             _acct.Funds += amount - DEPOSIT_FEE;
+            _acct.DepositFees += DEPOSIT_FEE;
             //Do gains/losses stuff with the transfer fee
 
         }
@@ -72,7 +73,8 @@ namespace Class_Library
         {
             if (_acct.Funds - amount - DEPOSIT_FEE > 0)
             {
-                _acct.Funds -= amount - DEPOSIT_FEE;
+                _acct.Funds -= amount + DEPOSIT_FEE;
+                _acct.DepositFees += DEPOSIT_FEE;
                 //Do gains/losses stuff with the tranfer fee
             }
             else
@@ -145,6 +147,8 @@ namespace Class_Library
 
         #endregion Controlling Methods
 
+
+
         #region Getter/Setter
 
         public Account Account
@@ -156,6 +160,22 @@ namespace Class_Library
             set
             {
                 _acct = value;
+            }
+        }
+
+        public double TradeFee
+        {
+            get
+            {
+                return TRADE_FEE;
+            }
+        }
+
+        public double DepositFee
+        {
+            get
+            {
+                return DEPOSIT_FEE;
             }
         }
 

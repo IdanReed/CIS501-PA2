@@ -12,6 +12,8 @@ namespace Class_Library
         private List<Ticker> _tickers = new List<Ticker>();
         private List<Portfolio> _portfolios = new List<Portfolio>();
         private Simulation _sim = new Simulation("low");
+        private double _depositFees = 0;
+        private double _tradeFees = 0;
         
         #region Getters/Setters
         public double Funds
@@ -41,6 +43,30 @@ namespace Class_Library
             set
             {
                 _portfolios = value;
+            }
+        }
+
+        public double DepositFees
+        {
+            get
+            {
+                return _depositFees;
+            }
+            set
+            {
+                _depositFees = value;
+            }
+        }
+
+        public double TradeFees
+        {
+            get
+            {
+                return _tradeFees;
+            }
+            set
+            {
+                _tradeFees = value;
             }
         }
 
