@@ -31,8 +31,8 @@ namespace Class_Library
     }
     public class Controller
     {
-        public const double TRANSFER_FEE = 9.99;
-        public const double PURCHASE_FEE = 4.99;
+        public const double TRADE_FEE = 9.99; //renamed these to be more clear about which is which
+        public const double DEPOSIT_FEE = 4.99;
         public const int MAX_PORTFOLIOS = 3;
 
         private List<Observer> _registry;
@@ -64,15 +64,17 @@ namespace Class_Library
         #region Account Level
         public void Deposit(double amount)
         {
-            _acct.Funds += amount - TRANSFER_FEE;
+            _acct.Funds += amount - DEPOSIT_FEE;
+            _acct.DepositFees += DEPOSIT_FEE;
             //Do gains/losses stuff with the transfer fee
 
         }
         public void Withdraw(double amount)
         {
-            if (_acct.Funds - amount - TRANSFER_FEE > 0)
+            if (_acct.Funds - amount - DEPOSIT_FEE > 0)
             {
-                _acct.Funds -= amount - TRANSFER_FEE;
+                _acct.Funds -= amount + DEPOSIT_FEE;
+                _acct.DepositFees += DEPOSIT_FEE;
                 //Do gains/losses stuff with the tranfer fee
             }
             else
@@ -114,7 +116,7 @@ namespace Class_Library
         }
         public void PortBuy(Portfolio p, Ticker t, int amt)
         {
-            double totalCost = t.Price * amt - PURCHASE_FEE;
+            double totalCost = t.Price * amt - TRADE_FEE;
             if (totalCost > _acct.Funds)
             {
                 _errorHandler(new Error("You have insufficient funds for this transaction."));
@@ -135,7 +137,7 @@ namespace Class_Library
             {
                 if(s.Ticker.Tag == t.Tag)
                 {
-                    _acct.Funds += s.TotalPrice - PURCHASE_FEE;
+                    _acct.Funds += s.TotalPrice - TRADE_FEE;
                     //Say transfer has occured
                     p.Stocks.Remove(s);
                 }
@@ -144,5 +146,39 @@ namespace Class_Library
         #endregion Portfolio Level
 
         #endregion Controlling Methods
+
+
+
+        #region Getter/Setter
+
+        public Account Account
+        {
+            get
+            {
+                return _acct;
+            }
+            set
+            {
+                _acct = value;
+            }
+        }
+
+        public double TradeFee
+        {
+            get
+            {
+                return TRADE_FEE;
+            }
+        }
+
+        public double DepositFee
+        {
+            get
+            {
+                return DEPOSIT_FEE;
+            }
+        }
+
+        #endregion Getter/Setter
     }
 }
