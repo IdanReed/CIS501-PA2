@@ -10,3 +10,6 @@ C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\obj\
 C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\bin\Debug\Ticker501.exe
 C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\bin\Debug\Ticker501.pdb
 C:\Users\Jarod\Documents\GitHub\JarodPHonas-course-work\Ticker501\Ticker501\obj\Debug\Ticker501.csprojResolveAssemblyReference.cache
+C:\Users\rbere\Desktop\K-State\CIS 501\Github Team Repo\Ticker501\Ticker501\bin\Debug\Ticker501.exe.config
+C:\Users\rbere\Desktop\K-State\CIS 501\Github Team Repo\Ticker501\Ticker501\obj\Debug\Ticker501.exe
+C:\Users\rbere\Desktop\K-State\CIS 501\Github Team Repo\Ticker501\Ticker501\obj\Debug\Ticker501.pdb
