@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace Class_Library
 {
-    public delegate void PortfolioTransactionHandler<T>(Portfolio p, Ticker t, T data);
-    public delegate void PortfolioHandler<T>(Portfolio p);
-    public delegate void InputHandler<T>(T data);
+   // public delegate void PortfolioTransactionHandler<T>(Portfolio p, Ticker t, T data);
+   // public delegate void PortfolioHandler<T>(Portfolio p);
+    public delegate Error InputHandler(Event e);
     public delegate void Observer();
-    public delegate void ErrorHandler(Error e);
 
     public class Error
     {
         private string _message;
+        private bool _errorOccured;
+        public static Error None = new Error();
         //Any other potential stuff
         public string Message
         {
@@ -24,9 +25,42 @@ namespace Class_Library
             }
         }
 
+        public Error()
+        {
+            _errorOccured = false;
+            _message = "";
+        }
         public Error(string m)
         {
+            _errorOccured = true;
             _message = m;
+        }
+        public void Catch(Action<string> a)
+        {
+            if (_errorOccured)
+            {
+                a(_message);
+            }
+        }
+    }
+    
+    public class Event
+    {
+        private string _type;
+        private object _data;
+
+        public string Type
+        {
+            get { return _type; }
+        }
+        public object Data
+        {
+            get { return _data; }
+        }
+        public Event(object data, string type)
+        {
+            _data = data;
+            _type = type;
         }
     }
     public class Controller
@@ -37,13 +71,11 @@ namespace Class_Library
 
         private List<Observer> _registry;
         private Account _acct;
-        private ErrorHandler _errorHandler;
        
-        public Controller(ErrorHandler errHan)
+        public Controller(Account acct)
         {
             _registry = new List<Observer>();
-            _acct = new Account();
-            _errorHandler = errHan;
+            _acct = acct;
         }
 
         public void AddListener(Observer o)
@@ -61,44 +93,59 @@ namespace Class_Library
 
         #region Controlling Methods
 
+        public Error InputHandle(Event e)
+        {
+            switch (e.Type)
+            {
+                case "deposit":
+                    return Deposit((double) e.Data);
+                case "withdraw":
+                    return Withdraw((double) e.Data);
+            }
+            return Error.None;
+        }
+
         #region Account Level
-        public void Deposit(double amount)
+        private Error Deposit(double amount)
         {
             _acct.Funds += amount - DEPOSIT_FEE;
             _acct.DepositFees += DEPOSIT_FEE;
             //Do gains/losses stuff with the transfer fee
-
+            return Error.None; 
         }
-        public void Withdraw(double amount)
+        private Error Withdraw(double amount)
         {
-            if (_acct.Funds - amount - DEPOSIT_FEE > 0)
+            if (_acct.Funds -  amount - DEPOSIT_FEE > 0)
             {
                 _acct.Funds -= amount + DEPOSIT_FEE;
                 _acct.DepositFees += DEPOSIT_FEE;
                 //Do gains/losses stuff with the tranfer fee
+                return Error.None;
             }
             else
             {
                 //Throw back to sell assets screen
+                return new Error("Withdrawing too much money");
             }
         }
-        public void NewPortfolio(string name)
+        private Error NewPortfolio(string name)
         {
             if (_acct.Portfolios.Count < MAX_PORTFOLIOS)
             {
                 Portfolio newPortfolio = new Portfolio(name);
 
+                return Error.None;
             }
             else
             {
-                _errorHandler(new Error("You have reached the maximum number of portfolios."));
                 //Error saying too many portfolios
+                return new Error("You have reached the maximum number of portfolios");
             }
         }
         #endregion Account Level
 
         #region Portfolio Level
-        public void PortView(Portfolio p)
+        private Error PortView(Portfolio p)
         {
             if(p.Stocks.Count > 0)
             {
@@ -108,18 +155,19 @@ namespace Class_Library
                     double numPercent = s.Amount / (double)p.AmountStocks;
                     //Output the stuff
                 }
+                return Error.None;
             }
             else
             {
-                _errorHandler(new Error("You have no stocks to view. Use 'buy' to start investing."));
+                return new Error("You have no stocks to view. Use 'buy' to start investing.");
             }
         }
-        public void PortBuy(Portfolio p, Ticker t, int amt)
+        private Error PortBuy(Portfolio p, Ticker t, int amt)
         {
             double totalCost = t.Price * amt - TRADE_FEE;
             if (totalCost > _acct.Funds)
             {
-                _errorHandler(new Error("You have insufficient funds for this transaction."));
+                return new Error("You have inssuficient funds for this transaction.");
             }
             else
             {
@@ -128,10 +176,12 @@ namespace Class_Library
                 p.Stocks.Add(stock);
                 _acct.Funds -= totalCost;
                 //Say transfer has occured with output view
+
+                return Error.None;
             }
 
         } 
-        public void PortSell(Portfolio p, Ticker t, double amt)
+        private Error PortSell(Portfolio p, Ticker t, double amt)
         {
             foreach(StockPurchase s in p.Stocks)
             {
@@ -140,8 +190,10 @@ namespace Class_Library
                     _acct.Funds += s.TotalPrice - TRADE_FEE;
                     //Say transfer has occured
                     p.Stocks.Remove(s);
+                    return Error.None;
                 }
-            } 
+            }
+            return new Error("You don't own any of that stock");
         }
         #endregion Portfolio Level
 
@@ -163,21 +215,7 @@ namespace Class_Library
             }
         }
 
-        public double TradeFee
-        {
-            get
-            {
-                return TRADE_FEE;
-            }
-        }
 
-        public double DepositFee
-        {
-            get
-            {
-                return DEPOSIT_FEE;
-            }
-        }
 
         #endregion Getter/Setter
     }
