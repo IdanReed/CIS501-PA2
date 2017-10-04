@@ -15,6 +15,9 @@ namespace PA2Console
             Account acct = new Account();
             Controller c = new Controller(acct);
             InputView inputView = new InputView(c.InputHandle);
+            OutputView outputView = new OutputView(acct);
+
+            c.AddListener(outputView.Update);
             inputView.Start();
         } 
         static void GetTickers()

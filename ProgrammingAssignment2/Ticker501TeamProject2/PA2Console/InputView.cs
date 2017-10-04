@@ -72,14 +72,18 @@ namespace PA2Console
             do
             {
                 canContinue = true;
+                //Call our menu helper to prompt a double with the given text
                 MenuHelper.PromptDouble(
                     "Enter amount to withdraw",
                     "Amount $:"
-                    ).Then(withdrawAmount =>
+                    ).Then(withdrawAmount => //Then menu helper stores the entered variable into "withdrawAmount" and runs this function
                     {
+                        //Create a new event and store the withdrawAmount into it
                         Event e = new Event(withdrawAmount, "withdraw");
+                        //Send that event to the InputHandler and catch it's error with this function
                         _inputHandler(e).Catch(message =>
                         {
+                            //Print the message returned and make the loop run again
                             MenuHelper.PrintError(message);
                             canContinue = false;
                         });
@@ -112,7 +116,7 @@ namespace PA2Console
         
         private void AccountStats()
         {
-
+            _inputHandler(new Event("accountStats"));
         }
 
         private void ViewPortfolio()

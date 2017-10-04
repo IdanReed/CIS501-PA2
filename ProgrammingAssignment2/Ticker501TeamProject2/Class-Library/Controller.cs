@@ -9,7 +9,7 @@ namespace Class_Library
    // public delegate void PortfolioTransactionHandler<T>(Portfolio p, Ticker t, T data);
    // public delegate void PortfolioHandler<T>(Portfolio p);
     public delegate Error InputHandler(Event e);
-    public delegate void Observer();
+    public delegate void Observer(Event e);
 
     public class Error
     {
@@ -62,6 +62,11 @@ namespace Class_Library
             _data = data;
             _type = type;
         }
+        public Event(string type)
+        {
+            _type = type;
+            _data = null;
+        }
     }
     public class Controller
     {
@@ -82,11 +87,12 @@ namespace Class_Library
         {
             _registry.Add(o);
         }
-        public void Update()
+        //Broadcast an event to all observers
+        private void Broadcast(Event e)
         {
-            foreach (Observer o in _registry)
+            foreach(Observer o in _registry)
             {
-                o();
+                o(e);
             }
         }
 
@@ -101,6 +107,9 @@ namespace Class_Library
                     return Deposit((double) e.Data);
                 case "withdraw":
                     return Withdraw((double) e.Data);
+                case "accountStats":
+                    Broadcast(new Event("accountStats"));
+                    break;
             }
             return Error.None;
         }
