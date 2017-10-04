@@ -76,11 +76,14 @@ namespace Class_Library
 
         private List<Observer> _registry;
         private Account _acct;
+        private Portfolio _currentPortfolio;
+        private List<Ticker> _tickers;
        
-        public Controller(Account acct)
+        public Controller(Account acct, List<Ticker> tickers)
         {
             _registry = new List<Observer>();
             _acct = acct;
+            _tickers = tickers;
         }
 
         public void AddListener(Observer o)
@@ -109,6 +112,19 @@ namespace Class_Library
                     return Withdraw((double) e.Data);
                 case "accountStats":
                     Broadcast(new Event("accountStats"));
+                    break;
+                case "newPort":
+                    return NewPortfolio((string)e.Data);
+                case "portView":
+                    return PortView((string)e.Data);
+                case "portBuy":
+                    Tuple<string, int> buyData = (Tuple<string, int>) e.Data;
+                    return PortBuy(buyData.Item1, buyData.Item2);
+                case "portSell":
+                    Tuple<string, int> sellData = (Tuple<string, int>)e.Data;
+                    return PortSell(sellData.Item1, sellData.Item2);
+                case "portStats":
+                    Broadcast(new Event("portStats"));
                     break;
             }
             return Error.None;
@@ -142,7 +158,7 @@ namespace Class_Library
             if (_acct.Portfolios.Count < MAX_PORTFOLIOS)
             {
                 Portfolio newPortfolio = new Portfolio(name);
-
+                _acct.Portfolios.Add(newPortfolio);
                 return Error.None;
             }
             else
@@ -154,25 +170,27 @@ namespace Class_Library
         #endregion Account Level
 
         #region Portfolio Level
-        private Error PortView(Portfolio p)
+        private Error PortView(string name)
         {
-            if(p.Stocks.Count > 0)
+            if (_acct.Portfolios.Count == 0) return new Error("You have not created any portfolios yet.");
+            Portfolio p = _acct.Portfolios.Find(port => port.Name == name);
+            if(p != null)
             {
-                foreach(StockPurchase s in p.Stocks)
-                {
-                    double percent = s.TotalPrice / p.CashValue;
-                    double numPercent = s.Amount / (double)p.AmountStocks;
-                    //Output the stuff
-                }
+                _currentPortfolio = p;
                 return Error.None;
             }
             else
             {
-                return new Error("You have no stocks to view. Use 'buy' to start investing.");
+                return new Error("A portfolio with that name does not exsist");
             }
         }
-        private Error PortBuy(Portfolio p, Ticker t, int amt)
+       
+        private Error PortBuy(string tickerName, int amt)
         {
+            Ticker t = GetTickerByAbbr(tickerName);
+
+            if (t == null) return new Error("A stock with that abbreviation does not exsist.");
+    
             double totalCost = t.Price * amt - TRADE_FEE;
             if (totalCost > _acct.Funds)
             {
@@ -180,25 +198,27 @@ namespace Class_Library
             }
             else
             {
-                p.AmountStocks += amt;
+                _currentPortfolio.AmountStocks += amt;
                 StockPurchase stock = new StockPurchase(t, amt);
-                p.Stocks.Add(stock);
+                _currentPortfolio.Stocks.Add(stock);
                 _acct.Funds -= totalCost;
-                //Say transfer has occured with output view
 
                 return Error.None;
             }
 
         } 
-        private Error PortSell(Portfolio p, Ticker t, double amt)
+        private Error PortSell(string tickerName, double amt)
         {
-            foreach(StockPurchase s in p.Stocks)
+            Ticker t = GetTickerByAbbr(tickerName);
+            if (t == null) return new Error("A stock with that abbreviation does not exsist.");
+
+            foreach(StockPurchase s in _currentPortfolio.Stocks)
             {
                 if(s.Ticker.Tag == t.Tag)
                 {
                     _acct.Funds += s.TotalPrice - TRADE_FEE;
                     //Say transfer has occured
-                    p.Stocks.Remove(s);
+                    _currentPortfolio.Stocks.Remove(s);
                     return Error.None;
                 }
             }
@@ -208,24 +228,13 @@ namespace Class_Library
 
         #endregion Controlling Methods
 
+        #region Utils
 
-
-        #region Getter/Setter
-
-        public Account Account
+        private Ticker GetTickerByAbbr(string abbr)
         {
-            get
-            {
-                return _acct;
-            }
-            set
-            {
-                _acct = value;
-            }
+            return _tickers.Find(tic => tic.Tag == abbr);
         }
 
-
-
-        #endregion Getter/Setter
+        #endregion Utils
     }
 }

@@ -12,15 +12,16 @@ namespace PA2Console
     {
         static void Main(string[] args)
         {
+            List<Ticker> tickers = GetTickers();
             Account acct = new Account();
-            Controller c = new Controller(acct);
+            Controller c = new Controller(acct, tickers);
             InputView inputView = new InputView(c.InputHandle);
             OutputView outputView = new OutputView(acct);
 
             c.AddListener(outputView.Update);
             inputView.Start();
         } 
-        static void GetTickers()
+        static List<Ticker> GetTickers()
         {
             StreamReader sr = new StreamReader("ticker.txt");
             string line = sr.ReadLine();
@@ -28,6 +29,8 @@ namespace PA2Console
             {
                 //Finish this once format is figured out
             }
+            //Temporary so it builds
+            return new List<Ticker>();
         }
     }
 }
