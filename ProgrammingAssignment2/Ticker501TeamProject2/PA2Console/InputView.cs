@@ -48,14 +48,18 @@ namespace PA2Console
             do
             {
                 canContinue = true;
+                //Call our menu helper to prompt a double with the given text
                 MenuHelper.PromptDouble(
                     "Enter amount to deposit",
                     "Amount $:"
-                    ).Then(depositAmount =>
+                    ).Then(depositAmount => //Then menu helper stores the entered variable into "depositAmount" and runs the provided function
                     {
+                        //Create a new event and store the depositAmount into it
                         Event e = new Event(depositAmount, "deposit");
+                        //Send that event to the InputHandler and catch it's error with the provided function
                         _inputHandler(e).Catch(message =>
                         {
+                            //Print the message returned by the controller
                             MenuHelper.PrintError(message);
                             canContinue = false;
                         });
@@ -83,7 +87,7 @@ namespace PA2Console
                         //Send that event to the InputHandler and catch it's error with this function
                         _inputHandler(e).Catch(message =>
                         {
-                            //Print the message returned and make the loop run again
+                            //Print the message returned by controller
                             MenuHelper.PrintError(message);
                             canContinue = false;
                         });
@@ -92,26 +96,6 @@ namespace PA2Console
             while (!canContinue);
             Console.WriteLine("Withdraw Complete.");
             MenuHelper.PressEnter();
-            /*double amtToWithdraw = -1;
-            while (amtToWithdraw == -1)
-            {
-                Console.Write("Enter amount to withdraw (a fee of $" + c.DepositFee + " will be assessed): $");
-                try
-                {
-                    amtToWithdraw = Convert.ToDouble(Console.ReadLine());
-                    if (amtToWithdraw - c.DepositFee > a.Funds)
-                    {
-                        throw new Exception();
-                    }
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Invalid input. Please make sure you have enough funds.");
-                    amtToWithdraw = -1;
-                }
-            }
-            c.Withdraw(amtToWithdraw);
-            Console.WriteLine("Withdrawl Complete.");*/
         }
         
         private void AccountStats()
