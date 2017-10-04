@@ -11,9 +11,11 @@ namespace PA2Console
     {
 
         private Account _acct;
-        public OutputView(Account a)
+        private List<Ticker> _tickers;
+        public OutputView(Account a, List<Ticker> tickers)
         {
             _acct = a;
+            _tickers = tickers;
         }
         public void Update(Event e)
         {

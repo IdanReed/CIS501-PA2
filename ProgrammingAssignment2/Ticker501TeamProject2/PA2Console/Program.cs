@@ -16,7 +16,7 @@ namespace PA2Console
             Account acct = new Account();
             Controller c = new Controller(acct, tickers);
             InputView inputView = new InputView(c.InputHandle);
-            OutputView outputView = new OutputView(acct);
+            OutputView outputView = new OutputView(acct, tickers);
 
             c.AddListener(outputView.Update);
             inputView.Start();
