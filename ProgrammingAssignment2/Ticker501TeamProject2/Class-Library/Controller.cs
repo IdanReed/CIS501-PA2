@@ -135,6 +135,7 @@ namespace Class_Library
         {
             _acct.Funds += amount - DEPOSIT_FEE;
             _acct.DepositFees += DEPOSIT_FEE;
+            _acct.CurValue += amount;
             //Do gains/losses stuff with the transfer fee
             return Error.None; 
         }
@@ -144,6 +145,7 @@ namespace Class_Library
             {
                 _acct.Funds -= amount + DEPOSIT_FEE;
                 _acct.DepositFees += DEPOSIT_FEE;
+                _acct.CurValue -= amount;
                 //Do gains/losses stuff with the tranfer fee
                 return Error.None;
             }
@@ -167,6 +169,8 @@ namespace Class_Library
                 return new Error("You have reached the maximum number of portfolios");
             }
         }
+
+      
         #endregion Account Level
 
         #region Portfolio Level

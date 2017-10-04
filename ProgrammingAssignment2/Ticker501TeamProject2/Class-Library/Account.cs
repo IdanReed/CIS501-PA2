@@ -14,6 +14,8 @@ namespace Class_Library
         private Simulation _sim = new Simulation("low");
         private double _depositFees = 0;
         private double _tradeFees = 0;
+        private double _curValue = 0;
+        private double _changeInFunds;
         
         #region Getters/Setters
         public double Funds
@@ -67,6 +69,31 @@ namespace Class_Library
             set
             {
                 _tradeFees = value;
+            }
+        }
+
+        public double CurValue
+        {
+            get
+            {
+                return _curValue;
+            }
+            set
+            {
+                _curValue = value;
+            }
+        }
+
+        public double ChangeInFunds
+        {
+            get
+            {
+                double tempFunds = 0;
+                foreach(Portfolio p in _portfolios)
+                {
+                    tempFunds += p.CashValue;
+                }
+                return (_funds + tempFunds) - _curValue;
             }
         }
 
