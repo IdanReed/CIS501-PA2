@@ -42,7 +42,7 @@ namespace PA2Console
 
         private void DeletePortfolio()
         {
-            //no option for this in controller's InputHandle
+            //Should be good to go now.
         }
 
         private void Deposit()
@@ -103,8 +103,6 @@ namespace PA2Console
         
         private void AccountStats()
         {
-            //On these you'll need to still read in a string of the portfolio name to pass to the controller. Like I did in the withdraw method.
-            //If you look at the InputHandler in the controller you can see what it needs to be passed by what it casts e.Data to.
             _inputHandler(new Event("accountStats"));
         }
 

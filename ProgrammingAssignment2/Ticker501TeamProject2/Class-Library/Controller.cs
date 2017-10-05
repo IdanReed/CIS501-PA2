@@ -106,6 +106,7 @@ namespace Class_Library
         {
             switch (e.Type)
             {
+                //Account Events
                 case "deposit":
                     return Deposit((double) e.Data);
                 case "withdraw":
@@ -116,6 +117,10 @@ namespace Class_Library
                 case "accountBalance": //need to fix this for InputView, not sure how
                     Broadcast(new Event("accountBalance"));
                     break;
+
+                //Portfolio Events
+                case "deletePort":
+                    return DeletePortfolio((string)e.Data);
                 case "newPort":
                     return NewPortfolio((string)e.Data);
                 case "portView":
@@ -128,6 +133,13 @@ namespace Class_Library
                     return PortSell(sellData.Item1, sellData.Item2);
                 case "portStats":
                     Broadcast(new Event("portStats"));
+                    break;
+
+                //Ticker Events
+                case "simulate":
+                    break;
+                case "showStocks":
+                    Broadcast(new Event("showStocks"));
                     break;
           
             }
@@ -172,6 +184,24 @@ namespace Class_Library
                 //Error saying too many portfolios
                 return new Error("You have reached the maximum number of portfolios");
             }
+        }
+
+        private Error DeletePortfolio(string name)
+        {
+            if (_acct.Portfolios.Count == 0) return new Error("You haven't created any portfolio's yet");
+            
+            Portfolio p = _acct.Portfolios.Find(port => port.Name == name);
+
+            if (p == null) return new Error("A portfolio with that name does not exsist.");
+            double totalWorth = 0;
+            foreach (StockPurchase s in p.Stocks)
+            {
+                totalWorth += s.TotalPrice;
+            }
+            _acct.Funds += totalWorth;
+            Broadcast(new Event("accountBalance"));
+            _acct.Portfolios.Remove(p);
+            return Error.None;
         }
 
       
@@ -234,6 +264,10 @@ namespace Class_Library
         }
         #endregion Portfolio Level
 
+        #region Simulation Level
+
+
+        #endregion Simulation Level
         #endregion Controlling Methods
 
         #region Utils
