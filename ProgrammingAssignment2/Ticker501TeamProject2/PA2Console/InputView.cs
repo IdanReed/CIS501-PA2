@@ -43,6 +43,7 @@ namespace PA2Console
         private void DeletePortfolio()
         {
             //Should be good to go now.
+            //Event name is "deletePort" and requires the name of the portfolio.
         }
 
         private void Deposit()
