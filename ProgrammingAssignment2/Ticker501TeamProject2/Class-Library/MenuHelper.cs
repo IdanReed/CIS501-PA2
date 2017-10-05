@@ -63,6 +63,28 @@ namespace Class_Library
             Console.Clear();
         }
 
+        public void ShowMenu(Action a)
+        {
+            bool doQuit;
+            do
+            {
+                a();
+                doQuit = true;
+                PromptInt(
+                    ToString(),
+                    "Choice: ",
+                    choice => choice < 1 || choice > _menuItems.Count,
+                    "Please select a menu item shown"
+                    )
+                    .Then(value =>
+                    {
+                        _menuItems[value - 1].Call();
+                        doQuit = false;
+                    });
+            } while (!doQuit);
+            Console.Clear();
+        }
+
         /// <summary>
         /// Prompts the user for an integer with the question specified. It does all the data 
         /// validation required and doesn't return until the user provides a valid input.

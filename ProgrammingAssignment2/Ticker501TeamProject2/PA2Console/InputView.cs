@@ -31,8 +31,7 @@ namespace PA2Console
         
         public void Start()
         {
-            _inputHandler(new Event("accountBalance")); 
-            _mainMenu.ShowMenu();
+            _mainMenu.ShowMenu(() => _inputHandler(new Event("accountBalance")));
         }
         private void CreatePortfolio()
         {
