@@ -21,16 +21,21 @@ namespace PA2Console
             c.AddListener(outputView.Update);
             inputView.Start();
         } 
+
         static List<Ticker> GetTickers()
         {
             StreamReader sr = new StreamReader("ticker.txt");
             string line = sr.ReadLine();
-            while (line != "")
+            List<Ticker> toReturn = new List<Ticker>();
+            while (line != null)
             {
-                //Finish this once format is figured out
+                string[] split = line.Split('-');
+                double tempPrice = Convert.ToDouble(split[2].Substring(1));
+                toReturn.Add(new Ticker(split[0], split[1], tempPrice));
+                line = sr.ReadLine();
             }
             //Temporary so it builds
-            return new List<Ticker>();
+            return toReturn;
         }
     }
 }

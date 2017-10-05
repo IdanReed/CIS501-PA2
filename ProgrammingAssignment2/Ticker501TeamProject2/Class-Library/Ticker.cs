@@ -12,6 +12,13 @@ namespace Class_Library
         private string _tag;
         private double _price;
 
+        public Ticker(string tag, string name, double price)
+        {
+            _tag = tag;
+            _name = name;
+            _price = price;
+        }
+
         public string Name
         {
             get { return _name; }
