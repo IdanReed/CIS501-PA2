@@ -31,11 +31,13 @@ namespace PA2Console
         
         public void Start()
         {
-            _inputHandler(new Event("accountBalance")); //THIS NEEDS FIXING, NOT SURE HOW TO
+            _inputHandler(new Event("accountBalance")); 
             _mainMenu.ShowMenu();
         }
         private void CreatePortfolio()
         {
+            //On these you'll need to still read in a string of the portfolio name to pass to the controller. Like I did in the withdraw method.
+            //If you look at the InputHandler in the controller you can see what it needs to be passed by what it casts e.Data to.
             _inputHandler(new Event("newPort"));
         }
 
@@ -102,11 +104,15 @@ namespace PA2Console
         
         private void AccountStats()
         {
+            //On these you'll need to still read in a string of the portfolio name to pass to the controller. Like I did in the withdraw method.
+            //If you look at the InputHandler in the controller you can see what it needs to be passed by what it casts e.Data to.
             _inputHandler(new Event("accountStats"));
         }
 
         private void ViewPortfolio()
         {
+            //On these you'll need to still read in a string of the portfolio name to pass to the controller. Like I did in the withdraw method.
+            //If you look at the InputHandler in the controller you can see what it needs to be passed by what it casts e.Data to.
             _inputHandler(new Event("portView"));
         }
 
