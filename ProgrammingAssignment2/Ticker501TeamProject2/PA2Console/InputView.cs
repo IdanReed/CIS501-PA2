@@ -16,7 +16,6 @@ namespace PA2Console
         public InputView(InputHandler han)
         {
             _inputHandler = han;
-            _inputHandler(new Event("accountBalance")); //THIS NEEDS FIXING, NOT SURE HOW TO
             _mainMenu = new MenuHelper("Welcome to Ticker501. Please select an option below:");
             _mainMenu
                 .Add("Create Profile", CreatePortfolio)
@@ -32,6 +31,7 @@ namespace PA2Console
         
         public void Start()
         {
+            _inputHandler(new Event("accountBalance")); //THIS NEEDS FIXING, NOT SURE HOW TO
             _mainMenu.ShowMenu();
         }
         private void CreatePortfolio()
