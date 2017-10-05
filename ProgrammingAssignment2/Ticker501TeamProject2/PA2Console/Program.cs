@@ -14,7 +14,9 @@ namespace PA2Console
         {
             List<Ticker> tickers = GetTickers();
             Account acct = new Account();
-            Controller c = new Controller(acct, tickers);
+            Simulation sim = new Simulation("low");
+
+            Controller c = new Controller(acct, tickers, sim);
             InputView inputView = new InputView(c.InputHandle);
             OutputView outputView = new OutputView(acct, tickers);
 

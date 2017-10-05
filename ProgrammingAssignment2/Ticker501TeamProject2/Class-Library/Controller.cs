@@ -78,12 +78,14 @@ namespace Class_Library
         private Account _acct;
         private Portfolio _currentPortfolio;
         private List<Ticker> _tickers;
+        private Simulation _simulation;
        
-        public Controller(Account acct, List<Ticker> tickers)
+        public Controller(Account acct, List<Ticker> tickers, Simulation sim)
         {
             _registry = new List<Observer>();
             _acct = acct;
             _tickers = tickers;
+            _simulation = sim;
         }
 
         public void AddListener(Observer o)
@@ -98,7 +100,6 @@ namespace Class_Library
                 o(e);
             }
         }
-
 
         #region Controlling Methods
 
@@ -137,7 +138,7 @@ namespace Class_Library
 
                 //Ticker Events
                 case "simulate":
-                    break;
+                    return Simulate((string)e.Data);                   
                 case "showStocks":
                     Broadcast(new Event("showStocks"));
                     break;
@@ -266,8 +267,28 @@ namespace Class_Library
 
         #region Simulation Level
 
+        private Error Simulate(string volatilityLevel)
+        {
+            string val = volatilityLevel.ToLower();
+            if(val == "high" || val =="med" || val == "low")
+            {
+                _simulation.Volatility = val;
+            }
+            else
+            {
+                return new Class_Library.Error("Please choose either 'high', 'med', or 'low'");
+            }
+
+            foreach(Ticker t in _acct.Tickers)
+            {
+                t.UpdatePrice(_simulation);
+            }
+            Broadcast(new Event("showStocks"));
+            return Error.None;
+        }
 
         #endregion Simulation Level
+
         #endregion Controlling Methods
 
         #region Utils

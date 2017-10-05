@@ -28,6 +28,9 @@ namespace PA2Console
                 case "accountBalance":
                     DisplayFunds();
                     break;
+                case "showStocks":
+                    ShowStocks();
+                    break;
             }            
         }
 
@@ -42,6 +45,14 @@ namespace PA2Console
         private void DisplayFunds()
         {
             Console.WriteLine("Funds: ${0}", _acct.Funds.ToString("N2"));
+        }
+
+        private void ShowStocks()
+        {
+            foreach(Ticker t in _tickers)
+            {
+                Console.WriteLine("\t{0}", t.ToString());
+            }
         }
     }
 }
