@@ -34,7 +34,6 @@ namespace PA2Console
                 toReturn.Add(new Ticker(split[0], split[1], tempPrice));
                 line = sr.ReadLine();
             }
-            //Temporary so it builds
             return toReturn;
         }
     }

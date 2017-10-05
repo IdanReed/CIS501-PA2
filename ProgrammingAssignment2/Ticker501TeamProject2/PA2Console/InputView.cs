@@ -16,6 +16,7 @@ namespace PA2Console
         public InputView(InputHandler han)
         {
             _inputHandler = han;
+            _inputHandler(new Event("accountBalance")); //THIS NEEDS FIXING, NOT SURE HOW TO
             _mainMenu = new MenuHelper("Welcome to Ticker501. Please select an option below:");
             _mainMenu
                 .Add("Create Profile", CreatePortfolio)
@@ -24,7 +25,8 @@ namespace PA2Console
                 .Add("Withdraw Money", Withdraw)
                 .Add("View Account statistics", AccountStats)
                 .Add("View a Portfolio", ViewPortfolio)
-                .Add("Simulate Volatility", Volatility);
+                .Add("Simulate Volatility", Volatility)
+                .Add("Exit", Exit);
         }
         
         
@@ -34,12 +36,12 @@ namespace PA2Console
         }
         private void CreatePortfolio()
         {
-
+            _inputHandler(new Event("newPort"));
         }
 
         private void DeletePortfolio()
         {
-
+            //no option for this in controller's InputHandle
         }
 
         private void Deposit()
@@ -105,12 +107,18 @@ namespace PA2Console
 
         private void ViewPortfolio()
         {
-
+            _inputHandler(new Event("portView"));
         }
 
         private void Volatility()
         {
+            //no option for this in controller's InputHandle
+        }
 
+        private void Exit()
+        {
+            _inputHandler(new Event("accountStats"));
+            Environment.Exit(0);
         }
 
     }

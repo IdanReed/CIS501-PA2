@@ -113,6 +113,9 @@ namespace Class_Library
                 case "accountStats":
                     Broadcast(new Event("accountStats"));
                     break;
+                case "accountBalance": //need to fix this for InputView, not sure how
+                    Broadcast(new Event("accountBalance"));
+                    break;
                 case "newPort":
                     return NewPortfolio((string)e.Data);
                 case "portView":

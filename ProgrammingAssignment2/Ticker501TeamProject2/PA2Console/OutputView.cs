@@ -25,14 +25,23 @@ namespace PA2Console
                 case "accountStats":
                     DisplayAccount();
                     break;
+                case "accountBalance":
+                    DisplayFunds();
+                    break;
             }            
         }
 
         private void DisplayAccount()
         {
             //Do display stuff
-            Console.WriteLine("Funds: ${0}",_acct.Funds.ToString("N2"));
+            //Build amount
+            Console.WriteLine("Funds: ${0}", _acct.Funds.ToString("N2"));
             MenuHelper.PressEnter();
+        }
+
+        private void DisplayFunds()
+        {
+            Console.WriteLine("Funds: ${0}", _acct.Funds.ToString("N2"));
         }
     }
 }
