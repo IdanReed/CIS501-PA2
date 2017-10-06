@@ -189,6 +189,7 @@
             this.uxBtnWithdrawl.TabIndex = 4;
             this.uxBtnWithdrawl.Text = "Withdrawal";
             this.uxBtnWithdrawl.UseVisualStyleBackColor = true;
+            this.uxBtnWithdrawl.Click += new System.EventHandler(this.WithdrawFunds);
             // 
             // uxBtnDeposit
             // 
@@ -198,6 +199,7 @@
             this.uxBtnDeposit.TabIndex = 3;
             this.uxBtnDeposit.Text = "Deposit";
             this.uxBtnDeposit.UseVisualStyleBackColor = true;
+            this.uxBtnDeposit.Click += new System.EventHandler(this.DepositFunds);
             // 
             // uxPanPortfolios
             // 
@@ -218,6 +220,7 @@
             this.uxBtnDeletePort.TabIndex = 6;
             this.uxBtnDeletePort.Text = "Delete";
             this.uxBtnDeletePort.UseVisualStyleBackColor = true;
+            this.uxBtnDeletePort.Click += new System.EventHandler(this.DeletePortfolio);
             // 
             // uxBtnNewPort
             // 
@@ -227,6 +230,7 @@
             this.uxBtnNewPort.TabIndex = 5;
             this.uxBtnNewPort.Text = "New";
             this.uxBtnNewPort.UseVisualStyleBackColor = true;
+            this.uxBtnNewPort.Click += new System.EventHandler(this.NewPortfolio);
             // 
             // uxPanSelPort
             // 

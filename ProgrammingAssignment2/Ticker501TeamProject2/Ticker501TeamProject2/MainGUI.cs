@@ -30,5 +30,25 @@ namespace Ticker501TeamProject2
         {
 
         }
+
+        private void DepositFunds(object sender, EventArgs e)
+        {
+            //Method that runs when the Deposit button is pressed
+        }
+
+        private void WithdrawFunds(object sender, EventArgs e)
+        {
+            //Method that runs when the Withdraw button is pressed
+        }
+
+        private void NewPortfolio(object sender, EventArgs e)
+        {
+            //Method that runs when the New Portfolio button is pressed
+        }
+
+        private void DeletePortfolio(object sender, EventArgs e)
+        {
+            //Method that runs when the Delete Portfolio button is pressed
+        }
     }
 }
