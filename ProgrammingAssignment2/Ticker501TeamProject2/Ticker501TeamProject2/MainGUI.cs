@@ -31,34 +31,24 @@ namespace Ticker501TeamProject2
 
         }
 
-        private void uxNBFundsInput_ValueChanged(object sender, EventArgs e)
+        private void DepositFunds(object sender, EventArgs e)
         {
-
+            //Method that runs when the Deposit button is pressed
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void WithdrawFunds(object sender, EventArgs e)
         {
-
+            //Method that runs when the Withdraw button is pressed
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void NewPortfolio(object sender, EventArgs e)
         {
-
+            //Method that runs when the New Portfolio button is pressed
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void DeletePortfolio(object sender, EventArgs e)
         {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
+            //Method that runs when the Delete Portfolio button is pressed
         }
     }
 }

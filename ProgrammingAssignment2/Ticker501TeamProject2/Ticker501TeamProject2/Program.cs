@@ -29,6 +29,8 @@ namespace Ticker501TeamProject2
             MainGUI form = new MainGUI(acct, tickers, c.InputHandle);
 
             c.AddListener(form.Update);
+            
+            MessageBox.Show("Done");
         }
         static List<Ticker> GetTickers()
         {
