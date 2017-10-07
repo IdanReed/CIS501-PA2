@@ -46,7 +46,7 @@ namespace Class_Library
         {
             get
             {
-                return Ticker;
+                return _ticker;
             }
         }
         public override string ToString()

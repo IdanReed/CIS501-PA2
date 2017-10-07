@@ -11,6 +11,7 @@ namespace PA2Console
     {
         private InputHandler _inputHandler;
         private MenuHelper _mainMenu;
+        private MenuHelper _portfolioMenu;
 
 
         public InputView(InputHandler han)
@@ -26,24 +27,70 @@ namespace PA2Console
                 .Add("View a Portfolio", ViewPortfolio)
                 .Add("Simulate Volatility", Volatility)
                 .Add("Exit", Exit);
+
+            _portfolioMenu = new MenuHelper("Please select an option below:");
+            _portfolioMenu
+                .Add("Buy Stocks", PortBuy)
+                .Add("Sell Stocks", null)
+                .Add("View Portfolio Statistics", PortStats);
+                
         }
         
         
+        #region AccountLevel
         public void Start()
         {
             _mainMenu.ShowMenu(() => _inputHandler(new Event("accountBalance")));
         }
+
         private void CreatePortfolio()
         {
-            //On these you'll need to still read in a string of the portfolio name to pass to the controller. Like I did in the withdraw method.
-            //If you look at the InputHandler in the controller you can see what it needs to be passed by what it casts e.Data to.
-            _inputHandler(new Event("newPort"));
+            bool canContinue;
+            do
+            {
+                canContinue = true;
+                MenuHelper.PromptString(
+                    "Enter the name of the new portfolio",
+                    "Name: "
+                    ).Then(name =>
+                    {
+                        Event e = new Event(name, "newPort");
+
+                        _inputHandler(e).Catch(message =>
+                        {
+                            MenuHelper.PrintError(message);
+                            canContinue = false;
+                        });
+                    });
+            }
+            while (!canContinue);
+            Console.WriteLine("The portfolio has been created and you can view it through the view portfolio option.");
+            MenuHelper.PressEnter();
         }
 
         private void DeletePortfolio()
         {
-            //Should be good to go now.
-            //Event name is "deletePort" and requires the name of the portfolio.
+            bool canContinue;
+            do
+            {
+                canContinue = true;
+                MenuHelper.PromptString(
+                    "Enter the name of the portfolio you'd like to delete", 
+                    "Name: "
+                    ).Then(name =>
+                    {
+                        Event e = new Event(name, "deletePort");
+
+                        _inputHandler(e).Catch(message =>
+                        {
+                            MenuHelper.PrintError(message);
+                            canContinue = false;
+                        });
+                    });
+            }
+            while (!canContinue);
+            Console.WriteLine("The portfolio has been deleted and all the stocks have been sold.");
+            MenuHelper.PressEnter();
         }
 
         private void Deposit()
@@ -109,10 +156,109 @@ namespace PA2Console
 
         private void ViewPortfolio()
         {
-            //On these you'll need to still read in a string of the portfolio name to pass to the controller. Like I did in the withdraw method.
-            //If you look at the InputHandler in the controller you can see what it needs to be passed by what it casts e.Data to.
-            _inputHandler(new Event("portView"));
+            _inputHandler(new Event("showPortfolios"));
+            bool canContinue;
+            do
+            {
+                canContinue = true;
+                MenuHelper.PromptString(
+                    "Enter the name of the portfolio to view",
+                    "Name: "
+                    ).Then(name =>
+                    {
+                        Event e = new Event(name, "portView");
+
+                        _inputHandler(e).Catch(message =>
+                        {
+                            MenuHelper.PrintError(message);
+                            canContinue = false;
+                        });
+                    });
+            }
+            while (!canContinue);
+
+            MenuHelper.PressEnter();
+            PortfolioMenu();
         }
+        #endregion Account Level
+
+        #region Portfolio Level
+        private void PortfolioMenu()
+        {
+            _portfolioMenu.ShowMenu();
+        }
+
+        private void PortBuy()
+        {
+            _inputHandler(new Event("showStocks"));
+
+            
+            bool canContinue;
+            do
+            {
+                canContinue = true;
+                MenuHelper.PromptString(
+                    "Enter the abbreviation of the stock you'd like to buy",
+                    "Abbreviation: "
+                    ).Then(abbreviation =>
+                    {
+                        MenuHelper.PromptInt(
+                            "Please select your method of purchase: \n\t1) Number of stocks to purchace\n\t2) Amount in dollars",
+                            "Choice: ",
+                            choice => choice != 1 && choice != 2,
+                            "Please enter a choice shown below"
+                            ).Then(choice =>
+                            {
+                                if(choice == 1)
+                                {
+                                    MenuHelper.PromptInt(
+                                        "How many stocks would you like to buy of '" + abbreviation + "'?",
+                                        "Amount: "
+                                        ).Then(amt =>
+                                        {
+                                            Event e = new Event(Tuple.Create(abbreviation, amt), "portBuyShares");
+                                            _inputHandler(e).Catch(message =>
+                                            {
+                                                MenuHelper.PrintError(message);
+                                                canContinue = false;
+                                            });
+                                        });
+                                }
+                                else
+                                {
+                                    MenuHelper.PromptDouble(
+                                        "How much money would you like to spend on '" + abbreviation + "'?",
+                                        "Amount: "
+                                        ).Then(cost =>
+                                        {
+                                            Event e = new Event(Tuple.Create(abbreviation, cost), "portBuyCost");
+                                            _inputHandler(e).Catch(message =>
+                                            {
+                                                MenuHelper.PrintError(message);
+                                                canContinue = false;
+                                            });
+                                        });
+                                }
+                            });
+                    });
+            }
+            while (!canContinue);
+
+            Console.WriteLine("Successfully purchased stocks, view portfolio stats to see them");
+            MenuHelper.PressEnter();
+        }
+
+        private void PortSell()
+        {
+            
+        }
+        private void PortStats()
+        {
+            _inputHandler(new Event("portStats"));
+            MenuHelper.PressEnter();
+        }
+        #endregion Portfolio Level
+
 
         private void Volatility()
         {
