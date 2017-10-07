@@ -144,15 +144,20 @@ namespace Class_Library
                     break;
           
             }
+            //Broadcast(new Event(""));
             return Error.None;
         }
 
         #region Account Level
         private Error Deposit(double amount)
         {
+            if (amount < DEPOSIT_FEE) return new Error("Not depositing enough to cover the deposit fee");
+
             _acct.Funds += amount - DEPOSIT_FEE;
             _acct.DepositFees += DEPOSIT_FEE;
             _acct.CurValue += amount;
+
+            //Broadcast(new Event("depositWithdraw"));
             //Do gains/losses stuff with the transfer fee
             return Error.None; 
         }
@@ -163,6 +168,8 @@ namespace Class_Library
                 _acct.Funds -= amount + DEPOSIT_FEE;
                 _acct.DepositFees += DEPOSIT_FEE;
                 _acct.CurValue -= amount;
+
+                //Broadcast(new Event("depositWithdraw"));
                 //Do gains/losses stuff with the tranfer fee
                 return Error.None;
             }

@@ -53,6 +53,10 @@ namespace Class_Library
             return (_tag + " - " + _name + " - " + _price.ToString("C"));
         }
 
+        public bool Equals(Ticker ticker)
+        {
+            return _name == ticker._name && _price == ticker._price && _tag == ticker._tag;
+        }
 
     }
 }

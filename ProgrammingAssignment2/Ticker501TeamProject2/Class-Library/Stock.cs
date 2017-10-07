@@ -54,7 +54,14 @@ namespace Class_Library
             _totalPrice = _ticker.Price * _amount;
             return _ticker.Tag + " - " + _ticker.Name + " - " + _totalPrice.ToString("C");
         }
-
+        public bool HasSameTicker(StockPurchase SP)
+        {
+            return SP.Ticker.Equals(_ticker);
+        }
+        public StockPurchase Add(StockPurchase SP)
+        {
+            return new StockPurchase(_ticker, _amount + SP._amount);
+        }
 
     }
 }

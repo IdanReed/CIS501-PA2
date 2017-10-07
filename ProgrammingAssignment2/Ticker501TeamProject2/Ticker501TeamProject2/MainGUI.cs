@@ -25,20 +25,93 @@ namespace Ticker501TeamProject2
 
             InitializeComponent();
         }
-
+        #region OutputForm
         public void Update(Event e)
         {
+            switch (e.Type)
+            {
+                case "accountStats":
+                    uxTBFundsAmount.Text = "$" + _acct.Funds.ToString("N2");
+                    UpdateAccPercentInfo();
+                    break;
+                case "portBuy": case "portSell":
+                    UpdateAccStocksHeld();
+                    break;
+            }
 
         }
+        private void UpdateAccPercentInfo()
+        {
+            double accCash = _acct.Funds;
+            double accPosValue = 0;
+            
+            foreach (Portfolio port in _acct.Portfolios)
+            {
+                accPosValue += port.CashValue;
+            }
 
+            double accTotalValue = accPosValue + accCash;
+
+            uxTBCashAmount.Text = "$" + String.Format("{0:0.00}", accCash.ToString());
+            uxTBCashPercent.Text = String.Format("{0:0.00}", (accCash / accTotalValue)*100)+"%";
+
+            uxTBPositionsAmount.Text = "$" + String.Format("{0:0.00}", accPosValue);
+            uxTBPositonsPercent.Text = String.Format("{0:0.00}", (accPosValue / accTotalValue) * 100) + "%";
+        }
+        private void UpdateAccStocksHeld()
+        {
+            List<StockPurchase> allPurchases = new List<StockPurchase>();
+            List<StockPurchase> combinedPurchases = new List<StockPurchase>();
+
+            foreach (Portfolio port in _acct.Portfolios)
+            {
+                foreach(StockPurchase portStock in port.Stocks)
+                {
+                    allPurchases.Add(portStock);
+                }
+            }
+
+            foreach (StockPurchase spOne in allPurchases)
+            {
+                StockPurchase selectedSP = spOne;
+                allPurchases.Remove(spOne);
+                foreach (StockPurchase spTwo in allPurchases)
+                {
+                    if (selectedSP.HasSameTicker(spTwo))
+                    {
+                        selectedSP = selectedSP.Add(spTwo);
+                    }
+                }
+                combinedPurchases.Add(selectedSP);
+            }
+        }
+        #endregion OutputForm
+
+        #region InputForm
         private void DepositFunds(object sender, EventArgs e)
         {
             //Method that runs when the Deposit button is pressed
+            double val = (double) uxNBFundsInput.Value;
+            _inputHandle(new Event(val, "deposit"))
+                .Catch(message =>
+                {
+                    MessageBox.Show(message);
+                }
+            );
+            _inputHandle(new Event("accountStats"));
         }
 
         private void WithdrawFunds(object sender, EventArgs e)
         {
             //Method that runs when the Withdraw button is pressed
+            double val = (double)uxNBFundsInput.Value;
+            _inputHandle(new Event(val, "withdraw"))
+                .Catch(message =>
+                {
+                    MessageBox.Show(message);
+                }
+            );
+            _inputHandle(new Event("accountStats"));
         }
 
         private void NewPortfolio(object sender, EventArgs e)
@@ -50,5 +123,7 @@ namespace Ticker501TeamProject2
         {
             //Method that runs when the Delete Portfolio button is pressed
         }
+        #endregion InputForm
+
     }
 }

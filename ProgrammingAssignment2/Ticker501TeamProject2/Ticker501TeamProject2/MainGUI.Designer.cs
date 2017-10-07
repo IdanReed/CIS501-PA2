@@ -79,6 +79,7 @@
             this.uxLBAllStock = new System.Windows.Forms.ListBox();
             this.uxTBCashAmount = new System.Windows.Forms.TextBox();
             this.uxTBPositionsAmount = new System.Windows.Forms.TextBox();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.uxNBFundsInput)).BeginInit();
             this.uxPanDepositWithdrawl.SuspendLayout();
             this.uxPanPortfoliosCreateDelete.SuspendLayout();
@@ -156,17 +157,17 @@
             // uxTBPositonsPercent
             // 
             this.uxTBPositonsPercent.Enabled = false;
-            this.uxTBPositonsPercent.Location = new System.Drawing.Point(72, 108);
+            this.uxTBPositonsPercent.Location = new System.Drawing.Point(61, 108);
             this.uxTBPositonsPercent.Name = "uxTBPositonsPercent";
-            this.uxTBPositonsPercent.Size = new System.Drawing.Size(41, 20);
+            this.uxTBPositonsPercent.Size = new System.Drawing.Size(52, 20);
             this.uxTBPositonsPercent.TabIndex = 8;
             // 
             // uxTBCashPercent
             // 
             this.uxTBCashPercent.Enabled = false;
-            this.uxTBCashPercent.Location = new System.Drawing.Point(72, 82);
+            this.uxTBCashPercent.Location = new System.Drawing.Point(61, 82);
             this.uxTBCashPercent.Name = "uxTBCashPercent";
-            this.uxTBCashPercent.Size = new System.Drawing.Size(41, 20);
+            this.uxTBCashPercent.Size = new System.Drawing.Size(52, 20);
             this.uxTBCashPercent.TabIndex = 7;
             // 
             // label8
@@ -195,6 +196,7 @@
             this.uxBWithdrawl.TabIndex = 4;
             this.uxBWithdrawl.Text = "Withdrawal";
             this.uxBWithdrawl.UseVisualStyleBackColor = true;
+            this.uxBWithdrawl.Click += new System.EventHandler(this.WithdrawFunds);
             // 
             // uxBDeposit
             // 
@@ -204,6 +206,7 @@
             this.uxBDeposit.TabIndex = 3;
             this.uxBDeposit.Text = "Deposit";
             this.uxBDeposit.UseVisualStyleBackColor = true;
+            this.uxBDeposit.Click += new System.EventHandler(this.DepositFunds);
             // 
             // uxPanPortfoliosCreateDelete
             // 
@@ -650,6 +653,7 @@
         private System.Windows.Forms.Label uxLabelAllStocks;
         private System.Windows.Forms.TextBox uxTBPositionsAmount;
         private System.Windows.Forms.TextBox uxTBCashAmount;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 
