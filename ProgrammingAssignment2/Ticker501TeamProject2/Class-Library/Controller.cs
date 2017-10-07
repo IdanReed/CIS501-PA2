@@ -126,7 +126,9 @@ namespace Class_Library
                     Broadcast(new Class_Library.Event("showPortfolios"));
                     break;
                 case "newPort":
-                    return NewPortfolio((string)e.Data);
+                    Error err = NewPortfolio((string)e.Data);
+                    Broadcast(new Event("newPort"));
+                    return err;
                 case "portView":
                     return PortView((string)e.Data);
                 case "portBuyShares":
