@@ -31,6 +31,13 @@ namespace PA2Console
                 case "showStocks":
                     ShowStocks();
                     break;
+                case "showPortfolios":
+                    ShowPortfolios();
+                    break;
+                case "portStats":
+                    Portfolio p = e.Data as Portfolio;
+                    ShowPortfolioStats(p);
+                    break;
             }            
         }
 
@@ -49,9 +56,37 @@ namespace PA2Console
 
         private void ShowStocks()
         {
+            Console.WriteLine("Stocks Available:");
             foreach(Ticker t in _tickers)
             {
                 Console.WriteLine("\t{0}", t.ToString());
+            }
+        }
+        private void ShowPortfolios()
+        {
+            Console.WriteLine("Here are your current portfolios");
+            foreach (Portfolio p in _acct.Portfolios)
+            {
+                Console.WriteLine("\t- {0}", p.Name);
+            }
+        }
+
+        private void ShowPortfolioStats(Portfolio p)
+        {
+            Console.WriteLine("Portfolio " + p.Name + ": ");
+            if (p.Stocks.Count > 0)
+            {
+                foreach (StockPurchase s in p.Stocks)
+                {
+                    double percent = s.TotalPrice / p.CashValue;
+                    double numPercent = s.Amount / (double)p.AmountStocks;
+
+                    Console.WriteLine("\t" + s.TotalPrice.ToString("C") + "\t- Cash Value %: (" + String.Format("{0:P2}", percent) + ") - # Stocks (" + s.Amount + "): [" + String.Format("{0:P2}", numPercent) + "] - " + s.Ticker.Tag + " " + s.Ticker.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine("You have no stocks to view");
             }
         }
     }

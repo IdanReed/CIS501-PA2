@@ -122,18 +122,24 @@ namespace Class_Library
                 //Portfolio Events
                 case "deletePort":
                     return DeletePortfolio((string)e.Data);
+                case "showPortfolios":
+                    Broadcast(new Class_Library.Event("showPortfolios"));
+                    break;
                 case "newPort":
                     return NewPortfolio((string)e.Data);
                 case "portView":
                     return PortView((string)e.Data);
-                case "portBuy":
+                case "portBuyShares":
                     Tuple<string, int> buyData = (Tuple<string, int>) e.Data;
                     return PortBuy(buyData.Item1, buyData.Item2);
+                case "portBuyCost":
+                    Tuple<string, double> buyDataCost = (Tuple<string, double>)e.Data;
+                    return PortBuy(buyDataCost.Item1, buyDataCost.Item2);
                 case "portSell":
                     Tuple<string, int> sellData = (Tuple<string, int>)e.Data;
                     return PortSell(sellData.Item1, sellData.Item2);
                 case "portStats":
-                    Broadcast(new Event("portStats"));
+                    Broadcast(new Event(_currentPortfolio, "portStats"));
                     break;
 
                 //Ticker Events
@@ -244,6 +250,10 @@ namespace Class_Library
             }
             else
             {
+                if(_currentPortfolio.Stocks.Exists(pur => pur.Ticker.Tag == tickerName))
+                {
+                    return new Class_Library.Error("You cannot buy stock from a company you already have stock in: ");
+                }
                 _currentPortfolio.AmountStocks += amt;
                 StockPurchase stock = new StockPurchase(t, amt);
                 _currentPortfolio.Stocks.Add(stock);
@@ -253,6 +263,16 @@ namespace Class_Library
             }
 
         } 
+        private Error PortBuy(string tickerName, double cost)
+        {
+            Ticker t = GetTickerByAbbr(tickerName);
+
+            if (t == null) return new Class_Library.Error("A stock with that abbreviation does not exsist.");
+
+            int amount = (int)(cost / t.Price);
+
+            return PortBuy(tickerName, amount);
+        }
         private Error PortSell(string tickerName, double amt)
         {
             Ticker t = GetTickerByAbbr(tickerName);
