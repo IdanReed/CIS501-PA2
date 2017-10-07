@@ -123,7 +123,9 @@ namespace Class_Library
                 case "deletePort":
                     return DeletePortfolio((string)e.Data);
                 case "newPort":
-                    return NewPortfolio((string)e.Data);
+                    Error err = NewPortfolio((string)e.Data);
+                    Broadcast(new Event("newPort"));
+                    return err;
                 case "portView":
                     return PortView((string)e.Data);
                 case "portBuy":

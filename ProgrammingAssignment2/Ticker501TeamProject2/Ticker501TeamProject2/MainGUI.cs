@@ -37,6 +37,12 @@ namespace Ticker501TeamProject2
                 case "portBuy": case "portSell":
                     UpdateAccStocksHeld();
                     break;
+                case "newPort": case "deletePort":
+                    UpdatePortLBs();
+                    break;
+                case "portStats":
+                    UpdatePortStats();
+                    break;
             }
 
         }
@@ -60,6 +66,7 @@ namespace Ticker501TeamProject2
         }
         private void UpdateAccStocksHeld()
         {
+            //Might not work right yet, untested
             List<StockPurchase> allPurchases = new List<StockPurchase>();
             List<StockPurchase> combinedPurchases = new List<StockPurchase>();
 
@@ -84,6 +91,25 @@ namespace Ticker501TeamProject2
                 }
                 combinedPurchases.Add(selectedSP);
             }
+        }
+
+        private void UpdatePortLBs()
+        {
+            List<ListBox> boxes = new List<ListBox>();
+            boxes.Add(uxLBPortfolios);
+            boxes.Add(uxLBSelecPort);
+
+            List<Portfolio> portfolios = _acct.Portfolios;
+
+            foreach(ListBox lb in boxes)
+            {
+                lb.DataSource = portfolios.Select(p => p.Name).ToList();
+            }
+        }
+
+        private void UpdatePortStats()
+        {
+
         }
         #endregion OutputForm
 
@@ -123,7 +149,36 @@ namespace Ticker501TeamProject2
         {
             //Method that runs when the Delete Portfolio button is pressed
         }
-        #endregion InputForm
+        
 
+        private void uxBNewPort_Click(object sender, EventArgs e)
+        {
+            _inputHandle(new Event(uxTBNewPortName.Text, "newPort"))
+                .Catch(message =>
+                {
+                    MessageBox.Show(message);
+                }
+            );
+            //_inputHandle(new Event("newPort"));
+            
+        }
+
+        private void uxNewDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxLBSelecPort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _inputHandle(new Event(uxLBSelecPort.SelectedItem.ToString(), "portView"))
+                .Catch(message =>
+                {
+                    MessageBox.Show(message);
+                }
+            );
+            _inputHandle(new Event("portStats"));
+        }
+
+        #endregion InputForm
     }
 }
