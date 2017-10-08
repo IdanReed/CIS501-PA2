@@ -247,7 +247,7 @@ namespace Class_Library
 
             if (t == null) return new Error("A stock with that abbreviation does not exsist.");
     
-            double totalCost = (t.Price * amt) - TRADE_FEE;
+            double totalCost = (t.Price * amt) + TRADE_FEE;
             if (totalCost > _acct.Funds)
             {
                 return new Error("You have inssuficient funds for this transaction.");
@@ -286,7 +286,7 @@ namespace Class_Library
             {
                 if(s.Ticker.Tag == t.Tag)
                 {
-                    _acct.Funds += s.TotalPrice - TRADE_FEE;
+                    _acct.Funds += s.TotalPrice + TRADE_FEE;
                     //Say transfer has occured
                     _currentPortfolio.Stocks.Remove(s);
 

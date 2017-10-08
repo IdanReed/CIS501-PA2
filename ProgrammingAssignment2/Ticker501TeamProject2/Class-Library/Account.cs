@@ -95,13 +95,11 @@ namespace Class_Library
             {
                 
                 double curValue = 0;
-                double initValue = 0;
                 foreach(Portfolio p in _portfolios)
                 {
-                    curValue += p.CashValue + p.ChangeInValue;
-                    initValue += p.GetInitValue();
+                    curValue += p.CashValue;
                 }
-                return (_funds + (curValue-initValue)) - _curValue;
+                return (_funds + curValue) - _curValue;
             }
         }
 

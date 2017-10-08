@@ -101,7 +101,7 @@ namespace Class_Library
             {
                 initVal += sp.InitPrice;
             }
-            return CashValue - initVal;
+            return initVal;
          }
 
         public override string ToString()
