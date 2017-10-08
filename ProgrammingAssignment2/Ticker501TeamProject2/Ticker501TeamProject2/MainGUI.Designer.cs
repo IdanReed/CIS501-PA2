@@ -100,6 +100,11 @@
             // uxNBFundsInput
             // 
             this.uxNBFundsInput.Location = new System.Drawing.Point(6, 29);
+            this.uxNBFundsInput.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
             this.uxNBFundsInput.Name = "uxNBFundsInput";
             this.uxNBFundsInput.Size = new System.Drawing.Size(156, 20);
             this.uxNBFundsInput.TabIndex = 0;
@@ -159,17 +164,17 @@
             // uxTBPositionsAmount
             // 
             this.uxTBPositionsAmount.Enabled = false;
-            this.uxTBPositionsAmount.Location = new System.Drawing.Point(119, 108);
+            this.uxTBPositionsAmount.Location = new System.Drawing.Point(108, 108);
             this.uxTBPositionsAmount.Name = "uxTBPositionsAmount";
-            this.uxTBPositionsAmount.Size = new System.Drawing.Size(41, 20);
+            this.uxTBPositionsAmount.Size = new System.Drawing.Size(52, 20);
             this.uxTBPositionsAmount.TabIndex = 10;
             // 
             // uxTBCashAmount
             // 
             this.uxTBCashAmount.Enabled = false;
-            this.uxTBCashAmount.Location = new System.Drawing.Point(119, 82);
+            this.uxTBCashAmount.Location = new System.Drawing.Point(108, 82);
             this.uxTBCashAmount.Name = "uxTBCashAmount";
-            this.uxTBCashAmount.Size = new System.Drawing.Size(41, 20);
+            this.uxTBCashAmount.Size = new System.Drawing.Size(52, 20);
             this.uxTBCashAmount.TabIndex = 9;
             // 
             // uxTBPositonsPercent
@@ -177,7 +182,7 @@
             this.uxTBPositonsPercent.Enabled = false;
             this.uxTBPositonsPercent.Location = new System.Drawing.Point(61, 108);
             this.uxTBPositonsPercent.Name = "uxTBPositonsPercent";
-            this.uxTBPositonsPercent.Size = new System.Drawing.Size(52, 20);
+            this.uxTBPositonsPercent.Size = new System.Drawing.Size(41, 20);
             this.uxTBPositonsPercent.TabIndex = 8;
             // 
             // uxTBCashPercent
@@ -185,7 +190,7 @@
             this.uxTBCashPercent.Enabled = false;
             this.uxTBCashPercent.Location = new System.Drawing.Point(61, 82);
             this.uxTBCashPercent.Name = "uxTBCashPercent";
-            this.uxTBCashPercent.Size = new System.Drawing.Size(52, 20);
+            this.uxTBCashPercent.Size = new System.Drawing.Size(41, 20);
             this.uxTBCashPercent.TabIndex = 7;
             // 
             // label8
@@ -234,9 +239,9 @@
             this.uxPanPortfoliosCreateDelete.Controls.Add(this.uxBNewPort);
             this.uxPanPortfoliosCreateDelete.Controls.Add(this.uxLabelPorfolios);
             this.uxPanPortfoliosCreateDelete.Controls.Add(this.uxLBPortfolios);
-            this.uxPanPortfoliosCreateDelete.Location = new System.Drawing.Point(12, 419);
+            this.uxPanPortfoliosCreateDelete.Location = new System.Drawing.Point(12, 407);
             this.uxPanPortfoliosCreateDelete.Name = "uxPanPortfoliosCreateDelete";
-            this.uxPanPortfoliosCreateDelete.Size = new System.Drawing.Size(169, 151);
+            this.uxPanPortfoliosCreateDelete.Size = new System.Drawing.Size(169, 163);
             this.uxPanPortfoliosCreateDelete.TabIndex = 6;
             // 
             // uxLabelNewPortName
@@ -333,7 +338,7 @@
             this.uxPanAccHeldStocks.Controls.Add(this.uxLabelStocksHeld);
             this.uxPanAccHeldStocks.Location = new System.Drawing.Point(12, 152);
             this.uxPanAccHeldStocks.Name = "uxPanAccHeldStocks";
-            this.uxPanAccHeldStocks.Size = new System.Drawing.Size(169, 201);
+            this.uxPanAccHeldStocks.Size = new System.Drawing.Size(169, 189);
             this.uxPanAccHeldStocks.TabIndex = 9;
             // 
             // uxLBStocksHeld
@@ -341,7 +346,7 @@
             this.uxLBStocksHeld.FormattingEnabled = true;
             this.uxLBStocksHeld.Location = new System.Drawing.Point(6, 22);
             this.uxLBStocksHeld.Name = "uxLBStocksHeld";
-            this.uxLBStocksHeld.Size = new System.Drawing.Size(156, 173);
+            this.uxLBStocksHeld.Size = new System.Drawing.Size(156, 160);
             this.uxLBStocksHeld.TabIndex = 11;
             // 
             // uxLabelStocksHeld
@@ -494,7 +499,7 @@
             // 
             this.uxPanGainLossAcc.Controls.Add(this.uxTBGainLoss);
             this.uxPanGainLossAcc.Controls.Add(this.uxLabelAccGainLoss);
-            this.uxPanGainLossAcc.Location = new System.Drawing.Point(12, 359);
+            this.uxPanGainLossAcc.Location = new System.Drawing.Point(12, 347);
             this.uxPanGainLossAcc.Name = "uxPanGainLossAcc";
             this.uxPanGainLossAcc.Size = new System.Drawing.Size(169, 54);
             this.uxPanGainLossAcc.TabIndex = 12;
@@ -502,9 +507,9 @@
             // uxTBGainLoss
             // 
             this.uxTBGainLoss.Enabled = false;
-            this.uxTBGainLoss.Location = new System.Drawing.Point(9, 22);
+            this.uxTBGainLoss.Location = new System.Drawing.Point(6, 22);
             this.uxTBGainLoss.Name = "uxTBGainLoss";
-            this.uxTBGainLoss.Size = new System.Drawing.Size(153, 20);
+            this.uxTBGainLoss.Size = new System.Drawing.Size(156, 20);
             this.uxTBGainLoss.TabIndex = 7;
             // 
             // uxLabelAccGainLoss
@@ -598,8 +603,6 @@
             this.MaximizeBox = false;
             this.Name = "MainGUI";
             this.Text = "Form1";
-            //this.Load += new System.EventHandler(this.MainGUI_Load);
-            //this.Paint += new System.Windows.Forms.PaintEventHandler(this.k);
             ((System.ComponentModel.ISupportInitialize)(this.uxNBFundsInput)).EndInit();
             this.uxPanDepositWithdrawl.ResumeLayout(false);
             this.uxPanDepositWithdrawl.PerformLayout();

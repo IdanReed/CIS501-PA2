@@ -121,7 +121,9 @@ namespace Class_Library
 
                 //Portfolio Events
                 case "deletePort":
-                    return DeletePortfolio((string)e.Data);
+                    Error deletePortErr = DeletePortfolio((string)e.Data);
+                    Broadcast(new Event("deletePort"));
+                    return deletePortErr;
                 case "showPortfolios":
                     Broadcast(new Class_Library.Event("showPortfolios"));
                     break;

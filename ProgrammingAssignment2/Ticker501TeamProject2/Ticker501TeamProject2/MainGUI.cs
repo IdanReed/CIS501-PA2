@@ -24,12 +24,8 @@ namespace Ticker501TeamProject2
             _tickers = tickers;
 
             InitializeComponent();
- 
-            foreach(Ticker t in _tickers)
-            {
-                uxDUDSelecStock.Items.Add(t.Tag + " - " + t.Price);
-            }
-            uxDUDSelecStock.SelectedIndex = 0;
+
+            UpdateSelectStock();
             UpdateTickerList();
 
             uxDUDSelecVolatilty.Items.Add("HIGH");
@@ -47,6 +43,7 @@ namespace Ticker501TeamProject2
                 case "accountStats":
                     uxTBFundsAmount.Text = "$" + _acct.Funds.ToString("N2");
                     UpdateAccPercentInfo();
+                    UpdateAccStocksHeld();
                     break;
                 case "portBuy": case "portSell":
                     UpdateAccStocksHeld();
@@ -54,13 +51,19 @@ namespace Ticker501TeamProject2
                 case "newPort": case "deletePort":
                     UpdatePortLBs();
                     UpdateBuySellState();
+                    UpdateAccStocksHeld();
+                    
                     break;
                 case "portStats":
                     UpdatePortStats(e.Data as Portfolio);
                     UpdateBuySellState();
+                    UpdateAccStocksHeld();
+                    UpdatePortInfo(e.Data as Portfolio);
                     break;
                 case "showStocks":
                     UpdateTickerList();
+                    UpdateSelectStock();
+                    UpdateAccStocksHeld();
                     break;
             }
 
@@ -77,43 +80,50 @@ namespace Ticker501TeamProject2
 
             double accTotalValue = accPosValue + accCash;
 
-            uxTBCashAmount.Text = "$" + String.Format("{0:0.00}", accCash.ToString());
-            uxTBCashPercent.Text = String.Format("{0:0.00}", (accCash / accTotalValue)*100)+"%";
+            uxTBCashAmount.Text = "$" + String.Format("{0:0.0}", accCash.ToString());
+            uxTBCashPercent.Text = String.Format("{0:0.0}", (accCash / accTotalValue)*100)+"%";
 
-            uxTBPositionsAmount.Text = "$" + String.Format("{0:0.00}", accPosValue);
-            uxTBPositonsPercent.Text = String.Format("{0:0.00}", (accPosValue / accTotalValue) * 100) + "%";
+            uxTBPositionsAmount.Text = "$" + String.Format("{0:0.0}", accPosValue);
+            uxTBPositonsPercent.Text = String.Format("{0:0.0}", (accPosValue / accTotalValue) * 100) + "%";
         }
+
         private void UpdateAccStocksHeld()
         {
             //Might not work right yet, untested
             List<StockPurchase> allPurchases = new List<StockPurchase>();
             List<StockPurchase> combinedPurchases = new List<StockPurchase>();
-
+            
             foreach (Portfolio port in _acct.Portfolios)
             {
-                foreach(StockPurchase portStock in port.Stocks)
+                foreach(StockPurchase sp in port.Stocks)
                 {
-                    allPurchases.Add(portStock);
+                    allPurchases.Add(sp);
                 }
             }
 
-            foreach (StockPurchase spOne in allPurchases)
+            if(allPurchases.Count > 0)
             {
-                StockPurchase selectedSP = spOne;
-                allPurchases.Remove(spOne);
-                foreach (StockPurchase spTwo in allPurchases)
+                foreach (StockPurchase sp in allPurchases)
                 {
-                    if (selectedSP.HasSameTicker(spTwo))
+                    StockPurchase selectedSP = sp;
+                    //allPurchases.Remove(sp);
+                    foreach (StockPurchase spTwo in allPurchases)
                     {
-                        selectedSP = selectedSP.Add(spTwo);
+                        if (selectedSP.HasSameTicker(spTwo))
+                        {
+                            selectedSP = selectedSP.Add(spTwo);
+                        }
                     }
+                    combinedPurchases.Add(selectedSP);
+                    if(allPurchases.Count == 0) { break; }
                 }
-                combinedPurchases.Add(selectedSP);
             }
+            uxLBStocksHeld.DataSource = combinedPurchases;
         }
 
         private void UpdatePortLBs()
         {
+           
             List<ListBox> boxes = new List<ListBox>();
             boxes.Add(uxLBPortfolios);
             boxes.Add(uxLBSelecPort);
@@ -134,24 +144,39 @@ namespace Ticker501TeamProject2
             {
                 foreach (StockPurchase s in p.Stocks)
                 {
-                    double percent = s.TotalPrice / p.CashValue;
-                    double numPercent = s.Amount / (double)p.AmountStocks;
-
-                   portStats.Add(s.TotalPrice.ToString("C") + "- Cash Value %: (" + String.Format("{0:P2}", percent) + ") - # Stocks (" + s.Amount + "): [" + String.Format("{0:P2}", numPercent) + "] - " + s.Ticker.Tag + " " + s.Ticker.Name);
+                   portStats.Add(s.Ticker.Tag + " - $" + String.Format("{0:0.00}", s.Ticker.Price*s.Amount) + " - %" + String.Format("{0:0.00}", (s.Ticker.Price * s.Amount / p.CashValue)*100) + " - " + s.Amount);
                 }
             }
             uxLBPortStocks.DataSource = portStats;
         }
+        /*
+        private void UpdateAccStockHeld()
+        {
+            foreach(Portfolio p in _acct.Portfolios)
+            {
+                List<string> portStats = new List<string>();
 
+                if (p != null && p.Stocks.Count > 0)
+                {
+                    foreach (StockPurchase s in p.Stocks)
+                    {
+                        portStats.Add(s.Ticker.Tag + " - $" + String.Format("{0:0.00}", s.Ticker.Price * s.Amount) + " - %" + String.Format("{0:0.00}", (s.Ticker.Price * s.Amount / p.CashValue) * 100) + " - " + s.Amount);
+                    }
+                }
+                uxLBStocksHeld.DataSource = portStats;
+            }
+        }
+        */
         private void UpdateTickerList()
         {
             List<string> tickerStrings = new List<string>();
             foreach(Ticker ticker in _tickers)
             {
-                tickerStrings.Add(ticker.Tag + " - " + ticker.Price);
+                tickerStrings.Add(ticker.Tag + " - " + String.Format("{0:0.00}",ticker.Price));
             }
             uxLBAllStock.DataSource = tickerStrings;
         }
+
         private void UpdateBuySellState()
         {
             if(uxLBSelecPort.SelectedItem == null)
@@ -164,11 +189,34 @@ namespace Ticker501TeamProject2
                 uxBSellStock.Enabled = true;
             }
         }
-        #endregion OutputForm
+
+        private void UpdateSelectStock()
+        {
+            uxDUDSelecStock.Items.Clear();
+
+            foreach (Ticker t in _tickers)
+            {
+                uxDUDSelecStock.Items.Add(t.Tag + " - " + String.Format("{0:0.00}", t.Price));
+            }
+            //This dumb, but it won't update
+            uxDUDSelecStock.SelectedIndex = 0;
+            uxDUDSelecStock.SelectedIndex = 1;
+            uxDUDSelecStock.SelectedIndex = 0;
+        }
+
+        private void UpdatePortInfo(Portfolio p)
+        {
+            
+            double accountValue = 0;
+            foreach(Portfolio port in _acct.Portfolios)
+            {
+                accountValue += port.CashValue;
+            }
+            uxTBAmountInvested.Text = String.Format("{0:0.00}",p.CashValue);
+            uxTBPortPercentOfAcc.Text = String.Format("{0:0.00}", (p.CashValue/accountValue * 100)) + "%";
+        }
+        #endregion OutputForm 
         
-
-
-
 
         #region InputForm
         #region uxPanDepositWithdrawl
@@ -208,13 +256,17 @@ namespace Ticker501TeamProject2
                     MessageBox.Show(message);
                 }
             );
-            //_inputHandle(new Event("newPort"));
             
         }
 
         private void uxNewDelete_Click(object sender, EventArgs e)
         {
-
+            _inputHandle(new Event(uxLBPortfolios.SelectedItem.ToString(), "deletePort"))
+                .Catch(message =>
+                {
+                    MessageBox.Show(message);
+                }
+            );
         }
         #endregion uxPanPortfoliosCreateDelete
 
@@ -255,8 +307,6 @@ namespace Ticker501TeamProject2
             _inputHandle(new Event("accountStats"));
         }
         #endregion uxPanBuySellStock
-
-
 
         private void uxBSimulatePrice_Click(object sender, EventArgs e)
         {
