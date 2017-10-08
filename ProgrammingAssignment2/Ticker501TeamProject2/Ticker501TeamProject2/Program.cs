@@ -31,7 +31,6 @@ namespace Ticker501TeamProject2
             c.AddListener(form.Update);
 
             Application.Run(form);
-            MessageBox.Show("Done");
         }
         static List<Ticker> GetTickers()
         {

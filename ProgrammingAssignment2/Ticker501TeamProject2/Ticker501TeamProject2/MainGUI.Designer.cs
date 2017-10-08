@@ -43,6 +43,8 @@
             this.uxBWithdrawl = new System.Windows.Forms.Button();
             this.uxBDeposit = new System.Windows.Forms.Button();
             this.uxPanPortfoliosCreateDelete = new System.Windows.Forms.Panel();
+            this.uxLabelNewPortName = new System.Windows.Forms.Label();
+            this.uxTBNewPortName = new System.Windows.Forms.TextBox();
             this.uxNewDelete = new System.Windows.Forms.Button();
             this.uxBNewPort = new System.Windows.Forms.Button();
             this.uxPanSelecPort = new System.Windows.Forms.Panel();
@@ -80,8 +82,6 @@
             this.uxLBAllStock = new System.Windows.Forms.ListBox();
             this.uxLabelAllStocks = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.uxTBNewPortName = new System.Windows.Forms.TextBox();
-            this.uxLabelNewPortName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uxNBFundsInput)).BeginInit();
             this.uxPanDepositWithdrawl.SuspendLayout();
             this.uxPanPortfoliosCreateDelete.SuspendLayout();
@@ -239,6 +239,22 @@
             this.uxPanPortfoliosCreateDelete.Size = new System.Drawing.Size(169, 151);
             this.uxPanPortfoliosCreateDelete.TabIndex = 6;
             // 
+            // uxLabelNewPortName
+            // 
+            this.uxLabelNewPortName.AutoSize = true;
+            this.uxLabelNewPortName.Location = new System.Drawing.Point(3, 81);
+            this.uxLabelNewPortName.Name = "uxLabelNewPortName";
+            this.uxLabelNewPortName.Size = new System.Drawing.Size(104, 13);
+            this.uxLabelNewPortName.TabIndex = 8;
+            this.uxLabelNewPortName.Text = "New Portfolio Name:";
+            // 
+            // uxTBNewPortName
+            // 
+            this.uxTBNewPortName.Location = new System.Drawing.Point(6, 97);
+            this.uxTBNewPortName.Name = "uxTBNewPortName";
+            this.uxTBNewPortName.Size = new System.Drawing.Size(156, 20);
+            this.uxTBNewPortName.TabIndex = 7;
+            // 
             // uxNewDelete
             // 
             this.uxNewDelete.Location = new System.Drawing.Point(87, 123);
@@ -263,7 +279,7 @@
             // 
             this.uxPanSelecPort.Controls.Add(this.uxLBSelecPort);
             this.uxPanSelecPort.Controls.Add(this.uxLabelSelectedPort);
-            this.uxPanSelecPort.Location = new System.Drawing.Point(311, 12);
+            this.uxPanSelecPort.Location = new System.Drawing.Point(237, 12);
             this.uxPanSelecPort.Name = "uxPanSelecPort";
             this.uxPanSelecPort.Size = new System.Drawing.Size(169, 87);
             this.uxPanSelecPort.TabIndex = 8;
@@ -308,7 +324,7 @@
             // 
             this.uxNUDStockQuanity.Location = new System.Drawing.Point(55, 48);
             this.uxNUDStockQuanity.Name = "uxNUDStockQuanity";
-            this.uxNUDStockQuanity.Size = new System.Drawing.Size(94, 20);
+            this.uxNUDStockQuanity.Size = new System.Drawing.Size(107, 20);
             this.uxNUDStockQuanity.TabIndex = 12;
             // 
             // uxPanAccHeldStocks
@@ -341,35 +357,36 @@
             // 
             this.uxDUDSelecStock.Location = new System.Drawing.Point(6, 22);
             this.uxDUDSelecStock.Name = "uxDUDSelecStock";
-            this.uxDUDSelecStock.Size = new System.Drawing.Size(120, 20);
+            this.uxDUDSelecStock.Size = new System.Drawing.Size(156, 20);
             this.uxDUDSelecStock.TabIndex = 15;
-            this.uxDUDSelecStock.Text = "domainUpDown1";
             // 
             // uxBBuyStock
             // 
-            this.uxBBuyStock.Location = new System.Drawing.Point(3, 74);
+            this.uxBBuyStock.Location = new System.Drawing.Point(6, 75);
             this.uxBBuyStock.Name = "uxBBuyStock";
-            this.uxBBuyStock.Size = new System.Drawing.Size(75, 23);
+            this.uxBBuyStock.Size = new System.Drawing.Size(78, 23);
             this.uxBBuyStock.TabIndex = 16;
             this.uxBBuyStock.Text = "Buy";
             this.uxBBuyStock.UseVisualStyleBackColor = true;
+            this.uxBBuyStock.Click += new System.EventHandler(this.uxBuyStock_Click);
             // 
             // uxBSellStock
             // 
-            this.uxBSellStock.Location = new System.Drawing.Point(84, 74);
+            this.uxBSellStock.Location = new System.Drawing.Point(87, 74);
             this.uxBSellStock.Name = "uxBSellStock";
             this.uxBSellStock.Size = new System.Drawing.Size(75, 23);
             this.uxBSellStock.TabIndex = 17;
             this.uxBSellStock.Text = "Sell";
             this.uxBSellStock.UseVisualStyleBackColor = true;
+            this.uxBSellStock.Click += new System.EventHandler(this.uxBSellStock_Click);
             // 
             // uxPanPortHeldStock
             // 
             this.uxPanPortHeldStock.Controls.Add(this.uxLBPortStocks);
             this.uxPanPortHeldStock.Controls.Add(this.uxLabelStockHeldPort);
-            this.uxPanPortHeldStock.Location = new System.Drawing.Point(311, 105);
+            this.uxPanPortHeldStock.Location = new System.Drawing.Point(237, 105);
             this.uxPanPortHeldStock.Name = "uxPanPortHeldStock";
-            this.uxPanPortHeldStock.Size = new System.Drawing.Size(169, 214);
+            this.uxPanPortHeldStock.Size = new System.Drawing.Size(169, 236);
             this.uxPanPortHeldStock.TabIndex = 12;
             // 
             // uxLBPortStocks
@@ -377,7 +394,7 @@
             this.uxLBPortStocks.FormattingEnabled = true;
             this.uxLBPortStocks.Location = new System.Drawing.Point(6, 22);
             this.uxLBPortStocks.Name = "uxLBPortStocks";
-            this.uxLBPortStocks.Size = new System.Drawing.Size(156, 173);
+            this.uxLBPortStocks.Size = new System.Drawing.Size(156, 212);
             this.uxLBPortStocks.TabIndex = 11;
             // 
             // uxLabelStockHeldPort
@@ -393,7 +410,7 @@
             // 
             this.uxPanPortGainLoss.Controls.Add(this.uxTBPortGainLoss);
             this.uxPanPortGainLoss.Controls.Add(this.uxLabelPortGainLoss);
-            this.uxPanPortGainLoss.Location = new System.Drawing.Point(311, 325);
+            this.uxPanPortGainLoss.Location = new System.Drawing.Point(237, 347);
             this.uxPanPortGainLoss.Name = "uxPanPortGainLoss";
             this.uxPanPortGainLoss.Size = new System.Drawing.Size(169, 54);
             this.uxPanPortGainLoss.TabIndex = 11;
@@ -421,7 +438,7 @@
             this.uxPanPortInfo.Controls.Add(this.uxTBAmountInvested);
             this.uxPanPortInfo.Controls.Add(this.uxLabelPortPercentOfAcc);
             this.uxPanPortInfo.Controls.Add(this.uxLabelPortInvestAmount);
-            this.uxPanPortInfo.Location = new System.Drawing.Point(311, 385);
+            this.uxPanPortInfo.Location = new System.Drawing.Point(237, 407);
             this.uxPanPortInfo.Name = "uxPanPortInfo";
             this.uxPanPortInfo.Size = new System.Drawing.Size(169, 54);
             this.uxPanPortInfo.TabIndex = 9;
@@ -468,7 +485,7 @@
             this.uxPanBuySellStock.Controls.Add(this.uxDUDSelecStock);
             this.uxPanBuySellStock.Controls.Add(this.uxNUDStockQuanity);
             this.uxPanBuySellStock.Controls.Add(this.uxLabelStockQuanity);
-            this.uxPanBuySellStock.Location = new System.Drawing.Point(311, 445);
+            this.uxPanBuySellStock.Location = new System.Drawing.Point(237, 467);
             this.uxPanBuySellStock.Name = "uxPanBuySellStock";
             this.uxPanBuySellStock.Size = new System.Drawing.Size(169, 103);
             this.uxPanBuySellStock.TabIndex = 18;
@@ -504,7 +521,7 @@
             this.uxPanSimulate.Controls.Add(this.uxBSimulatePrice);
             this.uxPanSimulate.Controls.Add(this.uxDUDSelecVolatilty);
             this.uxPanSimulate.Controls.Add(this.uxLabelSelecVolatilty);
-            this.uxPanSimulate.Location = new System.Drawing.Point(578, 217);
+            this.uxPanSimulate.Location = new System.Drawing.Point(462, 492);
             this.uxPanSimulate.Name = "uxPanSimulate";
             this.uxPanSimulate.Size = new System.Drawing.Size(169, 78);
             this.uxPanSimulate.TabIndex = 20;
@@ -517,6 +534,7 @@
             this.uxBSimulatePrice.TabIndex = 22;
             this.uxBSimulatePrice.Text = "Simulate";
             this.uxBSimulatePrice.UseVisualStyleBackColor = true;
+            this.uxBSimulatePrice.Click += new System.EventHandler(this.uxBSimulatePrice_Click);
             // 
             // uxDUDSelecVolatilty
             // 
@@ -524,7 +542,6 @@
             this.uxDUDSelecVolatilty.Name = "uxDUDSelecVolatilty";
             this.uxDUDSelecVolatilty.Size = new System.Drawing.Size(156, 20);
             this.uxDUDSelecVolatilty.TabIndex = 21;
-            this.uxDUDSelecVolatilty.Text = "domainUpDown2";
             // 
             // uxLabelSelecVolatilty
             // 
@@ -539,9 +556,9 @@
             // 
             this.uxPanAllStocks.Controls.Add(this.uxLBAllStock);
             this.uxPanAllStocks.Controls.Add(this.uxLabelAllStocks);
-            this.uxPanAllStocks.Location = new System.Drawing.Point(578, 12);
+            this.uxPanAllStocks.Location = new System.Drawing.Point(462, 12);
             this.uxPanAllStocks.Name = "uxPanAllStocks";
-            this.uxPanAllStocks.Size = new System.Drawing.Size(169, 199);
+            this.uxPanAllStocks.Size = new System.Drawing.Size(169, 474);
             this.uxPanAllStocks.TabIndex = 23;
             // 
             // uxLBAllStock
@@ -549,7 +566,7 @@
             this.uxLBAllStock.FormattingEnabled = true;
             this.uxLBAllStock.Location = new System.Drawing.Point(6, 19);
             this.uxLBAllStock.Name = "uxLBAllStock";
-            this.uxLBAllStock.Size = new System.Drawing.Size(156, 173);
+            this.uxLBAllStock.Size = new System.Drawing.Size(156, 446);
             this.uxLBAllStock.TabIndex = 12;
             // 
             // uxLabelAllStocks
@@ -561,27 +578,11 @@
             this.uxLabelAllStocks.TabIndex = 0;
             this.uxLabelAllStocks.Text = "All Stocks:";
             // 
-            // uxTBNewPortName
-            // 
-            this.uxTBNewPortName.Location = new System.Drawing.Point(6, 97);
-            this.uxTBNewPortName.Name = "uxTBNewPortName";
-            this.uxTBNewPortName.Size = new System.Drawing.Size(156, 20);
-            this.uxTBNewPortName.TabIndex = 7;
-            // 
-            // uxLabelNewPortName
-            // 
-            this.uxLabelNewPortName.AutoSize = true;
-            this.uxLabelNewPortName.Location = new System.Drawing.Point(3, 81);
-            this.uxLabelNewPortName.Name = "uxLabelNewPortName";
-            this.uxLabelNewPortName.Size = new System.Drawing.Size(104, 13);
-            this.uxLabelNewPortName.TabIndex = 8;
-            this.uxLabelNewPortName.Text = "New Portfolio Name:";
-            // 
             // MainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 826);
+            this.ClientSize = new System.Drawing.Size(646, 583);
             this.Controls.Add(this.uxPanPortInfo);
             this.Controls.Add(this.uxPanPortGainLoss);
             this.Controls.Add(this.uxPanPortHeldStock);
@@ -593,8 +594,12 @@
             this.Controls.Add(this.uxPanAccHeldStocks);
             this.Controls.Add(this.uxPanPortfoliosCreateDelete);
             this.Controls.Add(this.uxPanDepositWithdrawl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainGUI";
             this.Text = "Form1";
+            //this.Load += new System.EventHandler(this.MainGUI_Load);
+            //this.Paint += new System.Windows.Forms.PaintEventHandler(this.k);
             ((System.ComponentModel.ISupportInitialize)(this.uxNBFundsInput)).EndInit();
             this.uxPanDepositWithdrawl.ResumeLayout(false);
             this.uxPanDepositWithdrawl.PerformLayout();

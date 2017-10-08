@@ -24,6 +24,20 @@ namespace Ticker501TeamProject2
             _tickers = tickers;
 
             InitializeComponent();
+ 
+            foreach(Ticker t in _tickers)
+            {
+                uxDUDSelecStock.Items.Add(t.Tag + " - " + t.Price);
+            }
+            uxDUDSelecStock.SelectedIndex = 0;
+            UpdateTickerList();
+
+            uxDUDSelecVolatilty.Items.Add("HIGH");
+            uxDUDSelecVolatilty.Items.Add("MED");
+            uxDUDSelecVolatilty.Items.Add("LOW");
+            uxDUDSelecVolatilty.SelectedIndex = 0;
+
+            UpdateBuySellState();
         }
         #region OutputForm
         public void Update(Event e)
@@ -39,9 +53,14 @@ namespace Ticker501TeamProject2
                     break;
                 case "newPort": case "deletePort":
                     UpdatePortLBs();
+                    UpdateBuySellState();
                     break;
                 case "portStats":
-                    UpdatePortStats();
+                    UpdatePortStats(e.Data as Portfolio);
+                    UpdateBuySellState();
+                    break;
+                case "showStocks":
+                    UpdateTickerList();
                     break;
             }
 
@@ -107,13 +126,52 @@ namespace Ticker501TeamProject2
             }
         }
 
-        private void UpdatePortStats()
+        private void UpdatePortStats(Portfolio p)
         {
+            List<string> portStats = new List<string>();
+            
+            if (p != null && p.Stocks.Count > 0)
+            {
+                foreach (StockPurchase s in p.Stocks)
+                {
+                    double percent = s.TotalPrice / p.CashValue;
+                    double numPercent = s.Amount / (double)p.AmountStocks;
 
+                   portStats.Add(s.TotalPrice.ToString("C") + "- Cash Value %: (" + String.Format("{0:P2}", percent) + ") - # Stocks (" + s.Amount + "): [" + String.Format("{0:P2}", numPercent) + "] - " + s.Ticker.Tag + " " + s.Ticker.Name);
+                }
+            }
+            uxLBPortStocks.DataSource = portStats;
+        }
+
+        private void UpdateTickerList()
+        {
+            List<string> tickerStrings = new List<string>();
+            foreach(Ticker ticker in _tickers)
+            {
+                tickerStrings.Add(ticker.Tag + " - " + ticker.Price);
+            }
+            uxLBAllStock.DataSource = tickerStrings;
+        }
+        private void UpdateBuySellState()
+        {
+            if(uxLBSelecPort.SelectedItem == null)
+            {
+                uxBBuyStock.Enabled = false;
+                uxBSellStock.Enabled = false;
+            }else
+            {
+                uxBBuyStock.Enabled = true;
+                uxBSellStock.Enabled = true;
+            }
         }
         #endregion OutputForm
+        
+
+
+
 
         #region InputForm
+        #region uxPanDepositWithdrawl
         private void DepositFunds(object sender, EventArgs e)
         {
             //Method that runs when the Deposit button is pressed
@@ -139,18 +197,9 @@ namespace Ticker501TeamProject2
             );
             _inputHandle(new Event("accountStats"));
         }
+        #endregion uxPanDepositWithdrawl
 
-        private void NewPortfolio(object sender, EventArgs e)
-        {
-            //Method that runs when the New Portfolio button is pressed
-        }
-
-        private void DeletePortfolio(object sender, EventArgs e)
-        {
-            //Method that runs when the Delete Portfolio button is pressed
-        }
-        
-
+        #region uxPanPortfoliosCreateDelete
         private void uxBNewPort_Click(object sender, EventArgs e)
         {
             _inputHandle(new Event(uxTBNewPortName.Text, "newPort"))
@@ -167,6 +216,7 @@ namespace Ticker501TeamProject2
         {
 
         }
+        #endregion uxPanPortfoliosCreateDelete
 
         private void uxLBSelecPort_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -179,6 +229,48 @@ namespace Ticker501TeamProject2
             _inputHandle(new Event("portStats"));
         }
 
+        #region uxPanBuySellStock
+        private void uxBuyStock_Click(object sender, EventArgs e)
+        {
+            string selectedStock = uxDUDSelecStock.SelectedItem.ToString().Split(new[] { ' ', '-' })[0];
+            _inputHandle(new Event(new Tuple<string, int>( selectedStock, (int)uxNUDStockQuanity.Value), "portBuyShares"))
+                .Catch(message =>
+                {
+                    MessageBox.Show(message);
+                }
+            );
+            _inputHandle(new Event("portStats"));
+            _inputHandle(new Event("accountStats"));
+        }
+        private void uxBSellStock_Click(object sender, EventArgs e)
+        {
+            string selectedStock = uxDUDSelecStock.SelectedItem.ToString().Split(new[] { ' ', '-' })[0];
+            _inputHandle(new Event(new Tuple<string, int>(selectedStock, (int)uxNUDStockQuanity.Value), "portSell"))
+                .Catch(message =>
+                {
+                    MessageBox.Show(message);
+                }
+            );
+            _inputHandle(new Event("portStats"));
+            _inputHandle(new Event("accountStats"));
+        }
+        #endregion uxPanBuySellStock
+
+
+
+        private void uxBSimulatePrice_Click(object sender, EventArgs e)
+        {
+            _inputHandle(new Event(uxDUDSelecVolatilty.SelectedItem.ToString(), "simulate"))
+                .Catch(message =>
+                {
+                    MessageBox.Show(message);
+                }
+            );
+            _inputHandle(new Event("portStats"));
+            _inputHandle(new Event("accountStats"));
+        }
         #endregion InputForm
+
+
     }
 }
