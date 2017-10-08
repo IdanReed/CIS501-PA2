@@ -99,47 +99,53 @@
             // 
             // uxNBFundsInput
             // 
-            this.uxNBFundsInput.Location = new System.Drawing.Point(6, 29);
+            this.uxNBFundsInput.Location = new System.Drawing.Point(9, 45);
+            this.uxNBFundsInput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxNBFundsInput.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
             this.uxNBFundsInput.Name = "uxNBFundsInput";
-            this.uxNBFundsInput.Size = new System.Drawing.Size(156, 20);
+            this.uxNBFundsInput.Size = new System.Drawing.Size(234, 26);
             this.uxNBFundsInput.TabIndex = 0;
             // 
             // uxTBFundsAmount
             // 
             this.uxTBFundsAmount.Enabled = false;
-            this.uxTBFundsAmount.Location = new System.Drawing.Point(48, 3);
+            this.uxTBFundsAmount.Location = new System.Drawing.Point(72, 5);
+            this.uxTBFundsAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBFundsAmount.Name = "uxTBFundsAmount";
-            this.uxTBFundsAmount.Size = new System.Drawing.Size(114, 20);
+            this.uxTBFundsAmount.Size = new System.Drawing.Size(169, 26);
             this.uxTBFundsAmount.TabIndex = 1;
             // 
             // uxLabelFunds
             // 
             this.uxLabelFunds.AutoSize = true;
-            this.uxLabelFunds.Location = new System.Drawing.Point(3, 6);
+            this.uxLabelFunds.Location = new System.Drawing.Point(4, 9);
+            this.uxLabelFunds.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelFunds.Name = "uxLabelFunds";
-            this.uxLabelFunds.Size = new System.Drawing.Size(39, 13);
+            this.uxLabelFunds.Size = new System.Drawing.Size(58, 20);
             this.uxLabelFunds.TabIndex = 2;
             this.uxLabelFunds.Text = "Funds:";
             // 
             // uxLBPortfolios
             // 
             this.uxLBPortfolios.FormattingEnabled = true;
-            this.uxLBPortfolios.Location = new System.Drawing.Point(6, 22);
+            this.uxLBPortfolios.ItemHeight = 20;
+            this.uxLBPortfolios.Location = new System.Drawing.Point(9, 34);
+            this.uxLBPortfolios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxLBPortfolios.Name = "uxLBPortfolios";
-            this.uxLBPortfolios.Size = new System.Drawing.Size(156, 56);
+            this.uxLBPortfolios.Size = new System.Drawing.Size(232, 84);
             this.uxLBPortfolios.TabIndex = 3;
             // 
             // uxLabelPorfolios
             // 
             this.uxLabelPorfolios.AutoSize = true;
-            this.uxLabelPorfolios.Location = new System.Drawing.Point(3, 6);
+            this.uxLabelPorfolios.Location = new System.Drawing.Point(4, 9);
+            this.uxLabelPorfolios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelPorfolios.Name = "uxLabelPorfolios";
-            this.uxLabelPorfolios.Size = new System.Drawing.Size(53, 13);
+            this.uxLabelPorfolios.Size = new System.Drawing.Size(79, 20);
             this.uxLabelPorfolios.TabIndex = 4;
             this.uxLabelPorfolios.Text = "Portfolios:";
             // 
@@ -156,66 +162,74 @@
             this.uxPanDepositWithdrawl.Controls.Add(this.uxLabelFunds);
             this.uxPanDepositWithdrawl.Controls.Add(this.uxTBFundsAmount);
             this.uxPanDepositWithdrawl.Controls.Add(this.uxNBFundsInput);
-            this.uxPanDepositWithdrawl.Location = new System.Drawing.Point(12, 12);
+            this.uxPanDepositWithdrawl.Location = new System.Drawing.Point(18, 18);
+            this.uxPanDepositWithdrawl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanDepositWithdrawl.Name = "uxPanDepositWithdrawl";
-            this.uxPanDepositWithdrawl.Size = new System.Drawing.Size(169, 134);
+            this.uxPanDepositWithdrawl.Size = new System.Drawing.Size(254, 206);
             this.uxPanDepositWithdrawl.TabIndex = 5;
             // 
             // uxTBPositionsAmount
             // 
             this.uxTBPositionsAmount.Enabled = false;
-            this.uxTBPositionsAmount.Location = new System.Drawing.Point(108, 108);
+            this.uxTBPositionsAmount.Location = new System.Drawing.Point(162, 166);
+            this.uxTBPositionsAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBPositionsAmount.Name = "uxTBPositionsAmount";
-            this.uxTBPositionsAmount.Size = new System.Drawing.Size(52, 20);
+            this.uxTBPositionsAmount.Size = new System.Drawing.Size(76, 26);
             this.uxTBPositionsAmount.TabIndex = 10;
             // 
             // uxTBCashAmount
             // 
             this.uxTBCashAmount.Enabled = false;
-            this.uxTBCashAmount.Location = new System.Drawing.Point(108, 82);
+            this.uxTBCashAmount.Location = new System.Drawing.Point(162, 126);
+            this.uxTBCashAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBCashAmount.Name = "uxTBCashAmount";
-            this.uxTBCashAmount.Size = new System.Drawing.Size(52, 20);
+            this.uxTBCashAmount.Size = new System.Drawing.Size(76, 26);
             this.uxTBCashAmount.TabIndex = 9;
             // 
             // uxTBPositonsPercent
             // 
             this.uxTBPositonsPercent.Enabled = false;
-            this.uxTBPositonsPercent.Location = new System.Drawing.Point(61, 108);
+            this.uxTBPositonsPercent.Location = new System.Drawing.Point(92, 166);
+            this.uxTBPositonsPercent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBPositonsPercent.Name = "uxTBPositonsPercent";
-            this.uxTBPositonsPercent.Size = new System.Drawing.Size(41, 20);
+            this.uxTBPositonsPercent.Size = new System.Drawing.Size(60, 26);
             this.uxTBPositonsPercent.TabIndex = 8;
             // 
             // uxTBCashPercent
             // 
             this.uxTBCashPercent.Enabled = false;
-            this.uxTBCashPercent.Location = new System.Drawing.Point(61, 82);
+            this.uxTBCashPercent.Location = new System.Drawing.Point(92, 126);
+            this.uxTBCashPercent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBCashPercent.Name = "uxTBCashPercent";
-            this.uxTBCashPercent.Size = new System.Drawing.Size(41, 20);
+            this.uxTBCashPercent.Size = new System.Drawing.Size(60, 26);
             this.uxTBCashPercent.TabIndex = 7;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 111);
+            this.label8.Location = new System.Drawing.Point(4, 171);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.Size = new System.Drawing.Size(77, 20);
             this.label8.TabIndex = 6;
             this.label8.Text = "Positions:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 85);
+            this.label7.Location = new System.Drawing.Point(4, 131);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.Size = new System.Drawing.Size(50, 20);
             this.label7.TabIndex = 5;
             this.label7.Text = "Cash:";
             // 
             // uxBWithdrawl
             // 
-            this.uxBWithdrawl.Location = new System.Drawing.Point(87, 56);
+            this.uxBWithdrawl.Location = new System.Drawing.Point(130, 86);
+            this.uxBWithdrawl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxBWithdrawl.Name = "uxBWithdrawl";
-            this.uxBWithdrawl.Size = new System.Drawing.Size(75, 23);
+            this.uxBWithdrawl.Size = new System.Drawing.Size(112, 35);
             this.uxBWithdrawl.TabIndex = 4;
             this.uxBWithdrawl.Text = "Withdrawal";
             this.uxBWithdrawl.UseVisualStyleBackColor = true;
@@ -223,9 +237,10 @@
             // 
             // uxBDeposit
             // 
-            this.uxBDeposit.Location = new System.Drawing.Point(6, 56);
+            this.uxBDeposit.Location = new System.Drawing.Point(9, 86);
+            this.uxBDeposit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxBDeposit.Name = "uxBDeposit";
-            this.uxBDeposit.Size = new System.Drawing.Size(75, 23);
+            this.uxBDeposit.Size = new System.Drawing.Size(112, 35);
             this.uxBDeposit.TabIndex = 3;
             this.uxBDeposit.Text = "Deposit";
             this.uxBDeposit.UseVisualStyleBackColor = true;
@@ -239,32 +254,36 @@
             this.uxPanPortfoliosCreateDelete.Controls.Add(this.uxBNewPort);
             this.uxPanPortfoliosCreateDelete.Controls.Add(this.uxLabelPorfolios);
             this.uxPanPortfoliosCreateDelete.Controls.Add(this.uxLBPortfolios);
-            this.uxPanPortfoliosCreateDelete.Location = new System.Drawing.Point(12, 407);
+            this.uxPanPortfoliosCreateDelete.Location = new System.Drawing.Point(18, 626);
+            this.uxPanPortfoliosCreateDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanPortfoliosCreateDelete.Name = "uxPanPortfoliosCreateDelete";
-            this.uxPanPortfoliosCreateDelete.Size = new System.Drawing.Size(169, 163);
+            this.uxPanPortfoliosCreateDelete.Size = new System.Drawing.Size(254, 251);
             this.uxPanPortfoliosCreateDelete.TabIndex = 6;
             // 
             // uxLabelNewPortName
             // 
             this.uxLabelNewPortName.AutoSize = true;
-            this.uxLabelNewPortName.Location = new System.Drawing.Point(3, 81);
+            this.uxLabelNewPortName.Location = new System.Drawing.Point(4, 125);
+            this.uxLabelNewPortName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelNewPortName.Name = "uxLabelNewPortName";
-            this.uxLabelNewPortName.Size = new System.Drawing.Size(104, 13);
+            this.uxLabelNewPortName.Size = new System.Drawing.Size(152, 20);
             this.uxLabelNewPortName.TabIndex = 8;
             this.uxLabelNewPortName.Text = "New Portfolio Name:";
             // 
             // uxTBNewPortName
             // 
-            this.uxTBNewPortName.Location = new System.Drawing.Point(6, 97);
+            this.uxTBNewPortName.Location = new System.Drawing.Point(9, 149);
+            this.uxTBNewPortName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBNewPortName.Name = "uxTBNewPortName";
-            this.uxTBNewPortName.Size = new System.Drawing.Size(156, 20);
+            this.uxTBNewPortName.Size = new System.Drawing.Size(232, 26);
             this.uxTBNewPortName.TabIndex = 7;
             // 
             // uxNewDelete
             // 
-            this.uxNewDelete.Location = new System.Drawing.Point(87, 123);
+            this.uxNewDelete.Location = new System.Drawing.Point(130, 189);
+            this.uxNewDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxNewDelete.Name = "uxNewDelete";
-            this.uxNewDelete.Size = new System.Drawing.Size(75, 23);
+            this.uxNewDelete.Size = new System.Drawing.Size(112, 35);
             this.uxNewDelete.TabIndex = 6;
             this.uxNewDelete.Text = "Delete";
             this.uxNewDelete.UseVisualStyleBackColor = true;
@@ -272,9 +291,10 @@
             // 
             // uxBNewPort
             // 
-            this.uxBNewPort.Location = new System.Drawing.Point(6, 123);
+            this.uxBNewPort.Location = new System.Drawing.Point(9, 189);
+            this.uxBNewPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxBNewPort.Name = "uxBNewPort";
-            this.uxBNewPort.Size = new System.Drawing.Size(75, 23);
+            this.uxBNewPort.Size = new System.Drawing.Size(112, 35);
             this.uxBNewPort.TabIndex = 5;
             this.uxBNewPort.Text = "New";
             this.uxBNewPort.UseVisualStyleBackColor = true;
@@ -284,92 +304,105 @@
             // 
             this.uxPanSelecPort.Controls.Add(this.uxLBSelecPort);
             this.uxPanSelecPort.Controls.Add(this.uxLabelSelectedPort);
-            this.uxPanSelecPort.Location = new System.Drawing.Point(237, 12);
+            this.uxPanSelecPort.Location = new System.Drawing.Point(356, 18);
+            this.uxPanSelecPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanSelecPort.Name = "uxPanSelecPort";
-            this.uxPanSelecPort.Size = new System.Drawing.Size(169, 87);
+            this.uxPanSelecPort.Size = new System.Drawing.Size(254, 134);
             this.uxPanSelecPort.TabIndex = 8;
             // 
             // uxLBSelecPort
             // 
             this.uxLBSelecPort.FormattingEnabled = true;
-            this.uxLBSelecPort.Location = new System.Drawing.Point(6, 19);
+            this.uxLBSelecPort.ItemHeight = 20;
+            this.uxLBSelecPort.Location = new System.Drawing.Point(9, 29);
+            this.uxLBSelecPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxLBSelecPort.Name = "uxLBSelecPort";
-            this.uxLBSelecPort.Size = new System.Drawing.Size(156, 56);
+            this.uxLBSelecPort.Size = new System.Drawing.Size(232, 84);
             this.uxLBSelecPort.TabIndex = 8;
             this.uxLBSelecPort.SelectedIndexChanged += new System.EventHandler(this.uxLBSelecPort_SelectedIndexChanged);
             // 
             // uxLabelSelectedPort
             // 
             this.uxLabelSelectedPort.AutoSize = true;
-            this.uxLabelSelectedPort.Location = new System.Drawing.Point(3, 3);
+            this.uxLabelSelectedPort.Location = new System.Drawing.Point(4, 5);
+            this.uxLabelSelectedPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelSelectedPort.Name = "uxLabelSelectedPort";
-            this.uxLabelSelectedPort.Size = new System.Drawing.Size(93, 13);
+            this.uxLabelSelectedPort.Size = new System.Drawing.Size(138, 20);
             this.uxLabelSelectedPort.TabIndex = 7;
             this.uxLabelSelectedPort.Text = "Selected Portfolio:";
             // 
             // uxLabelSelecStock
             // 
             this.uxLabelSelecStock.AutoSize = true;
-            this.uxLabelSelecStock.Location = new System.Drawing.Point(3, 6);
+            this.uxLabelSelecStock.Location = new System.Drawing.Point(4, 9);
+            this.uxLabelSelecStock.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelSelecStock.Name = "uxLabelSelecStock";
-            this.uxLabelSelecStock.Size = new System.Drawing.Size(83, 13);
+            this.uxLabelSelecStock.Size = new System.Drawing.Size(121, 20);
             this.uxLabelSelecStock.TabIndex = 9;
             this.uxLabelSelecStock.Text = "Selected Stock:";
             // 
             // uxLabelStockQuanity
             // 
             this.uxLabelStockQuanity.AutoSize = true;
-            this.uxLabelStockQuanity.Location = new System.Drawing.Point(3, 50);
+            this.uxLabelStockQuanity.Location = new System.Drawing.Point(4, 77);
+            this.uxLabelStockQuanity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelStockQuanity.Name = "uxLabelStockQuanity";
-            this.uxLabelStockQuanity.Size = new System.Drawing.Size(46, 13);
+            this.uxLabelStockQuanity.Size = new System.Drawing.Size(67, 20);
             this.uxLabelStockQuanity.TabIndex = 11;
             this.uxLabelStockQuanity.Text = "Quanity:";
             // 
             // uxNUDStockQuanity
             // 
-            this.uxNUDStockQuanity.Location = new System.Drawing.Point(55, 48);
+            this.uxNUDStockQuanity.Location = new System.Drawing.Point(82, 74);
+            this.uxNUDStockQuanity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxNUDStockQuanity.Name = "uxNUDStockQuanity";
-            this.uxNUDStockQuanity.Size = new System.Drawing.Size(107, 20);
+            this.uxNUDStockQuanity.Size = new System.Drawing.Size(160, 26);
             this.uxNUDStockQuanity.TabIndex = 12;
             // 
             // uxPanAccHeldStocks
             // 
             this.uxPanAccHeldStocks.Controls.Add(this.uxLBStocksHeld);
             this.uxPanAccHeldStocks.Controls.Add(this.uxLabelStocksHeld);
-            this.uxPanAccHeldStocks.Location = new System.Drawing.Point(12, 152);
+            this.uxPanAccHeldStocks.Location = new System.Drawing.Point(18, 234);
+            this.uxPanAccHeldStocks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanAccHeldStocks.Name = "uxPanAccHeldStocks";
-            this.uxPanAccHeldStocks.Size = new System.Drawing.Size(169, 189);
+            this.uxPanAccHeldStocks.Size = new System.Drawing.Size(254, 291);
             this.uxPanAccHeldStocks.TabIndex = 9;
             // 
             // uxLBStocksHeld
             // 
             this.uxLBStocksHeld.FormattingEnabled = true;
-            this.uxLBStocksHeld.Location = new System.Drawing.Point(6, 22);
+            this.uxLBStocksHeld.ItemHeight = 20;
+            this.uxLBStocksHeld.Location = new System.Drawing.Point(9, 34);
+            this.uxLBStocksHeld.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxLBStocksHeld.Name = "uxLBStocksHeld";
-            this.uxLBStocksHeld.Size = new System.Drawing.Size(156, 160);
+            this.uxLBStocksHeld.Size = new System.Drawing.Size(232, 244);
             this.uxLBStocksHeld.TabIndex = 11;
             // 
             // uxLabelStocksHeld
             // 
             this.uxLabelStocksHeld.AutoSize = true;
-            this.uxLabelStocksHeld.Location = new System.Drawing.Point(3, 6);
+            this.uxLabelStocksHeld.Location = new System.Drawing.Point(4, 9);
+            this.uxLabelStocksHeld.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelStocksHeld.Name = "uxLabelStocksHeld";
-            this.uxLabelStocksHeld.Size = new System.Drawing.Size(122, 13);
+            this.uxLabelStocksHeld.Size = new System.Drawing.Size(178, 20);
             this.uxLabelStocksHeld.TabIndex = 10;
             this.uxLabelStocksHeld.Text = "Stocks Held in Account:";
             // 
             // uxDUDSelecStock
             // 
-            this.uxDUDSelecStock.Location = new System.Drawing.Point(6, 22);
+            this.uxDUDSelecStock.Location = new System.Drawing.Point(9, 34);
+            this.uxDUDSelecStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxDUDSelecStock.Name = "uxDUDSelecStock";
-            this.uxDUDSelecStock.Size = new System.Drawing.Size(156, 20);
+            this.uxDUDSelecStock.Size = new System.Drawing.Size(234, 26);
             this.uxDUDSelecStock.TabIndex = 15;
             // 
             // uxBBuyStock
             // 
-            this.uxBBuyStock.Location = new System.Drawing.Point(6, 75);
+            this.uxBBuyStock.Location = new System.Drawing.Point(9, 115);
+            this.uxBBuyStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxBBuyStock.Name = "uxBBuyStock";
-            this.uxBBuyStock.Size = new System.Drawing.Size(78, 23);
+            this.uxBBuyStock.Size = new System.Drawing.Size(117, 35);
             this.uxBBuyStock.TabIndex = 16;
             this.uxBBuyStock.Text = "Buy";
             this.uxBBuyStock.UseVisualStyleBackColor = true;
@@ -377,9 +410,10 @@
             // 
             // uxBSellStock
             // 
-            this.uxBSellStock.Location = new System.Drawing.Point(87, 74);
+            this.uxBSellStock.Location = new System.Drawing.Point(130, 114);
+            this.uxBSellStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxBSellStock.Name = "uxBSellStock";
-            this.uxBSellStock.Size = new System.Drawing.Size(75, 23);
+            this.uxBSellStock.Size = new System.Drawing.Size(112, 35);
             this.uxBSellStock.TabIndex = 17;
             this.uxBSellStock.Text = "Sell";
             this.uxBSellStock.UseVisualStyleBackColor = true;
@@ -389,25 +423,29 @@
             // 
             this.uxPanPortHeldStock.Controls.Add(this.uxLBPortStocks);
             this.uxPanPortHeldStock.Controls.Add(this.uxLabelStockHeldPort);
-            this.uxPanPortHeldStock.Location = new System.Drawing.Point(237, 105);
+            this.uxPanPortHeldStock.Location = new System.Drawing.Point(356, 162);
+            this.uxPanPortHeldStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanPortHeldStock.Name = "uxPanPortHeldStock";
-            this.uxPanPortHeldStock.Size = new System.Drawing.Size(169, 236);
+            this.uxPanPortHeldStock.Size = new System.Drawing.Size(254, 363);
             this.uxPanPortHeldStock.TabIndex = 12;
             // 
             // uxLBPortStocks
             // 
             this.uxLBPortStocks.FormattingEnabled = true;
-            this.uxLBPortStocks.Location = new System.Drawing.Point(6, 22);
+            this.uxLBPortStocks.ItemHeight = 20;
+            this.uxLBPortStocks.Location = new System.Drawing.Point(9, 34);
+            this.uxLBPortStocks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxLBPortStocks.Name = "uxLBPortStocks";
-            this.uxLBPortStocks.Size = new System.Drawing.Size(156, 212);
+            this.uxLBPortStocks.Size = new System.Drawing.Size(232, 324);
             this.uxLBPortStocks.TabIndex = 11;
             // 
             // uxLabelStockHeldPort
             // 
             this.uxLabelStockHeldPort.AutoSize = true;
-            this.uxLabelStockHeldPort.Location = new System.Drawing.Point(3, 6);
+            this.uxLabelStockHeldPort.Location = new System.Drawing.Point(4, 9);
+            this.uxLabelStockHeldPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelStockHeldPort.Name = "uxLabelStockHeldPort";
-            this.uxLabelStockHeldPort.Size = new System.Drawing.Size(123, 13);
+            this.uxLabelStockHeldPort.Size = new System.Drawing.Size(181, 20);
             this.uxLabelStockHeldPort.TabIndex = 10;
             this.uxLabelStockHeldPort.Text = "Stocks Held in  Portfolio:";
             // 
@@ -415,25 +453,28 @@
             // 
             this.uxPanPortGainLoss.Controls.Add(this.uxTBPortGainLoss);
             this.uxPanPortGainLoss.Controls.Add(this.uxLabelPortGainLoss);
-            this.uxPanPortGainLoss.Location = new System.Drawing.Point(237, 347);
+            this.uxPanPortGainLoss.Location = new System.Drawing.Point(356, 534);
+            this.uxPanPortGainLoss.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanPortGainLoss.Name = "uxPanPortGainLoss";
-            this.uxPanPortGainLoss.Size = new System.Drawing.Size(169, 54);
+            this.uxPanPortGainLoss.Size = new System.Drawing.Size(254, 83);
             this.uxPanPortGainLoss.TabIndex = 11;
             // 
             // uxTBPortGainLoss
             // 
             this.uxTBPortGainLoss.Enabled = false;
-            this.uxTBPortGainLoss.Location = new System.Drawing.Point(6, 22);
+            this.uxTBPortGainLoss.Location = new System.Drawing.Point(9, 34);
+            this.uxTBPortGainLoss.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBPortGainLoss.Name = "uxTBPortGainLoss";
-            this.uxTBPortGainLoss.Size = new System.Drawing.Size(156, 20);
+            this.uxTBPortGainLoss.Size = new System.Drawing.Size(232, 26);
             this.uxTBPortGainLoss.TabIndex = 7;
             // 
             // uxLabelPortGainLoss
             // 
             this.uxLabelPortGainLoss.AutoSize = true;
-            this.uxLabelPortGainLoss.Location = new System.Drawing.Point(3, 6);
+            this.uxLabelPortGainLoss.Location = new System.Drawing.Point(4, 9);
+            this.uxLabelPortGainLoss.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelPortGainLoss.Name = "uxLabelPortGainLoss";
-            this.uxLabelPortGainLoss.Size = new System.Drawing.Size(100, 13);
+            this.uxLabelPortGainLoss.Size = new System.Drawing.Size(147, 20);
             this.uxLabelPortGainLoss.TabIndex = 6;
             this.uxLabelPortGainLoss.Text = "Portfolio Gain/Loss:";
             // 
@@ -443,42 +484,47 @@
             this.uxPanPortInfo.Controls.Add(this.uxTBAmountInvested);
             this.uxPanPortInfo.Controls.Add(this.uxLabelPortPercentOfAcc);
             this.uxPanPortInfo.Controls.Add(this.uxLabelPortInvestAmount);
-            this.uxPanPortInfo.Location = new System.Drawing.Point(237, 407);
+            this.uxPanPortInfo.Location = new System.Drawing.Point(356, 626);
+            this.uxPanPortInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanPortInfo.Name = "uxPanPortInfo";
-            this.uxPanPortInfo.Size = new System.Drawing.Size(169, 54);
+            this.uxPanPortInfo.Size = new System.Drawing.Size(254, 83);
             this.uxPanPortInfo.TabIndex = 9;
             // 
             // uxTBPortPercentOfAcc
             // 
             this.uxTBPortPercentOfAcc.Enabled = false;
-            this.uxTBPortPercentOfAcc.Location = new System.Drawing.Point(109, 28);
+            this.uxTBPortPercentOfAcc.Location = new System.Drawing.Point(164, 43);
+            this.uxTBPortPercentOfAcc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBPortPercentOfAcc.Name = "uxTBPortPercentOfAcc";
-            this.uxTBPortPercentOfAcc.Size = new System.Drawing.Size(53, 20);
+            this.uxTBPortPercentOfAcc.Size = new System.Drawing.Size(78, 26);
             this.uxTBPortPercentOfAcc.TabIndex = 15;
             // 
             // uxTBAmountInvested
             // 
             this.uxTBAmountInvested.Enabled = false;
-            this.uxTBAmountInvested.Location = new System.Drawing.Point(109, 3);
+            this.uxTBAmountInvested.Location = new System.Drawing.Point(164, 5);
+            this.uxTBAmountInvested.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBAmountInvested.Name = "uxTBAmountInvested";
-            this.uxTBAmountInvested.Size = new System.Drawing.Size(53, 20);
+            this.uxTBAmountInvested.Size = new System.Drawing.Size(78, 26);
             this.uxTBAmountInvested.TabIndex = 14;
             // 
             // uxLabelPortPercentOfAcc
             // 
             this.uxLabelPortPercentOfAcc.AutoSize = true;
-            this.uxLabelPortPercentOfAcc.Location = new System.Drawing.Point(6, 31);
+            this.uxLabelPortPercentOfAcc.Location = new System.Drawing.Point(9, 48);
+            this.uxLabelPortPercentOfAcc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelPortPercentOfAcc.Name = "uxLabelPortPercentOfAcc";
-            this.uxLabelPortPercentOfAcc.Size = new System.Drawing.Size(73, 13);
+            this.uxLabelPortPercentOfAcc.Size = new System.Drawing.Size(108, 20);
             this.uxLabelPortPercentOfAcc.TabIndex = 13;
             this.uxLabelPortPercentOfAcc.Text = "% of Account:";
             // 
             // uxLabelPortInvestAmount
             // 
             this.uxLabelPortInvestAmount.AutoSize = true;
-            this.uxLabelPortInvestAmount.Location = new System.Drawing.Point(3, 6);
+            this.uxLabelPortInvestAmount.Location = new System.Drawing.Point(4, 9);
+            this.uxLabelPortInvestAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelPortInvestAmount.Name = "uxLabelPortInvestAmount";
-            this.uxLabelPortInvestAmount.Size = new System.Drawing.Size(90, 13);
+            this.uxLabelPortInvestAmount.Size = new System.Drawing.Size(134, 20);
             this.uxLabelPortInvestAmount.TabIndex = 12;
             this.uxLabelPortInvestAmount.Text = "Amount Invested:";
             // 
@@ -490,34 +536,38 @@
             this.uxPanBuySellStock.Controls.Add(this.uxDUDSelecStock);
             this.uxPanBuySellStock.Controls.Add(this.uxNUDStockQuanity);
             this.uxPanBuySellStock.Controls.Add(this.uxLabelStockQuanity);
-            this.uxPanBuySellStock.Location = new System.Drawing.Point(237, 467);
+            this.uxPanBuySellStock.Location = new System.Drawing.Point(356, 718);
+            this.uxPanBuySellStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanBuySellStock.Name = "uxPanBuySellStock";
-            this.uxPanBuySellStock.Size = new System.Drawing.Size(169, 103);
+            this.uxPanBuySellStock.Size = new System.Drawing.Size(254, 158);
             this.uxPanBuySellStock.TabIndex = 18;
             // 
             // uxPanGainLossAcc
             // 
             this.uxPanGainLossAcc.Controls.Add(this.uxTBGainLoss);
             this.uxPanGainLossAcc.Controls.Add(this.uxLabelAccGainLoss);
-            this.uxPanGainLossAcc.Location = new System.Drawing.Point(12, 347);
+            this.uxPanGainLossAcc.Location = new System.Drawing.Point(18, 534);
+            this.uxPanGainLossAcc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanGainLossAcc.Name = "uxPanGainLossAcc";
-            this.uxPanGainLossAcc.Size = new System.Drawing.Size(169, 54);
+            this.uxPanGainLossAcc.Size = new System.Drawing.Size(254, 83);
             this.uxPanGainLossAcc.TabIndex = 12;
             // 
             // uxTBGainLoss
             // 
             this.uxTBGainLoss.Enabled = false;
-            this.uxTBGainLoss.Location = new System.Drawing.Point(6, 22);
+            this.uxTBGainLoss.Location = new System.Drawing.Point(9, 34);
+            this.uxTBGainLoss.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxTBGainLoss.Name = "uxTBGainLoss";
-            this.uxTBGainLoss.Size = new System.Drawing.Size(156, 20);
+            this.uxTBGainLoss.Size = new System.Drawing.Size(232, 26);
             this.uxTBGainLoss.TabIndex = 7;
             // 
             // uxLabelAccGainLoss
             // 
             this.uxLabelAccGainLoss.AutoSize = true;
-            this.uxLabelAccGainLoss.Location = new System.Drawing.Point(3, 6);
+            this.uxLabelAccGainLoss.Location = new System.Drawing.Point(4, 9);
+            this.uxLabelAccGainLoss.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelAccGainLoss.Name = "uxLabelAccGainLoss";
-            this.uxLabelAccGainLoss.Size = new System.Drawing.Size(102, 13);
+            this.uxLabelAccGainLoss.Size = new System.Drawing.Size(148, 20);
             this.uxLabelAccGainLoss.TabIndex = 6;
             this.uxLabelAccGainLoss.Text = "Account Gain/Loss:";
             // 
@@ -526,16 +576,18 @@
             this.uxPanSimulate.Controls.Add(this.uxBSimulatePrice);
             this.uxPanSimulate.Controls.Add(this.uxDUDSelecVolatilty);
             this.uxPanSimulate.Controls.Add(this.uxLabelSelecVolatilty);
-            this.uxPanSimulate.Location = new System.Drawing.Point(462, 492);
+            this.uxPanSimulate.Location = new System.Drawing.Point(693, 757);
+            this.uxPanSimulate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanSimulate.Name = "uxPanSimulate";
-            this.uxPanSimulate.Size = new System.Drawing.Size(169, 78);
+            this.uxPanSimulate.Size = new System.Drawing.Size(254, 120);
             this.uxPanSimulate.TabIndex = 20;
             // 
             // uxBSimulatePrice
             // 
-            this.uxBSimulatePrice.Location = new System.Drawing.Point(6, 48);
+            this.uxBSimulatePrice.Location = new System.Drawing.Point(9, 74);
+            this.uxBSimulatePrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxBSimulatePrice.Name = "uxBSimulatePrice";
-            this.uxBSimulatePrice.Size = new System.Drawing.Size(156, 23);
+            this.uxBSimulatePrice.Size = new System.Drawing.Size(234, 35);
             this.uxBSimulatePrice.TabIndex = 22;
             this.uxBSimulatePrice.Text = "Simulate";
             this.uxBSimulatePrice.UseVisualStyleBackColor = true;
@@ -543,17 +595,19 @@
             // 
             // uxDUDSelecVolatilty
             // 
-            this.uxDUDSelecVolatilty.Location = new System.Drawing.Point(6, 22);
+            this.uxDUDSelecVolatilty.Location = new System.Drawing.Point(9, 34);
+            this.uxDUDSelecVolatilty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxDUDSelecVolatilty.Name = "uxDUDSelecVolatilty";
-            this.uxDUDSelecVolatilty.Size = new System.Drawing.Size(156, 20);
+            this.uxDUDSelecVolatilty.Size = new System.Drawing.Size(234, 26);
             this.uxDUDSelecVolatilty.TabIndex = 21;
             // 
             // uxLabelSelecVolatilty
             // 
             this.uxLabelSelecVolatilty.AutoSize = true;
-            this.uxLabelSelecVolatilty.Location = new System.Drawing.Point(3, 6);
+            this.uxLabelSelecVolatilty.Location = new System.Drawing.Point(4, 9);
+            this.uxLabelSelecVolatilty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelSelecVolatilty.Name = "uxLabelSelecVolatilty";
-            this.uxLabelSelecVolatilty.Size = new System.Drawing.Size(93, 13);
+            this.uxLabelSelecVolatilty.Size = new System.Drawing.Size(138, 20);
             this.uxLabelSelecVolatilty.TabIndex = 10;
             this.uxLabelSelecVolatilty.Text = "Selected Volatility:";
             // 
@@ -561,33 +615,37 @@
             // 
             this.uxPanAllStocks.Controls.Add(this.uxLBAllStock);
             this.uxPanAllStocks.Controls.Add(this.uxLabelAllStocks);
-            this.uxPanAllStocks.Location = new System.Drawing.Point(462, 12);
+            this.uxPanAllStocks.Location = new System.Drawing.Point(693, 18);
+            this.uxPanAllStocks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxPanAllStocks.Name = "uxPanAllStocks";
-            this.uxPanAllStocks.Size = new System.Drawing.Size(169, 474);
+            this.uxPanAllStocks.Size = new System.Drawing.Size(254, 729);
             this.uxPanAllStocks.TabIndex = 23;
             // 
             // uxLBAllStock
             // 
             this.uxLBAllStock.FormattingEnabled = true;
-            this.uxLBAllStock.Location = new System.Drawing.Point(6, 19);
+            this.uxLBAllStock.ItemHeight = 20;
+            this.uxLBAllStock.Location = new System.Drawing.Point(9, 29);
+            this.uxLBAllStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxLBAllStock.Name = "uxLBAllStock";
-            this.uxLBAllStock.Size = new System.Drawing.Size(156, 446);
+            this.uxLBAllStock.Size = new System.Drawing.Size(232, 684);
             this.uxLBAllStock.TabIndex = 12;
             // 
             // uxLabelAllStocks
             // 
             this.uxLabelAllStocks.AutoSize = true;
-            this.uxLabelAllStocks.Location = new System.Drawing.Point(3, 3);
+            this.uxLabelAllStocks.Location = new System.Drawing.Point(4, 5);
+            this.uxLabelAllStocks.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLabelAllStocks.Name = "uxLabelAllStocks";
-            this.uxLabelAllStocks.Size = new System.Drawing.Size(57, 13);
+            this.uxLabelAllStocks.Size = new System.Drawing.Size(83, 20);
             this.uxLabelAllStocks.TabIndex = 0;
             this.uxLabelAllStocks.Text = "All Stocks:";
             // 
             // MainGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 583);
+            this.ClientSize = new System.Drawing.Size(969, 897);
             this.Controls.Add(this.uxPanPortInfo);
             this.Controls.Add(this.uxPanPortGainLoss);
             this.Controls.Add(this.uxPanPortHeldStock);
@@ -599,10 +657,11 @@
             this.Controls.Add(this.uxPanAccHeldStocks);
             this.Controls.Add(this.uxPanPortfoliosCreateDelete);
             this.Controls.Add(this.uxPanDepositWithdrawl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "MainGUI";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainGUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uxNBFundsInput)).EndInit();
             this.uxPanDepositWithdrawl.ResumeLayout(false);
             this.uxPanDepositWithdrawl.PerformLayout();

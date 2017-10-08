@@ -12,6 +12,8 @@ namespace Class_Library
         private string _name;
         private double _cashValue = 0;
         private int _amountStocks = 0;
+        private double _changeInValue = 0;
+        private double _totalFees = 0;
         
 
         public Portfolio(string name)
@@ -19,7 +21,7 @@ namespace Class_Library
             _name = name;
             _stocks = new List<StockPurchase>();
         }
-
+        #region Getters/Setters
         public int AmountStocks
         {
             get {
@@ -63,6 +65,44 @@ namespace Class_Library
                 }
             
         }
+
+        public Double ChangeInValue
+        {
+            get
+            {
+                double initValue = 0;
+                foreach(StockPurchase sp in Stocks)
+                {
+                    initValue += sp.InitPrice;
+                }
+                
+                return (CashValue - initValue - _totalFees);
+            }
+           
+        }
+
+        public Double TotalFees
+        {
+            get
+            {
+                return _totalFees;
+            }
+            set
+            {
+                _totalFees += value;
+            }
+        }
+        #endregion
+
+        public double GetInitValue()
+        {
+            double initVal = 0;
+            foreach(StockPurchase sp in _stocks)
+            {
+                initVal += sp.InitPrice;
+            }
+            return CashValue - initVal;
+         }
 
         public override string ToString()
         {

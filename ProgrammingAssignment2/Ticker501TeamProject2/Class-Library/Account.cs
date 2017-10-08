@@ -15,7 +15,6 @@ namespace Class_Library
         private double _depositFees = 0;
         private double _tradeFees = 0;
         private double _curValue = 0;
-        private double _changeInFunds;
         
         #region Getters/Setters
         public double Funds
@@ -76,7 +75,13 @@ namespace Class_Library
         {
             get
             {
-                return _curValue;
+                double portValue = 0;
+                foreach(Portfolio p in _portfolios)
+                {
+                    portValue += p.CashValue;
+                }
+
+                return _curValue + portValue;
             }
             set
             {
@@ -88,12 +93,15 @@ namespace Class_Library
         {
             get
             {
-                double tempFunds = 0;
+                
+                double curValue = 0;
+                double initValue = 0;
                 foreach(Portfolio p in _portfolios)
                 {
-                    tempFunds += p.CashValue;
+                    curValue += p.CashValue + p.ChangeInValue;
+                    initValue += p.GetInitValue();
                 }
-                return (_funds + tempFunds) - _curValue;
+                return (_funds + (curValue-initValue)) - _curValue;
             }
         }
 

@@ -85,6 +85,7 @@ namespace Ticker501TeamProject2
 
             uxTBPositionsAmount.Text = "$" + String.Format("{0:0.0}", accPosValue);
             uxTBPositonsPercent.Text = String.Format("{0:0.0}", (accPosValue / accTotalValue) * 100) + "%";
+            UpdateAccGainsLosses();
         }
 
         private void UpdateAccStocksHeld()
@@ -214,6 +215,29 @@ namespace Ticker501TeamProject2
             }
             uxTBAmountInvested.Text = String.Format("{0:0.00}",p.CashValue);
             uxTBPortPercentOfAcc.Text = String.Format("{0:0.00}", (p.CashValue/accountValue * 100)) + "%";
+            UpdatePortGainsLosses(p);
+        }
+
+
+        private void UpdateAccGainsLosses()
+        {
+            if (_acct.ChangeInFunds < 0)
+            {
+                uxTBGainLoss.Text = "-" + _acct.ChangeInFunds.ToString("C");
+            }
+            else
+                uxTBGainLoss.Text = _acct.ChangeInFunds.ToString("C");
+        }
+
+        private void UpdatePortGainsLosses(Portfolio selectedPortfolio)
+        {
+            //Portfolio selectedPortfolio = uxLBSelecPort.SelectedItem as Portfolio;
+            if (selectedPortfolio.ChangeInValue < 0)
+            {
+                uxTBPortGainLoss.Text = "-" + selectedPortfolio.ChangeInValue.ToString("C");
+            }
+            else
+                uxTBPortGainLoss.Text = selectedPortfolio.ChangeInValue.ToString("C");
         }
         #endregion OutputForm 
         
@@ -319,8 +343,12 @@ namespace Ticker501TeamProject2
             _inputHandle(new Event("portStats"));
             _inputHandle(new Event("accountStats"));
         }
+
         #endregion InputForm
 
+        private void MainGUI_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

@@ -247,7 +247,7 @@ namespace Class_Library
 
             if (t == null) return new Error("A stock with that abbreviation does not exsist.");
     
-            double totalCost = t.Price * amt - TRADE_FEE;
+            double totalCost = (t.Price * amt) - TRADE_FEE;
             if (totalCost > _acct.Funds)
             {
                 return new Error("You have inssuficient funds for this transaction.");
@@ -262,7 +262,7 @@ namespace Class_Library
                 StockPurchase stock = new StockPurchase(t, amt);
                 _currentPortfolio.Stocks.Add(stock);
                 _acct.Funds -= totalCost;
-
+                _currentPortfolio.TotalFees += TRADE_FEE;
                 return Error.None;
             }
 
@@ -274,7 +274,7 @@ namespace Class_Library
             if (t == null) return new Class_Library.Error("A stock with that abbreviation does not exsist.");
 
             int amount = (int)(cost / t.Price);
-
+            _currentPortfolio.TotalFees += TRADE_FEE;
             return PortBuy(tickerName, amount);
         }
         private Error PortSell(string tickerName, double amt)
@@ -289,6 +289,8 @@ namespace Class_Library
                     _acct.Funds += s.TotalPrice - TRADE_FEE;
                     //Say transfer has occured
                     _currentPortfolio.Stocks.Remove(s);
+
+                    _currentPortfolio.TotalFees += TRADE_FEE;
                     return Error.None;
                 }
             }
