@@ -308,7 +308,7 @@ namespace Class_Library
                 return new Class_Library.Error("Please choose either 'high', 'med', or 'low'");
             }
 
-            foreach(Ticker t in _acct.Tickers)
+            foreach(Ticker t in _tickers)
             {
                 t.UpdatePrice(_simulation);
             }

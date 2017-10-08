@@ -265,6 +265,28 @@ namespace PA2Console
             //Should be good to go.
             //Event name is "simulate" and requires a string which will be either "high", "med", "low" and will return error if not.
             //The "simulate" event will broadcast a "showStocks" event which will print the updated stocks in the console.
+            
+            bool canContinue;
+            do
+            {
+                canContinue = true;
+                MenuHelper.PromptString(
+                    "Enter the volatility: (high, med, low)",
+                    "Volatility: "
+                    ).Then(vol =>
+                    {
+                        Event e = new Event(vol, "simulate");
+
+                        _inputHandler(e).Catch(message =>
+                        {
+                            MenuHelper.PrintError(message);
+                            canContinue = false;
+                        });
+                    });
+            }
+            while (!canContinue);
+
+            MenuHelper.PressEnter();
         }
 
         private void Exit()
