@@ -46,6 +46,13 @@ namespace PA2Console
             //Do display stuff
             //Build amount
             Console.WriteLine("Funds: ${0}", _acct.Funds.ToString("N2"));
+            //Build Account level gain/loss
+            Console.Write("Account Gain/Loss: ");
+            if (_acct.ChangeInFunds < 0)
+            {
+                Console.Write("-");
+            }
+            Console.WriteLine("{0}", _acct.ChangeInFunds.ToString("C"));
             MenuHelper.PressEnter();
         }
 
