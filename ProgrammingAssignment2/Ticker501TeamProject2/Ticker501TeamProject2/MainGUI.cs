@@ -164,7 +164,9 @@ namespace Ticker501TeamProject2
             }
             uxLBPortStocks.DataSource = portStats;
         }
-       
+       /// <summary>
+       /// Only runs at start and with simulate. Updates the listbox with new tickers 
+       /// </summary>
         private void UpdateTickerList()
         {
             List<string> tickerStrings = new List<string>();
@@ -174,7 +176,9 @@ namespace Ticker501TeamProject2
             }
             uxLBAllStock.DataSource = tickerStrings;
         }
-
+        /// <summary>
+        /// Keeps the buy sell buttons disabled when there is no portfolio selected
+        /// </summary>
         private void UpdateBuySellState()
         {
             if(uxLBSelecPort.SelectedItem == null)
@@ -187,7 +191,9 @@ namespace Ticker501TeamProject2
                 uxBSellStock.Enabled = true;
             }
         }
-
+        /// <summary>
+        /// Adds the tickers to be bought or sold in the DUD. Being a pain to update.
+        /// </summary>
         private void UpdateSelectStock()
         {
             uxDUDSelecStock.Items.Clear();
@@ -201,7 +207,10 @@ namespace Ticker501TeamProject2
             uxDUDSelecStock.SelectedIndex = 1;
             uxDUDSelecStock.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Sets the percents for the portfolio
+        /// </summary>
+        /// <param name="p"></param>
         private void UpdatePortInfo(Portfolio p)
         {
             
@@ -217,7 +226,9 @@ namespace Ticker501TeamProject2
             UpdatePortGainsLosses(p);
         }
 
-
+        /// <summary>
+        /// Sets the TB with the gain loss for the account
+        /// </summary>
         private void UpdateAccGainsLosses()
         {
             if (_acct.ChangeInFunds < 0)
@@ -227,7 +238,10 @@ namespace Ticker501TeamProject2
             else
                 uxTBGainLoss.Text = _acct.ChangeInFunds.ToString("C");
         }
-
+        /// <summary>
+        /// Sets the TB with the gain loss for the portfolio
+        /// </summary>
+        /// <param name="selectedPortfolio"></param>
         private void UpdatePortGainsLosses(Portfolio selectedPortfolio)
         {
             //Portfolio selectedPortfolio = uxLBSelecPort.SelectedItem as Portfolio;
@@ -292,7 +306,11 @@ namespace Ticker501TeamProject2
             );
         }
         #endregion uxPanPortfoliosCreateDelete
-
+        /// <summary>
+        /// Triggers when the selected port is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxLBSelecPort_SelectedIndexChanged(object sender, EventArgs e)
         {
             _inputHandle(new Event(uxLBSelecPort.SelectedItem.ToString(), "portView"))
@@ -305,6 +323,11 @@ namespace Ticker501TeamProject2
         }
 
         #region uxPanBuySellStock
+        /// <summary>
+        /// Triggers the buy event and causes updates
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxBuyStock_Click(object sender, EventArgs e)
         {
             string selectedStock = uxDUDSelecStock.SelectedItem.ToString().Split(new[] { ' ', '-' })[0];
@@ -317,6 +340,11 @@ namespace Ticker501TeamProject2
             _inputHandle(new Event("portStats"));
             _inputHandle(new Event("accountStats"));
         }
+        /// <summary>
+        /// Triggers the sell event and causes updates
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxBSellStock_Click(object sender, EventArgs e)
         {
             string selectedStock = uxDUDSelecStock.SelectedItem.ToString().Split(new[] { ' ', '-' })[0];
@@ -331,6 +359,11 @@ namespace Ticker501TeamProject2
         }
         #endregion uxPanBuySellStock
 
+        /// <summary>
+        /// Triggers the simulate event and causes updates
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxBSimulatePrice_Click(object sender, EventArgs e)
         {
             _inputHandle(new Event(uxDUDSelecVolatilty.SelectedItem.ToString(), "simulate"))
