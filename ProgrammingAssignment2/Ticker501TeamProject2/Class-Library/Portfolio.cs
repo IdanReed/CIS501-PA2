@@ -1,4 +1,10 @@
-﻿using System;
+﻿/// <summary>
+/// Portfolio
+/// Holds all of the stocks in the portfolio as well as its name
+/// </summary>
+/// <param name="price"></param>
+/// <returns></returns>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +14,29 @@ namespace Class_Library
 {
     public class Portfolio
     {
-        private List<StockPurchase> _stocks;
-        private string _name;
-        private double _cashValue = 0;
-        private int _amountStocks = 0;
-        private double _changeInValue = 0;
-        private double _totalFees = 0;
-        
+        private List<StockPurchase> _stocks;//List of stocks held in the portfolio
+        private string _name;//name given to the portfolio
+        private double _cashValue = 0;//cash value of all of the stocks in the portfolio
+        private int _amountStocks = 0;//total amount of stocks held
+        private double _changeInValue = 0;//Change in value over time in the portfolio
+        private double _totalFees = 0;//total amount of fees accrued from trades
 
+        
+        /// <summary>
+        /// PortfolioConstructor
+        /// Takes a name for the portfolio and initializes the List of stocks
+        /// </summary>
+        /// <param name="price"></param>
+        /// <returns></returns>
         public Portfolio(string name)
         {
             _name = name;
             _stocks = new List<StockPurchase>();
         }
+
+        /*
+         * Getters/Setters
+         */
         #region Getters/Setters
         public int AmountStocks
         {
@@ -94,6 +110,14 @@ namespace Class_Library
         }
         #endregion
 
+
+        
+        /// <summary>
+        /// GetInitValue
+        /// Gets the initial value of all of the stocks for comparison to current values
+        /// </summary>
+        /// <param name="price"></param>
+        /// <returns></returns>
         public double GetInitValue()
         {
             double initVal = 0;
@@ -104,6 +128,13 @@ namespace Class_Library
             return initVal;
          }
 
+        
+        /// <summary>
+        /// ToString
+        /// Returns the portfolios statistics in string format
+        /// </summary>
+        /// <param name="price"></param>
+        /// <returns></returns>
         public override string ToString()
         {
             string temp = "";
