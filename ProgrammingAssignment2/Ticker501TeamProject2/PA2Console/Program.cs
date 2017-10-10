@@ -10,6 +10,10 @@ namespace PA2Console
     using Class_Library;
     class Program
     {
+        /// <summary>
+        /// The main entry point for the console project
+        /// </summary>
+        /// <param name="args">The args passed in from the command line</param>
         static void Main(string[] args)
         {
             List<Ticker> tickers = GetTickers();
@@ -24,6 +28,10 @@ namespace PA2Console
             inputView.Start();
         } 
 
+        /// <summary>
+        /// Gets the tickers from the "ticker.txt" file
+        /// </summary>
+        /// <returns>The list of tickers</returns>
         static List<Ticker> GetTickers()
         {
             StreamReader sr = new StreamReader("ticker.txt");
