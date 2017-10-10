@@ -16,13 +16,14 @@ namespace Ticker501TeamProject2
         private InputHandler _inputHandle;
         private Account _acct;
         private List<Ticker> _tickers;
+
+
         /// <summary>
         /// Sets up the class varibles also fills volitiliy select and makes sure that the correct buttons are enabled.
         /// </summary>
         /// <param name="a"></param>
         /// <param name="tickers"></param>
         /// <param name="inputHander"></param>
-        
         public MainGUI(Account a, List<Ticker> tickers, InputHandler inputHander)
         {
             _inputHandle = inputHander;
@@ -62,6 +63,7 @@ namespace Ticker501TeamProject2
                     UpdatePortLBs();
                     UpdateBuySellState();
                     UpdateAccStocksHeld();
+                    UpdatePortStocks(e.Data as Portfolio);
                     break;
                 case "portStats":
                     UpdatePortStocks(e.Data as Portfolio);
