@@ -67,6 +67,7 @@ namespace Ticker501TeamProject2
                     UpdateAccGainsLosses();
                     UpdatePortGainsLosses(e.Data as Portfolio);
                     UpdatePortInfo(e.Data as Portfolio);
+                    uxTBFundsAmount.Text = "$" + _acct.Funds.ToString("N2");
                     break;
                 case "portStats":
                     UpdatePortStocks(e.Data as Portfolio);
