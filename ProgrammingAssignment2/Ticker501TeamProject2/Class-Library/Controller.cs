@@ -287,7 +287,7 @@ namespace Class_Library
             {
                 if(s.Ticker.Tag == t.Tag)
                 {
-                    _acct.Funds += s.TotalPrice + TRADE_FEE;
+                    _acct.Funds += s.TotalPrice - TRADE_FEE;
                     //Say transfer has occured
                     _currentPortfolio.Stocks.Remove(s);
 
