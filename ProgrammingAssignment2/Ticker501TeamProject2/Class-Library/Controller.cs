@@ -118,6 +118,9 @@ namespace Class_Library
                 case "accountBalance": //need to fix this for InputView, not sure how
                     Broadcast(new Event("accountBalance"));
                     break;
+                case "deleteAllPortfolios":
+                    DeleteAllPortfolios();
+                    break;
 
                 //Portfolio Events
                 case "deletePort":
@@ -145,6 +148,9 @@ namespace Class_Library
                 case "portStats":
                     Broadcast(new Event(_currentPortfolio, "portStats"));
                     break;
+                case "showPortStocks":
+                    Broadcast(new Event(_currentPortfolio, "showPortStocks"));
+                    break;
 
                 //Ticker Events
                 case "simulate":
@@ -155,6 +161,16 @@ namespace Class_Library
           
             }
             //Broadcast(new Event(""));
+            return Error.None;
+        }
+
+        private Error DeleteAllPortfolios()
+        {
+            while (_acct.Portfolios.Count > 0)
+            {
+                Portfolio p = _acct.Portfolios[0];
+                DeletePortfolio(p.Name);
+            }
             return Error.None;
         }
 
@@ -177,8 +193,8 @@ namespace Class_Library
             {
                 _acct.Funds -= amount + DEPOSIT_FEE;
                 _acct.DepositFees += DEPOSIT_FEE;
-                _acct.CurValue -= amount;
-
+                //_acct.CurValue -= amount;
+                _acct.CurValue = _acct.CurValue - amount;
                 //Broadcast(new Event("depositWithdraw"));
                 //Do gains/losses stuff with the tranfer fee
                 return Error.None;
@@ -191,6 +207,7 @@ namespace Class_Library
         }
         private Error NewPortfolio(string name)
         {
+            if (name.Length == 0) return new Error("Please enter a name for the new portfolio");
             if (_acct.Portfolios.Count < MAX_PORTFOLIOS)
             {
                 Portfolio newPortfolio = new Portfolio(name);
@@ -210,13 +227,14 @@ namespace Class_Library
             
             Portfolio p = _acct.Portfolios.Find(port => port.Name == name);
 
-            if (p == null) return new Error("A portfolio with that name does not exsist.");
+            if (p == null) return new Error("A portfolio with that name does not exist.");
             double totalWorth = 0;
             foreach (StockPurchase s in p.Stocks)
             {
                 totalWorth += s.TotalPrice;
             }
-            _acct.Funds += totalWorth;
+            _acct.Funds += totalWorth - TRADE_FEE;
+            _acct.DepositFees -= p.ChangeInValue - TRADE_FEE;
             Broadcast(new Event("accountBalance"));
             _acct.Portfolios.Remove(p);
             return Error.None;
@@ -237,15 +255,15 @@ namespace Class_Library
             }
             else
             {
-                return new Error("A portfolio with that name does not exsist");
+                return new Error("A portfolio with that name does not exist");
             }
         }
        
         private Error PortBuy(string tickerName, int amt)
         {
-            Ticker t = GetTickerByAbbr(tickerName);
+            Ticker t = GetTickerByAbbr(tickerName.ToUpper());
 
-            if (t == null) return new Error("A stock with that abbreviation does not exsist.");
+            if (t == null) return new Error("A stock with that abbreviation does not exist.");
     
             double totalCost = (t.Price * amt) + TRADE_FEE;
             if (totalCost > _acct.Funds)
@@ -271,24 +289,39 @@ namespace Class_Library
         {
             Ticker t = GetTickerByAbbr(tickerName);
 
-            if (t == null) return new Class_Library.Error("A stock with that abbreviation does not exsist.");
+            if (t == null) return new Class_Library.Error("A stock with that abbreviation does not exist.");
 
             int amount = (int)(cost / t.Price);
             _currentPortfolio.TotalFees += TRADE_FEE;
             return PortBuy(tickerName, amount);
         }
-        private Error PortSell(string tickerName, double amt)
+        private Error PortSell(string tickerName, int amt)
         {
             Ticker t = GetTickerByAbbr(tickerName);
-            if (t == null) return new Error("A stock with that abbreviation does not exsist.");
+            if (t == null) return new Error("A stock with that abbreviation does not exist.");
 
             foreach(StockPurchase s in _currentPortfolio.Stocks)
             {
                 if(s.Ticker.Tag == t.Tag)
                 {
-                    _acct.Funds += s.TotalPrice + TRADE_FEE;
+
                     //Say transfer has occured
-                    _currentPortfolio.Stocks.Remove(s);
+                    if (amt > s.Amount) return new Error("You don't have that many stocks to sell");
+                    else if(amt == s.Amount)
+                    {
+                        _currentPortfolio.Stocks.Remove(s);
+                        _acct.Funds += s.Ticker.Price * amt - TRADE_FEE;
+                        _currentPortfolio.TotalFees -= s.TotalPrice - s.InitPrice;
+                    }
+                    else
+                    {
+                        _currentPortfolio.TotalFees -= s.Ticker.Price * amt - (s.InitPrice / s.Amount) * amt;
+                        s.InitPrice = s.InitPrice / s.Amount * (s.Amount - amt);
+                        s.Amount -= amt;
+                        _acct.Funds += s.Ticker.Price * amt - TRADE_FEE;
+ 
+                    }
+
 
                     _currentPortfolio.TotalFees += TRADE_FEE;
                     return Error.None;

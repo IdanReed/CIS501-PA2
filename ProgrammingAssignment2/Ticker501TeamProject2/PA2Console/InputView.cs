@@ -31,7 +31,7 @@ namespace PA2Console
             _portfolioMenu = new MenuHelper("Please select an option below:");
             _portfolioMenu
                 .Add("Buy Stocks", PortBuy)
-                .Add("Sell Stocks", null)
+                .Add("Sell Stocks", PortSell)
                 .Add("View Portfolio Statistics", PortStats);
                 
         }
@@ -250,7 +250,71 @@ namespace PA2Console
 
         private void PortSell()
         {
-            
+            /*
+             * if (port.stocks.Count == 0)
+            {
+                Console.WriteLine("You have no stocks to view. Use \"buy\" to start investing.");
+            }
+            else
+            {
+                Console.WriteLine("Stocks available to sell: ");
+                foreach (Stock s in port.stocks)
+                {
+                    Console.WriteLine("\t" + s.ToString());
+                }
+
+                bool found = false;
+
+                while (!found)
+                {
+                    Console.Write("Enter ticker for stock to sell: ");
+                    string tick = Console.ReadLine();
+                    if (tick == "exit") return;
+                    Stock sellStock = new Stock();
+                    foreach (Stock s in port.stocks)
+                    {
+
+                        if (s.ticker.Tag == tick)
+                        {
+                            funds += s.TotalPrice - 9.99;
+                            Console.WriteLine("A fee of 9.99 has been deducted for the transfer.");
+                            Console.WriteLine("Your current balance: " + funds.ToString("C"));
+                            port.stocks.Remove(s);
+                            found = true;
+                        }
+                        if (found) break;
+
+                    }
+                    if (!found)
+                    {
+                        Console.WriteLine("Ticker not found!");
+                    }
+                }
+            }*/
+            bool canContinue;
+            do
+            {
+                canContinue = true;
+                _inputHandler(new Event("showPortStocks"));
+                MenuHelper.PromptString(
+                    "Enter the abbreviation of the stock you'd like to sell",
+                    "Abbreviation: "
+                    ).Then(abbreviation =>
+                    {
+                        MenuHelper.PromptInt(
+                            "Enter the number of stocks you'd like to sell of " + abbreviation,
+                            "Amount: "
+                            ).Then(amount =>
+                            {
+                                _inputHandler(new Event(Tuple.Create(abbreviation, amount), "portSell")).Catch(e =>
+                                {
+                                    MenuHelper.PrintError(e);
+                                    canContinue = false;
+                                });
+                            });
+                    });
+
+            } while (!canContinue);
         }
         private void PortStats()
         {
@@ -291,6 +355,7 @@ namespace PA2Console
 
         private void Exit()
         {
+            _inputHandler(new Event("deleteAllPortfolios"));
             _inputHandler(new Event("accountStats"));
             Environment.Exit(0);
         }

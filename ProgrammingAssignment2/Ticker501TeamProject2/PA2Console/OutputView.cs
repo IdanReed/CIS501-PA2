@@ -38,6 +38,10 @@ namespace PA2Console
                     Portfolio p = e.Data as Portfolio;
                     ShowPortfolioStats(p);
                     break;
+                case "showPortStocks":
+                    Portfolio port2 = e.Data as Portfolio;
+                    ShowPortStocks(port2);
+                    break;
             }            
         }
 
@@ -46,6 +50,13 @@ namespace PA2Console
             //Do display stuff
             //Build amount
             Console.WriteLine("Funds: ${0}", _acct.Funds.ToString("N2"));
+            //Build Account level gain/loss
+            Console.Write("Account Gain/Loss: ");
+            if (_acct.ChangeInFunds < 0)
+            {
+                Console.Write("-");
+            }
+            Console.WriteLine("{0}", _acct.ChangeInFunds.ToString("C"));
             MenuHelper.PressEnter();
         }
 
@@ -61,6 +72,14 @@ namespace PA2Console
             {
                 Console.WriteLine("\t{0}", t.ToString());
             }
+        }
+        private void ShowPortStocks(Portfolio p)
+        {
+            foreach (StockPurchase s in p.Stocks)
+            {
+                Console.WriteLine(s.ToString());
+            }
+
         }
         private void ShowPortfolios()
         {
@@ -83,11 +102,14 @@ namespace PA2Console
 
                     Console.WriteLine("\t" + s.TotalPrice.ToString("C") + "\t- Cash Value %: (" + String.Format("{0:P2}", percent) + ") - # Stocks (" + s.Amount + "): [" + String.Format("{0:P2}", numPercent) + "] - " + s.Ticker.Tag + " " + s.Ticker.Name);
                 }
+
+
             }
             else
             {
                 Console.WriteLine("You have no stocks to view");
             }
+            Console.WriteLine("Gains\\Losses ${0}", p.ChangeInValue.ToString("N2"));
         }
     }
 }
