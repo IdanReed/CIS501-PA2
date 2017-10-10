@@ -118,6 +118,9 @@ namespace Class_Library
                 case "accountBalance": //need to fix this for InputView, not sure how
                     Broadcast(new Event("accountBalance"));
                     break;
+                case "deleteAllPortfolios":
+                    DeleteAllPortfolios();
+                    break;
 
                 //Portfolio Events
                 case "deletePort":
@@ -158,6 +161,16 @@ namespace Class_Library
           
             }
             //Broadcast(new Event(""));
+            return Error.None;
+        }
+
+        private Error DeleteAllPortfolios()
+        {
+            while (_acct.Portfolios.Count > 0)
+            {
+                Portfolio p = _acct.Portfolios[0];
+                DeletePortfolio(p.Name);
+            }
             return Error.None;
         }
 
@@ -220,7 +233,8 @@ namespace Class_Library
             {
                 totalWorth += s.TotalPrice;
             }
-            _acct.Funds += totalWorth;
+            _acct.Funds += totalWorth - TRADE_FEE;
+            _acct.DepositFees -= p.ChangeInValue - TRADE_FEE;
             Broadcast(new Event("accountBalance"));
             _acct.Portfolios.Remove(p);
             return Error.None;

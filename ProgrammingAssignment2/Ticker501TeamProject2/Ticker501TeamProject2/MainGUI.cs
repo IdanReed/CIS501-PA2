@@ -64,6 +64,9 @@ namespace Ticker501TeamProject2
                     UpdateBuySellState();
                     UpdateAccStocksHeld();
                     UpdatePortStocks(e.Data as Portfolio);
+                    UpdateAccGainsLosses();
+                    UpdatePortGainsLosses(e.Data as Portfolio);
+                    UpdatePortInfo(e.Data as Portfolio);
                     break;
                 case "portStats":
                     UpdatePortStocks(e.Data as Portfolio);
@@ -215,17 +218,25 @@ namespace Ticker501TeamProject2
         /// <param name="p"></param>
         private void UpdatePortInfo(Portfolio p)
         {
-            
-            double accountValue = 0;
-            foreach(Portfolio port in _acct.Portfolios)
+            if(p == null)
             {
-                accountValue += port.CashValue;
+                uxTBPortPercentOfAcc.Text = "";
+                uxTBAmountInvested.Text = "";
             }
-            uxTBAmountInvested.Text = String.Format("{0:0.00}",p.CashValue);
+            else
+            {
+                double accountValue = 0;
+                foreach (Portfolio port in _acct.Portfolios)
+                {
+                    accountValue += port.CashValue;
+                }
+                uxTBAmountInvested.Text = String.Format("{0:0.00}", p.CashValue);
 
-            if(!(accountValue == 0)){ uxTBPortPercentOfAcc.Text = String.Format("{0:0.00}", (p.CashValue / accountValue * 100)) + "%"; }
+                if (!(accountValue == 0)) { uxTBPortPercentOfAcc.Text = String.Format("{0:0.00}", (p.CashValue / accountValue * 100)) + "%"; }
+
+                UpdatePortGainsLosses(p);
+            }
             
-            UpdatePortGainsLosses(p);
         }
 
         /// <summary>
@@ -247,12 +258,12 @@ namespace Ticker501TeamProject2
         private void UpdatePortGainsLosses(Portfolio selectedPortfolio)
         {
             //Portfolio selectedPortfolio = uxLBSelecPort.SelectedItem as Portfolio;
-            if (selectedPortfolio.ChangeInValue < 0)
+            if (selectedPortfolio?.ChangeInValue < 0)
             {
                 uxTBPortGainLoss.Text = "-" + selectedPortfolio.ChangeInValue.ToString("C");
             }
             else
-                uxTBPortGainLoss.Text = selectedPortfolio.ChangeInValue.ToString("C");
+                uxTBPortGainLoss.Text = selectedPortfolio?.ChangeInValue.ToString("C");
         }
         #endregion OutputForm 
         

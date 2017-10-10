@@ -355,6 +355,7 @@ namespace PA2Console
 
         private void Exit()
         {
+            _inputHandler(new Event("deleteAllPortfolios"));
             _inputHandler(new Event("accountStats"));
             Environment.Exit(0);
         }
