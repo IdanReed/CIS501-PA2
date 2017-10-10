@@ -177,8 +177,8 @@ namespace Class_Library
             {
                 _acct.Funds -= amount + DEPOSIT_FEE;
                 _acct.DepositFees += DEPOSIT_FEE;
-                _acct.CurValue -= amount;
-
+                //_acct.CurValue -= amount;
+                _acct.CurValue = _acct.CurValue - amount;
                 //Broadcast(new Event("depositWithdraw"));
                 //Do gains/losses stuff with the tranfer fee
                 return Error.None;
@@ -191,6 +191,7 @@ namespace Class_Library
         }
         private Error NewPortfolio(string name)
         {
+            if (name.Length == 0) return new Error("Please enter a name for the new portfolio");
             if (_acct.Portfolios.Count < MAX_PORTFOLIOS)
             {
                 Portfolio newPortfolio = new Portfolio(name);

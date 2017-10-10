@@ -75,13 +75,7 @@ namespace Class_Library
         {
             get
             {
-                double portValue = 0;
-                foreach(Portfolio p in _portfolios)
-                {
-                    portValue += p.CashValue;
-                }
-
-                return _curValue + portValue;
+                return _curValue;
             }
             set
             {
