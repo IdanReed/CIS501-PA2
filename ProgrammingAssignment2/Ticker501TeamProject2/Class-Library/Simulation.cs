@@ -1,4 +1,10 @@
-﻿using System;
+﻿/// <summary>
+/// Simulation
+/// Returns a new price for a stock based on a volatility
+/// </summary>
+/// <param name="price"></param>
+/// <returns></returns>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +14,32 @@ namespace Class_Library
 {
     public class Simulation
     {
-        private string _volatility; 
+        private string _volatility; //Volatility of the market
+
+
         
+        /// <summary>
+        /// Simulation Constructor
+        /// gets the volatility for the simulation
+        /// </summary>
+        /// <param name="price"></param>
+        /// <returns></returns>
         public Simulation (string vol)
         {
             _volatility = vol;
         }
 
+        /*
+         * Getters/Setters
+         */
+        #region Getters/Setters
         public string Volatility
         {
             get { return _volatility; }
             set { _volatility = value; }
         }
+        #endregion
 
-     
         /// <summary>
         /// GetAdjustedPrice
         /// returns a new price that varies depending on the current volatility
