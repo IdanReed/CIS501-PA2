@@ -38,6 +38,10 @@ namespace PA2Console
                     Portfolio p = e.Data as Portfolio;
                     ShowPortfolioStats(p);
                     break;
+                case "showPortStocks":
+                    Portfolio port2 = e.Data as Portfolio;
+                    ShowPortStocks(port2);
+                    break;
             }            
         }
 
@@ -69,6 +73,14 @@ namespace PA2Console
                 Console.WriteLine("\t{0}", t.ToString());
             }
         }
+        private void ShowPortStocks(Portfolio p)
+        {
+            foreach (StockPurchase s in p.Stocks)
+            {
+                Console.WriteLine(s.ToString());
+            }
+
+        }
         private void ShowPortfolios()
         {
             Console.WriteLine("Here are your current portfolios");
@@ -90,11 +102,14 @@ namespace PA2Console
 
                     Console.WriteLine("\t" + s.TotalPrice.ToString("C") + "\t- Cash Value %: (" + String.Format("{0:P2}", percent) + ") - # Stocks (" + s.Amount + "): [" + String.Format("{0:P2}", numPercent) + "] - " + s.Ticker.Tag + " " + s.Ticker.Name);
                 }
+
+
             }
             else
             {
                 Console.WriteLine("You have no stocks to view");
             }
+            Console.WriteLine("Gains\\Losses ${0}", p.ChangeInValue.ToString("N2"));
         }
     }
 }

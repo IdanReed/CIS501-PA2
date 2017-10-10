@@ -70,13 +70,13 @@ namespace Class_Library
         {
             get
             {
-                double initValue = 0;
+                /*double initValue = 0;
                 foreach(StockPurchase sp in Stocks)
                 {
                     initValue += sp.InitPrice;
-                }
+                }*/
                 
-                return (CashValue - initValue - _totalFees);
+                return (-_totalFees);
             }
            
         }
@@ -89,7 +89,7 @@ namespace Class_Library
             }
             set
             {
-                _totalFees += value;
+                _totalFees = value;
             }
         }
         #endregion

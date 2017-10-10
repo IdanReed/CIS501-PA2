@@ -29,6 +29,7 @@ namespace Class_Library
         public double InitPrice
         {
             get { return _initPrice; }
+            set { _initPrice = value; }
         }
 
         public double TotalPrice

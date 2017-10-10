@@ -145,6 +145,9 @@ namespace Class_Library
                 case "portStats":
                     Broadcast(new Event(_currentPortfolio, "portStats"));
                     break;
+                case "showPortStocks":
+                    Broadcast(new Event(_currentPortfolio, "showPortStocks"));
+                    break;
 
                 //Ticker Events
                 case "simulate":
@@ -211,7 +214,7 @@ namespace Class_Library
             
             Portfolio p = _acct.Portfolios.Find(port => port.Name == name);
 
-            if (p == null) return new Error("A portfolio with that name does not exsist.");
+            if (p == null) return new Error("A portfolio with that name does not exist.");
             double totalWorth = 0;
             foreach (StockPurchase s in p.Stocks)
             {
@@ -238,15 +241,15 @@ namespace Class_Library
             }
             else
             {
-                return new Error("A portfolio with that name does not exsist");
+                return new Error("A portfolio with that name does not exist");
             }
         }
        
         private Error PortBuy(string tickerName, int amt)
         {
-            Ticker t = GetTickerByAbbr(tickerName);
+            Ticker t = GetTickerByAbbr(tickerName.ToUpper());
 
-            if (t == null) return new Error("A stock with that abbreviation does not exsist.");
+            if (t == null) return new Error("A stock with that abbreviation does not exist.");
     
             double totalCost = (t.Price * amt) + TRADE_FEE;
             if (totalCost > _acct.Funds)
@@ -272,24 +275,39 @@ namespace Class_Library
         {
             Ticker t = GetTickerByAbbr(tickerName);
 
-            if (t == null) return new Class_Library.Error("A stock with that abbreviation does not exsist.");
+            if (t == null) return new Class_Library.Error("A stock with that abbreviation does not exist.");
 
             int amount = (int)(cost / t.Price);
             _currentPortfolio.TotalFees += TRADE_FEE;
             return PortBuy(tickerName, amount);
         }
-        private Error PortSell(string tickerName, double amt)
+        private Error PortSell(string tickerName, int amt)
         {
             Ticker t = GetTickerByAbbr(tickerName);
-            if (t == null) return new Error("A stock with that abbreviation does not exsist.");
+            if (t == null) return new Error("A stock with that abbreviation does not exist.");
 
             foreach(StockPurchase s in _currentPortfolio.Stocks)
             {
                 if(s.Ticker.Tag == t.Tag)
                 {
-                    _acct.Funds += s.TotalPrice + TRADE_FEE;
+
                     //Say transfer has occured
-                    _currentPortfolio.Stocks.Remove(s);
+                    if (amt > s.Amount) return new Error("You don't have that many stocks to sell");
+                    else if(amt == s.Amount)
+                    {
+                        _currentPortfolio.Stocks.Remove(s);
+                        _acct.Funds += s.Ticker.Price * amt - TRADE_FEE;
+                        _currentPortfolio.TotalFees -= s.TotalPrice - s.InitPrice;
+                    }
+                    else
+                    {
+                        _currentPortfolio.TotalFees -= s.Ticker.Price * amt - (s.InitPrice / s.Amount) * amt;
+                        s.InitPrice = s.InitPrice / s.Amount * (s.Amount - amt);
+                        s.Amount -= amt;
+                        _acct.Funds += s.Ticker.Price * amt - TRADE_FEE;
+ 
+                    }
+
 
                     _currentPortfolio.TotalFees += TRADE_FEE;
                     return Error.None;

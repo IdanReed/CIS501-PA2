@@ -75,6 +75,14 @@ namespace Class_Library
         {
             get
             {
+                /*
+                double portValue = 0;
+                foreach(Portfolio p in _portfolios)
+                {
+                    portValue += p.CashValue;
+                }
+
+                return _curValue + portValue;*/
                 return _curValue;
             }
             set
@@ -91,9 +99,9 @@ namespace Class_Library
                 double curValue = 0;
                 foreach(Portfolio p in _portfolios)
                 {
-                    curValue += p.CashValue;
+                    curValue += p.ChangeInValue;
                 }
-                return (_funds + curValue) - _curValue;
+                return curValue - DepositFees;
             }
         }
 
