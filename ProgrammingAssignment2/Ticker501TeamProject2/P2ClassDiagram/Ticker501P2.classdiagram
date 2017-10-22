@@ -2474,8 +2474,41 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="2aec80ef-c623-41b3-9b43-ed95af484ee8" name="Class2" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="2aec80ef-c623-41b3-9b43-ed95af484ee8" name="ConsoleProgram" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="8d47216d-dfb0-43f8-89e2-8bd2d68a7f9e" />
+        <ownedOperationsInternal>
+          <operation Id="b8913a19-cc18-409f-bc24-16d5fbb01d56" name="Main" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3e4babb4-db6d-4cf7-b965-2ba1923a477a" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b6475693-b2d9-4d18-926e-0188a032c9df" name="string[]" direction="In" isUnique="false">
+                  <elementDefinition Id="efad8610-4b49-4c48-8f67-773ad2503323" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0af7be89-1e57-43ed-82e8-c0b2414290e6" direction="Return" isUnique="false">
+                  <elementDefinition Id="47072dad-0ae9-4f1c-9e0c-7d3a41a35288" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="d25121e0-d37e-4a28-bc40-fc374aa01573" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="4cc1221c-dd3b-45ab-8b2d-788f24b49313" name="GetTickers" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="201b3b78-a8df-445f-ad4b-7efe2e6a0882" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a246225b-f539-4823-8b6b-a6eb9e267fe5" direction="Return" isUnique="false">
+                  <elementDefinition Id="207b502e-956a-4d9c-8a25-4979a4e2597c" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="19a1dd95-0721-435b-ac16-733aff924fd8" LastKnownName="List&lt;Ticker&gt;" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
   </packagedElements>
