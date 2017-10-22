@@ -2474,8 +2474,34 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="2aec80ef-c623-41b3-9b43-ed95af484ee8" name="ConsoleProgram" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="2aec80ef-c623-41b3-9b43-ed95af484ee8" name="Program(Ticker501-Console)" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="8d47216d-dfb0-43f8-89e2-8bd2d68a7f9e" />
+        <suppliersInternal>
+          <dependency Id="c88d5035-2d5c-42f6-931e-f939cb4a9e58">
+            <classMoniker Id="0f35493d-27cf-4ebc-bafe-32378090fdb5" LastKnownName="InputView1" />
+            <elementDefinition Id="0adb921f-e913-4db5-83ed-12c519528736" />
+          </dependency>
+          <dependency Id="1b594561-0f17-4473-bb21-4e81ad3f6ab4">
+            <classMoniker Id="a87de77b-c401-476b-87ca-5b915e26728b" LastKnownName="OutputView1" />
+            <elementDefinition Id="57686a40-3af1-4e75-9609-cbad1acb3d00" />
+          </dependency>
+          <dependency Id="960932d8-b14b-4459-94c1-de60d0784919">
+            <classMoniker Id="19de9aa5-b6df-444f-8811-f9a76a737b18" LastKnownName="Controller" />
+            <elementDefinition Id="9a512a30-b9b4-4e21-b598-2c2e8f05f1d2" />
+          </dependency>
+          <dependency Id="5104a20d-4bce-4392-828b-42155ec118c7">
+            <classMoniker Id="fdb6a1ad-f3f5-4a33-8acb-5d4ba72b91f3" LastKnownName="Account" />
+            <elementDefinition Id="4cedd73c-3c00-48a2-b418-78bb678b83a1" />
+          </dependency>
+          <dependency Id="ccd83045-d047-4afe-9028-c7b51efef140">
+            <classMoniker Id="8780faec-dd96-4155-a316-14a36a5402c1" LastKnownName="Ticker" />
+            <elementDefinition Id="e70503b7-0658-4806-95c5-6c329cb38376" />
+          </dependency>
+          <dependency Id="adf4ce03-c23f-43c0-ae3e-ac3aef197ad9">
+            <classMoniker Id="9c97ed64-cb76-4a30-9438-66b76d26cfba" LastKnownName="Simulation" />
+            <elementDefinition Id="65bc0683-0df4-410d-b457-c9f4d3f5ef0b" />
+          </dependency>
+        </suppliersInternal>
         <ownedOperationsInternal>
           <operation Id="b8913a19-cc18-409f-bc24-16d5fbb01d56" name="Main" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="3e4babb4-db6d-4cf7-b965-2ba1923a477a" />
@@ -2503,6 +2529,76 @@
                   <elementDefinition Id="207b502e-956a-4d9c-8a25-4979a4e2597c" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="19a1dd95-0721-435b-ac16-733aff924fd8" LastKnownName="List&lt;Ticker&gt;" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="3a78d3b7-042a-43d2-a44d-024f938303c6" name="void" isAbstract="false" isLeaf="false" cachedFullName="void">
+        <elementDefinition Id="04af9eb4-fddf-419d-8de3-4826f5991afe" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="71d2def6-db84-4d0a-abe5-dc41f1eff65e" name="List&lt;Ticker&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Ticker&gt;">
+        <elementDefinition Id="3b2259c7-b6ae-4dd9-a000-88e19a86a042" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d8afd952-4545-4ab9-9586-69ef21c922c1" name="Program(Ticker501-GUI)" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5f05a2da-bf82-4a09-85d8-d90a85a22b44" />
+        <suppliersInternal>
+          <dependency Id="0dd11dbb-4245-4225-9aaf-9519207bff81">
+            <classMoniker Id="40593509-ce94-4bc6-9a09-7ba7107b9ab3" LastKnownName="MainGUI1" />
+            <elementDefinition Id="f25ac1d4-9d7e-4e69-87c3-43597c5be7a7" />
+          </dependency>
+          <dependency Id="27acba57-4158-45ba-ad0b-20e4f7ab2dfd">
+            <classMoniker Id="19de9aa5-b6df-444f-8811-f9a76a737b18" LastKnownName="Controller" />
+            <elementDefinition Id="7d99ca7a-2ad9-4b40-8f1a-033bab02d88e" />
+          </dependency>
+          <dependency Id="5305bf94-04ad-4af4-8dac-1b0eaf54d24b">
+            <classMoniker Id="fdb6a1ad-f3f5-4a33-8acb-5d4ba72b91f3" LastKnownName="Account" />
+            <elementDefinition Id="7eeef39e-3d66-490b-aad6-1ace39aa46b2" />
+          </dependency>
+          <dependency Id="210d590e-13c3-46a8-a6ef-65cd7cf0aa63">
+            <classMoniker Id="8780faec-dd96-4155-a316-14a36a5402c1" LastKnownName="Ticker" />
+            <elementDefinition Id="06a62ded-9f91-4910-bab0-4d7a8a3adf3c" />
+          </dependency>
+          <dependency Id="eb0b7c29-6cb4-430e-b9a5-ed078412b6f9">
+            <classMoniker Id="9c97ed64-cb76-4a30-9438-66b76d26cfba" LastKnownName="Simulation" />
+            <elementDefinition Id="cdd00c83-50a1-43e4-b479-253fb86745a8" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation Id="f1052e35-7a3c-4610-98ae-6bea0773e52a" name="Main" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="84b17854-6f9d-4597-ae26-610d397e2d34" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cdfd0445-e6be-48f7-b376-26ba79a6c99c" name="string[]" direction="In" isUnique="false">
+                  <elementDefinition Id="ba780861-22ac-4b3e-8309-ee10aef3a130" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="06b7975f-b330-4c67-9407-d7e8ca548c92" direction="Return" isUnique="false">
+                  <elementDefinition Id="2fd73604-3094-476d-a7a7-f37ad1483f7f" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="3a78d3b7-042a-43d2-a44d-024f938303c6" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="9f750d36-9fee-435f-914f-47eca2d677d5" name="GetTickers" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="08b538f2-f6b6-4823-9a36-150f7668abe5" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="aaf60b43-3dc3-41dd-ab7e-0d9899745593" direction="Return" isUnique="false">
+                  <elementDefinition Id="fb060581-8752-498e-812c-5e3ede00c6f7" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="71d2def6-db84-4d0a-abe5-dc41f1eff65e" LastKnownName="List&lt;Ticker&gt;" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
