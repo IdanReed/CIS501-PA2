@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6d943bc3-e071-407a-adc7-598f48118b1f" name="ReecesTestDiagram" linkedPackageId="19666535-25bd-4432-9df2-a62c5b9e6d16" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="fbb0e9e7-46aa-4708-9863-32a7a7f67ec8">
+      <profileInstance Id="2486f07b-9f01-4648-b23f-27420bf47309" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="a34f8cc6-d427-4b5b-a68b-108dbe342e51">
+      <profileInstance Id="a22cf7e2-ad3c-4c94-8561-7ccfe505957a" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8e721226-4bd0-431d-94b0-cc2f379f3b8e" name="Controller1" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="597b5d8f-2351-4286-bf47-a071a02fbce7" />
+        <ownedAttributesInternal>
+          <property Id="135b1fd7-9bd0-4ff9-93b7-7e02372ed3df" name="Account" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3de24c3b-204b-48dd-88d3-4479265e7175" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="29c28d7d-5669-4f87-a246-31e43a297f52" name="ConstructTickers" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7eefbeda-8be7-41c8-8510-43ef08330d3e" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="19666535-25bd-4432-9df2-a62c5b9e6d16" name="P2ClassDiagram">
+    <elementDefinition Id="c38f28c9-bacd-4d47-9d55-665b78c2078e" />
+  </package>
+</logicalClassDesignerModel>

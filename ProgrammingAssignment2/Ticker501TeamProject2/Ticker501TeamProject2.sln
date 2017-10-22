@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticker501-Console", "PA2Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class-Library", "Class-Library\Class-Library.csproj", "{4A39A390-69CF-426C-86B0-965AD6E0F4E4}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "P2ClassDiagram", "P2ClassDiagram\P2ClassDiagram.modelproj", "{E20BD745-FD37-4412-A871-20F2A27E45C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4A39A390-69CF-426C-86B0-965AD6E0F4E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A39A390-69CF-426C-86B0-965AD6E0F4E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A39A390-69CF-426C-86B0-965AD6E0F4E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E20BD745-FD37-4412-A871-20F2A27E45C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20BD745-FD37-4412-A871-20F2A27E45C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20BD745-FD37-4412-A871-20F2A27E45C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20BD745-FD37-4412-A871-20F2A27E45C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

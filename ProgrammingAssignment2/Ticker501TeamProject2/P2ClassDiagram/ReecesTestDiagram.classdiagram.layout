@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ReecesTestDiagram">
+  <logicalClassDesignerModelMoniker Id="6d943bc3-e071-407a-adc7-598f48118b1f" />
+  <nestedChildShapes>
+    <classShape Id="996f0a93-fbfb-41fe-ad90-d852087cdebe" absoluteBounds="4.375, 1.875, 1.5, 1.2226562251647315" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+      <classMoniker Id="8e721226-4bd0-431d-94b0-cc2f379f3b8e" LastKnownName="Controller1" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="ee4c1f38-d1f9-4255-9d07-4aa02e4e242e" absoluteBounds="4.39, 2.265, 1.4700000000000002, 0.36132811258236563" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="fe33dee1-05aa-4407-8eb0-b34e1f518d7d" absoluteBounds="4.39, 2.6363281125823654, 1.4700000000000002, 0.36132811258236575" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>
