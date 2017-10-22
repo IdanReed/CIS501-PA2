@@ -14,11 +14,11 @@
             <elementDefinition Id="ecdd2ab4-ef82-4d91-ace1-cd1a5d63696e" />
           </dependency>
           <dependency Id="c6700ed5-2c0c-4151-8bca-c9744af9bcaa">
-            <interfaceMoniker Id="a35a8510-df51-4228-af8b-c262ca05e685" LastKnownName="Observer1" />
+            <interfaceMoniker Id="a35a8510-df51-4228-af8b-c262ca05e685" LastKnownName="Observer" />
             <elementDefinition Id="17f25817-7336-4854-a564-0c2105025cbd" />
           </dependency>
           <dependency Id="4a0390ab-a9f7-41eb-b4de-413f34c81abc">
-            <interfaceMoniker Id="83e2d63e-bb16-4843-aed5-1b63319b6e80" LastKnownName="InputHandler1" />
+            <interfaceMoniker Id="83e2d63e-bb16-4843-aed5-1b63319b6e80" LastKnownName="InputHandler" />
             <elementDefinition Id="76e8df2d-da97-4b32-9ad3-dbb91acd8cba" />
           </dependency>
         </suppliersInternal>
@@ -1086,27 +1086,17 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="9f1e50e8-6fee-4114-b000-2cc7ca5bc31a" name="MenuHelper1" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="9f1e50e8-6fee-4114-b000-2cc7ca5bc31a" name="MenuHelper" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="9a11ea08-5a4f-4506-b8a5-4d024980d0fd" />
+        <suppliersInternal>
+          <dependency Id="244d69a2-c1b7-4e28-b3ba-89e135b8ec95">
+            <classMoniker Id="4c5398a1-8080-44b5-af7a-0bea44562a10" LastKnownName="MenuReturn&lt;T&gt;" />
+            <elementDefinition Id="7e80cd63-0af5-4495-8197-1f28f8416ceb" />
+          </dependency>
+        </suppliersInternal>
         <targetEnds>
-          <association Id="36fc5c2d-7e4c-469c-81c4-5e3cb9262d2b" isDerived="false" sourceEndRoleName="MenuHelper" targetEndRoleName="MenuReturn&lt;T&gt;" isLeaf="false" isAbstract="false">
-            <classMoniker Id="4c5398a1-8080-44b5-af7a-0bea44562a10" LastKnownName="MenuReturn&lt;T&gt;1" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="b30a0d0a-ad5a-49e7-a4ad-45c07a396896" name="MenuHelper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="013e5061-f1bd-46f2-a09b-b7a15738ccbe" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="3c7bb5ed-117d-41c0-9293-fcf7d6abe94b" name="MenuReturn&lt;T&gt;" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="40df70cb-f123-4b10-b837-3fe6773c2a85" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="f4f0f9ce-6a99-4c8b-bedd-63e398ab0d8a" />
-          </association>
           <association Id="bec571ad-9341-4aba-a53a-7244ccc7370c" isDerived="false" sourceEndRoleName="MenuHelper" targetEndRoleName="MenuItem" isLeaf="false" isAbstract="false">
-            <classMoniker Id="f4e09d4b-0dcf-4d08-a1b9-44379a836f5e" LastKnownName="MenuItem1" />
+            <classMoniker Id="f4e09d4b-0dcf-4d08-a1b9-44379a836f5e" LastKnownName="MenuItem" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="bbe77471-9f66-4d90-a32d-eb8f550b1fd5" name="MenuHelper" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -1503,7 +1493,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="4c5398a1-8080-44b5-af7a-0bea44562a10" name="MenuReturn&lt;T&gt;1" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="4c5398a1-8080-44b5-af7a-0bea44562a10" name="MenuReturn&lt;T&gt;" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="086727ec-e944-4f54-b253-2cad0e0a0f75" />
         <ownedAttributesInternal>
           <property Id="dc67ea39-e43d-487f-985d-455577404bbf" name="Continue" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -1545,7 +1535,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="f4e09d4b-0dcf-4d08-a1b9-44379a836f5e" name="MenuItem1" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="f4e09d4b-0dcf-4d08-a1b9-44379a836f5e" name="MenuItem" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="cf058290-809c-46f8-afe5-1285208db38e" />
         <ownedAttributesInternal>
           <property Id="9fafb803-485b-40d0-b81a-d7038c40d130" name="_text" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -1607,17 +1597,17 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="0f35493d-27cf-4ebc-bafe-32378090fdb5" name="InputView1" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="0f35493d-27cf-4ebc-bafe-32378090fdb5" name="InputView" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="1eb5818f-447d-4bad-9995-3585c9f4280c" />
         <suppliersInternal>
           <dependency Id="d5ad9234-1462-4440-aa7d-ac4d9a36b92e">
-            <classMoniker Id="9f1e50e8-6fee-4114-b000-2cc7ca5bc31a" LastKnownName="MenuHelper1" />
+            <classMoniker Id="9f1e50e8-6fee-4114-b000-2cc7ca5bc31a" LastKnownName="MenuHelper" />
             <elementDefinition Id="2c873ffd-188a-4b58-8fd1-dd26ee12482c" />
           </dependency>
         </suppliersInternal>
         <targetEnds>
           <association Id="ddd06663-cfe5-490e-9910-d42116fa0bab" isDerived="false" sourceEndRoleName="InputView" targetEndRoleName="InputHandler" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="83e2d63e-bb16-4843-aed5-1b63319b6e80" LastKnownName="InputHandler1" />
+            <interfaceMoniker Id="83e2d63e-bb16-4843-aed5-1b63319b6e80" LastKnownName="InputHandler" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="80aa4491-1b80-45b8-bfb1-d99dd63ad23c" name="InputView" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -1837,7 +1827,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="83e2d63e-bb16-4843-aed5-1b63319b6e80" name="InputHandler1" isAbstract="false" isLeaf="false">
+      <Interface Id="83e2d63e-bb16-4843-aed5-1b63319b6e80" name="InputHandler" isAbstract="false" isLeaf="false">
         <elementDefinition Id="41c6518b-7c57-414e-830a-282642164a36" />
         <ownedAttributes>
           <property Id="9b6b5467-a6b8-451f-95c7-c0ccb19c7332" name="Delegate" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -1847,17 +1837,17 @@
       </Interface>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="a87de77b-c401-476b-87ca-5b915e26728b" name="OutputView1" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="a87de77b-c401-476b-87ca-5b915e26728b" name="OutputView" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="e3fc38bb-44d9-40db-b14f-1abc00de3588" />
         <suppliersInternal>
           <dependency Id="1819781d-8f58-45a9-b9ca-88ade3427706">
-            <classMoniker Id="9f1e50e8-6fee-4114-b000-2cc7ca5bc31a" LastKnownName="MenuHelper1" />
+            <classMoniker Id="9f1e50e8-6fee-4114-b000-2cc7ca5bc31a" LastKnownName="MenuHelper" />
             <elementDefinition Id="f67f60f6-3364-4f7a-8844-1e13ff6364a0" />
           </dependency>
         </suppliersInternal>
         <targetEnds>
           <association Id="1f4fb856-6cc2-4689-b75d-48c2fbcf700b" isDerived="false" sourceEndRoleName="OutputView" targetEndRoleName="Observer" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="a35a8510-df51-4228-af8b-c262ca05e685" LastKnownName="Observer1" />
+            <interfaceMoniker Id="a35a8510-df51-4228-af8b-c262ca05e685" LastKnownName="Observer" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="45d2c26a-9bff-45c8-8426-4dd32bf4af3a" name="OutputView" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -2018,7 +2008,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="a35a8510-df51-4228-af8b-c262ca05e685" name="Observer1" isAbstract="false" isLeaf="false">
+      <Interface Id="a35a8510-df51-4228-af8b-c262ca05e685" name="Observer" isAbstract="false" isLeaf="false">
         <elementDefinition Id="d84065ef-a5a7-4b9e-b10c-e7d33056e299" />
         <ownedAttributes>
           <property Id="39172e93-ebfd-43d6-820b-39bdbbd07334" name="Delegate" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -2028,11 +2018,11 @@
       </Interface>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="40593509-ce94-4bc6-9a09-7ba7107b9ab3" name="MainGUI1" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="40593509-ce94-4bc6-9a09-7ba7107b9ab3" name="MainGUI" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="cfaf33eb-ac94-496f-a9e6-f13b3f1d69e5" />
         <targetEnds>
           <association Id="8c1bb18b-8505-42a0-8adc-329b5cf26c37" isDerived="false" sourceEndRoleName="MainGUI" targetEndRoleName="InputHandler" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="83e2d63e-bb16-4843-aed5-1b63319b6e80" LastKnownName="InputHandler1" />
+            <interfaceMoniker Id="83e2d63e-bb16-4843-aed5-1b63319b6e80" LastKnownName="InputHandler" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="48ee4a08-a141-4b93-a7ef-a2df2590e86c" name="MainGUI" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -2048,7 +2038,7 @@
             <elementDefinition Id="b89e1085-1027-440f-8eac-c33bd90b7b04" />
           </association>
           <association Id="060d50a8-71bb-485d-b09e-cc93c6ebe4cd" isDerived="false" sourceEndRoleName="MainGUI" targetEndRoleName="Observer" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="a35a8510-df51-4228-af8b-c262ca05e685" LastKnownName="Observer1" />
+            <interfaceMoniker Id="a35a8510-df51-4228-af8b-c262ca05e685" LastKnownName="Observer" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="dd35663a-0aaa-4dac-9bc7-dd5241994a46" name="MainGUI" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -2478,11 +2468,11 @@
         <elementDefinition Id="8d47216d-dfb0-43f8-89e2-8bd2d68a7f9e" />
         <suppliersInternal>
           <dependency Id="c88d5035-2d5c-42f6-931e-f939cb4a9e58">
-            <classMoniker Id="0f35493d-27cf-4ebc-bafe-32378090fdb5" LastKnownName="InputView1" />
+            <classMoniker Id="0f35493d-27cf-4ebc-bafe-32378090fdb5" LastKnownName="InputView" />
             <elementDefinition Id="0adb921f-e913-4db5-83ed-12c519528736" />
           </dependency>
           <dependency Id="1b594561-0f17-4473-bb21-4e81ad3f6ab4">
-            <classMoniker Id="a87de77b-c401-476b-87ca-5b915e26728b" LastKnownName="OutputView1" />
+            <classMoniker Id="a87de77b-c401-476b-87ca-5b915e26728b" LastKnownName="OutputView" />
             <elementDefinition Id="57686a40-3af1-4e75-9609-cbad1acb3d00" />
           </dependency>
           <dependency Id="960932d8-b14b-4459-94c1-de60d0784919">
@@ -2552,7 +2542,7 @@
         <elementDefinition Id="5f05a2da-bf82-4a09-85d8-d90a85a22b44" />
         <suppliersInternal>
           <dependency Id="0dd11dbb-4245-4225-9aaf-9519207bff81">
-            <classMoniker Id="40593509-ce94-4bc6-9a09-7ba7107b9ab3" LastKnownName="MainGUI1" />
+            <classMoniker Id="40593509-ce94-4bc6-9a09-7ba7107b9ab3" LastKnownName="MainGUI" />
             <elementDefinition Id="f25ac1d4-9d7e-4e69-87c3-43597c5be7a7" />
           </dependency>
           <dependency Id="27acba57-4158-45ba-ad0b-20e4f7ab2dfd">
