@@ -7219,6 +7219,65 @@
         isLeaf="false"
         isActiveClass="false" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="93731f4a-d957-4a56-a4bb-679cd94af6ee"
+        name="Program (Ticker501-GUI)"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="586b3377-347c-4d5f-a93b-9b9e2e446926"
+            name="Main"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1eaf9c40-6f0a-4a7d-91f7-31e795ddc938"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="04af9eb4-fddf-419d-8de3-4826f5991afe"
+                      LastKnownName="void"
+                      LastKnownLocation="P2ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e9b597ca-72db-4550-8e13-bbb535a6e88a"
+            name="GetTickers"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f151979d-e4f5-4f4e-80cd-9516a1652f63"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="3b2259c7-b6ae-4dd9-a000-88e19a86a042"
+                      LastKnownName="List&lt;Ticker&gt;"
+                      LastKnownLocation="P2ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"

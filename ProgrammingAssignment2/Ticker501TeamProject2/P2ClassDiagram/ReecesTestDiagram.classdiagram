@@ -1464,6 +1464,49 @@
         <elementDefinition Id="10ffa467-66ff-4927-89d6-7ec4a5445116" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d79bc264-001c-4157-ae55-c5928820d21a" name="Program (Ticker501-GUI)" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="93731f4a-d957-4a56-a4bb-679cd94af6ee" />
+        <ownedOperationsInternal>
+          <operation Id="521d1d85-9466-4fb1-a3ce-564ab1034120" name="Main" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="586b3377-347c-4d5f-a93b-9b9e2e446926" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="332fff6c-4d9d-412a-b143-b40112b93ffa" direction="Return" isUnique="false">
+                  <elementDefinition Id="1eaf9c40-6f0a-4a7d-91f7-31e795ddc938" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="6580c93f-1df0-4f1d-8e5f-f4c41e2c93e4" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="f9749588-ee5d-4670-b4ed-04da5c2ba713" name="GetTickers" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e9b597ca-72db-4550-8e13-bbb535a6e88a" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1958aa4a-c2dd-48ad-8372-59935ff3d3be" direction="Return" isUnique="false">
+                  <elementDefinition Id="f151979d-e4f5-4f4e-80cd-9516a1652f63" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="37ba5229-a501-40e6-930d-2df8ea0471aa" LastKnownName="List&lt;Ticker&gt;" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="6580c93f-1df0-4f1d-8e5f-f4c41e2c93e4" name="void" isAbstract="false" isLeaf="false" cachedFullName="void">
+        <elementDefinition Id="04af9eb4-fddf-419d-8de3-4826f5991afe" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="37ba5229-a501-40e6-930d-2df8ea0471aa" name="List&lt;Ticker&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Ticker&gt;">
+        <elementDefinition Id="3b2259c7-b6ae-4dd9-a000-88e19a86a042" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="19666535-25bd-4432-9df2-a62c5b9e6d16" name="P2ClassDiagram">
     <elementDefinition Id="c38f28c9-bacd-4d47-9d55-665b78c2078e" />
