@@ -7214,10 +7214,68 @@
     <packageHasNamedElement>
       <class
         Id="8d47216d-dfb0-43f8-89e2-8bd2d68a7f9e"
-        name="Class2"
+        name="ConsoleProgram"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="3e4babb4-db6d-4cf7-b965-2ba1923a477a"
+            name="Main"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="efad8610-4b49-4c48-8f67-773ad2503323"
+                  name="string[]"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="47072dad-0ae9-4f1c-9e0c-7d3a41a35288"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="04af9eb4-fddf-419d-8de3-4826f5991afe"
+                      LastKnownName="void"
+                      LastKnownLocation="P2ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="201b3b78-a8df-445f-ad4b-7efe2e6a0882"
+            name="GetTickers"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="207b502e-956a-4d9c-8a25-4979a4e2597c"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="3b2259c7-b6ae-4dd9-a000-88e19a86a042"
+                      LastKnownName="List&lt;Ticker&gt;"
+                      LastKnownLocation="P2ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
