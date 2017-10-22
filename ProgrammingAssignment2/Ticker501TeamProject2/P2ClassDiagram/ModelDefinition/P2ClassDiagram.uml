@@ -44,14 +44,14 @@
             Id="17f25817-7336-4854-a564-0c2105025cbd">
             <interfaceMoniker
               Id="d84065ef-a5a7-4b9e-b10c-e7d33056e299"
-              LastKnownName="Observer1"
+              LastKnownName="Observer"
               LastKnownLocation="P2ClassDiagram.uml" />
           </dependency>
           <dependency
             Id="76e8df2d-da97-4b32-9ad3-dbb91acd8cba">
             <interfaceMoniker
               Id="41c6518b-7c57-414e-830a-282642164a36"
-              LastKnownName="InputHandler1"
+              LastKnownName="InputHandler"
               LastKnownLocation="P2ClassDiagram.uml" />
           </dependency>
         </suppliersInternal>
@@ -4620,50 +4620,20 @@
     <packageHasNamedElement>
       <class
         Id="9a11ea08-5a4f-4506-b8a5-4d024980d0fd"
-        name="MenuHelper1"
+        name="MenuHelper"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <targetEnds>
-          <association
-            Id="f4f0f9ce-6a99-4c8b-bedd-63e398ab0d8a"
-            isDerived="false"
-            sourceEndRoleName="MenuHelper"
-            targetEndRoleName="MenuReturn&lt;T&gt;"
-            isLeaf="false"
-            isAbstract="false">
+        <suppliersInternal>
+          <dependency
+            Id="7e80cd63-0af5-4495-8197-1f28f8416ceb">
             <classMoniker
               Id="086727ec-e944-4f54-b253-2cad0e0a0f75"
-              LastKnownName="MenuReturn&lt;T&gt;1"
+              LastKnownName="MenuReturn&lt;T&gt;"
               LastKnownLocation="P2ClassDiagram.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="013e5061-f1bd-46f2-a09b-b7a15738ccbe"
-                  name="MenuHelper"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="40df70cb-f123-4b10-b837-3fe6773c2a85"
-                  name="MenuReturn&lt;T&gt;"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
+          </dependency>
+        </suppliersInternal>
+        <targetEnds>
           <association
             Id="1a683d6c-a356-408a-afac-14f85576fe97"
             isDerived="false"
@@ -4673,7 +4643,7 @@
             isAbstract="false">
             <classMoniker
               Id="cf058290-809c-46f8-afe5-1285208db38e"
-              LastKnownName="MenuItem1"
+              LastKnownName="MenuItem"
               LastKnownLocation="P2ClassDiagram.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -5342,7 +5312,7 @@
     <packageHasNamedElement>
       <class
         Id="086727ec-e944-4f54-b253-2cad0e0a0f75"
-        name="MenuReturn&lt;T&gt;1"
+        name="MenuReturn&lt;T&gt;"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -5430,7 +5400,7 @@
     <packageHasNamedElement>
       <class
         Id="cf058290-809c-46f8-afe5-1285208db38e"
-        name="MenuItem1"
+        name="MenuItem"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -5554,7 +5524,7 @@
     <packageHasNamedElement>
       <class
         Id="1eb5818f-447d-4bad-9995-3585c9f4280c"
-        name="InputView1"
+        name="InputView"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -5563,7 +5533,7 @@
             Id="2c873ffd-188a-4b58-8fd1-dd26ee12482c">
             <classMoniker
               Id="9a11ea08-5a4f-4506-b8a5-4d024980d0fd"
-              LastKnownName="MenuHelper1"
+              LastKnownName="MenuHelper"
               LastKnownLocation="P2ClassDiagram.uml" />
           </dependency>
         </suppliersInternal>
@@ -5577,7 +5547,7 @@
             isAbstract="false">
             <interfaceMoniker
               Id="41c6518b-7c57-414e-830a-282642164a36"
-              LastKnownName="InputHandler1"
+              LastKnownName="InputHandler"
               LastKnownLocation="P2ClassDiagram.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -6016,7 +5986,7 @@
     <packageHasNamedElement>
       <Interface
         Id="41c6518b-7c57-414e-830a-282642164a36"
-        name="InputHandler1"
+        name="InputHandler"
         isAbstract="false"
         isLeaf="false">
         <ownedAttributes>
@@ -6037,7 +6007,7 @@
     <packageHasNamedElement>
       <class
         Id="e3fc38bb-44d9-40db-b14f-1abc00de3588"
-        name="OutputView1"
+        name="OutputView"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -6046,7 +6016,7 @@
             Id="f67f60f6-3364-4f7a-8844-1e13ff6364a0">
             <classMoniker
               Id="9a11ea08-5a4f-4506-b8a5-4d024980d0fd"
-              LastKnownName="MenuHelper1"
+              LastKnownName="MenuHelper"
               LastKnownLocation="P2ClassDiagram.uml" />
           </dependency>
         </suppliersInternal>
@@ -6060,7 +6030,7 @@
             isAbstract="false">
             <interfaceMoniker
               Id="d84065ef-a5a7-4b9e-b10c-e7d33056e299"
-              LastKnownName="Observer1"
+              LastKnownName="Observer"
               LastKnownLocation="P2ClassDiagram.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -6365,7 +6335,7 @@
     <packageHasNamedElement>
       <Interface
         Id="d84065ef-a5a7-4b9e-b10c-e7d33056e299"
-        name="Observer1"
+        name="Observer"
         isAbstract="false"
         isLeaf="false">
         <ownedAttributes>
@@ -6386,7 +6356,7 @@
     <packageHasNamedElement>
       <class
         Id="cfaf33eb-ac94-496f-a9e6-f13b3f1d69e5"
-        name="MainGUI1"
+        name="MainGUI"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -6400,7 +6370,7 @@
             isAbstract="false">
             <interfaceMoniker
               Id="41c6518b-7c57-414e-830a-282642164a36"
-              LastKnownName="InputHandler1"
+              LastKnownName="InputHandler"
               LastKnownLocation="P2ClassDiagram.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -6439,7 +6409,7 @@
             isAbstract="false">
             <interfaceMoniker
               Id="d84065ef-a5a7-4b9e-b10c-e7d33056e299"
-              LastKnownName="Observer1"
+              LastKnownName="Observer"
               LastKnownLocation="P2ClassDiagram.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -7223,14 +7193,14 @@
             Id="0adb921f-e913-4db5-83ed-12c519528736">
             <classMoniker
               Id="1eb5818f-447d-4bad-9995-3585c9f4280c"
-              LastKnownName="InputView1"
+              LastKnownName="InputView"
               LastKnownLocation="P2ClassDiagram.uml" />
           </dependency>
           <dependency
             Id="57686a40-3af1-4e75-9609-cbad1acb3d00">
             <classMoniker
               Id="e3fc38bb-44d9-40db-b14f-1abc00de3588"
-              LastKnownName="OutputView1"
+              LastKnownName="OutputView"
               LastKnownLocation="P2ClassDiagram.uml" />
           </dependency>
           <dependency
@@ -7341,7 +7311,7 @@
             Id="f25ac1d4-9d7e-4e69-87c3-43597c5be7a7">
             <classMoniker
               Id="cfaf33eb-ac94-496f-a9e6-f13b3f1d69e5"
-              LastKnownName="MainGUI1"
+              LastKnownName="MainGUI"
               LastKnownLocation="P2ClassDiagram.uml" />
           </dependency>
           <dependency
