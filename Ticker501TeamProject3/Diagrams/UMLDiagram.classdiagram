@@ -16,20 +16,6 @@
       </annotatedElements>
     </comment>
   </ownedCommentsInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="a8761d53-ba1f-419c-9d86-819916fbf894">
-      <profileInstance Id="7840f071-a1ae-4dbe-8be0-aafe52a3c18a" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="98126156-d2b1-480f-a77d-c8caef3198e5">
-      <profileInstance Id="febc2a9b-0076-400e-b8ac-d61d1b7d659d" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="e29ee217-bbad-497d-9517-f75e9bae1134" name="Controller" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -298,6 +284,14 @@
             <interfaceMoniker Id="bd9dafa0-491e-4308-b4de-8ba97ce4b50a" LastKnownName="EventListener&lt;T, U&gt;" />
             <elementDefinition Id="e07cc2ba-01f4-49f2-9e3b-81929dbcb0bb" />
           </dependency>
+          <dependency Id="b071d5e2-8443-4e76-8fac-5869b5160356">
+            <interfaceMoniker Id="d04c3067-c5f0-4283-9716-f1980ce45db6" LastKnownName="IReturn" />
+            <elementDefinition Id="33e82b8e-3322-4212-9ab8-c6414e114ed4" />
+          </dependency>
+          <dependency Id="2fb2282d-6773-4137-b6b5-c8f7dd12ee32">
+            <interfaceMoniker Id="51c3880a-9ef3-4754-bb5f-8b8738f712f6" LastKnownName="IEvent" />
+            <elementDefinition Id="712ca018-eb72-4ab4-9965-0e20e5fe9ad9" />
+          </dependency>
         </suppliersInternal>
         <ownedAttributesInternal>
           <property Id="d2681234-b466-4896-bc53-1f3593f84e4b" name="_handlers" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -459,6 +453,16 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="0dd8a4c3-61e3-4120-bd82-6d46cd445eeb" name="MainGUI" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="3e5e9c52-c9ae-4116-a25c-adbfa412eeda" />
+        <suppliersInternal>
+          <dependency Id="62775ba5-bc03-42b7-a8b6-f2bd9bc217d0">
+            <interfaceMoniker Id="d04c3067-c5f0-4283-9716-f1980ce45db6" LastKnownName="IReturn" />
+            <elementDefinition Id="d6364bc8-6991-4095-a795-62ef4497c7c7" />
+          </dependency>
+          <dependency Id="ecf62a03-d792-4e58-b81e-c48bb641696f">
+            <interfaceMoniker Id="51c3880a-9ef3-4754-bb5f-8b8738f712f6" LastKnownName="IEvent" />
+            <elementDefinition Id="3871650e-69c3-4cf7-a48a-5c5d1df02bfd" />
+          </dependency>
+        </suppliersInternal>
         <generalsInternal>
           <generalization Id="2dfaa73d-f617-4ec6-8045-b9c42c7c0b57" isSubstitutable="false">
             <classMoniker Id="f4c3df56-49b2-404f-a19a-208b0bd9b2f3" LastKnownName="EventHandler&lt;U&gt;" />
@@ -1193,8 +1197,164 @@
         <elementDefinition Id="c05a5800-8900-4917-b6a4-9ee0f3b5900a" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="51c3880a-9ef3-4754-bb5f-8b8738f712f6" name="IEvent" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7a15227a-3763-4450-bbe2-7b3fd91d1aba" />
+        <ownedAttributes>
+          <property Id="bba8b3e5-ada2-4c2b-b06d-a809330276d8" name="Type" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e0b1bac6-558a-4770-9bfe-258fe144fdae" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1060a9c9-ce10-4765-aa38-2e39375eff94" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributes>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="d04c3067-c5f0-4283-9716-f1980ce45db6" name="IReturn" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ad445dd0-2501-4aa2-9edb-6e321a38cdff" />
+        <ownedAttributes>
+          <property Id="218257ee-96e4-4f2b-a462-289edf9fc1c1" name="Default" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8fe4545d-1006-481d-a0f3-58b6bc40b5b0" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1f5fdc41-a141-4ba6-914e-360d77acc99d" LastKnownName="IReturn" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributes>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8f8c4c15-0c00-4436-b76a-90320904dc49" name="Error" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="23a1cec3-29bf-4c71-bcec-1ab0bfa73562" />
+        <suppliersInternal>
+          <dependency Id="f06085fa-9d79-431e-882a-4fca85b8a25e">
+            <interfaceMoniker Id="d04c3067-c5f0-4283-9716-f1980ce45db6" LastKnownName="IReturn" />
+            <elementDefinition Id="5249c98b-908c-4d0f-bcb8-b91607f26856" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property Id="a820397d-33d1-4d16-a762-5969cb811ba9" name="_message" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="18e00cda-cbca-433f-bab7-1cdbd0745d09" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f7c6e2b7-0bb8-489f-8ddd-dc20f942ca55" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="26180dd4-b171-4aa4-9780-1c14e23275d9" name="Error" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="28aac70b-74fc-4229-b12d-5d2108f14231" />
+          </operation>
+          <operation Id="0899ae46-14fa-432c-8c38-be75c0997d11" name="Error" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="687381c3-0c5d-43fb-9657-5f67200ab680" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f0bc78b1-b14b-4fc2-8a6a-55fdd1bebbdc" name="string" direction="In" isUnique="false">
+                  <elementDefinition Id="72d8c8bc-b1c0-4ce7-9279-8688970deb2c" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="98f86f28-07c1-4adc-9d27-1bcf95ae8ebd" name="Catch" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f2447920-831d-48fc-9511-34d81c78e5c7" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ace8d13b-f845-42ab-a6db-003eda82bbc6" name="Action&lt;Error&gt;" direction="In" isUnique="false">
+                  <elementDefinition Id="5cf73b35-17e9-46a4-9c6c-c6f5278b406b" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0f56fea3-2b3b-4584-b0ca-3e851f68d78e" name="DisplayEvent" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b746a0e8-2ff7-428d-98dc-61820f25a16c" />
+        <suppliersInternal>
+          <dependency Id="fb4d0112-c4ff-4f0c-9eaf-e3b68a850fe7">
+            <interfaceMoniker Id="51c3880a-9ef3-4754-bb5f-8b8738f712f6" LastKnownName="IEvent" />
+            <elementDefinition Id="5816535f-8b47-4bf4-a210-d396761b4232" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f036eee1-493a-41a7-b014-62574ea2de30" name="PortfolioEvent" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b83033a2-6286-432a-8e65-7d1a436dabfc" />
+        <suppliersInternal>
+          <dependency Id="25e2f86d-b67c-4142-8d50-363b10988eab">
+            <interfaceMoniker Id="51c3880a-9ef3-4754-bb5f-8b8738f712f6" LastKnownName="IEvent" />
+            <elementDefinition Id="bcb4ab22-8ce1-49eb-a232-d1b66c76ed32" />
+          </dependency>
+          <dependency Id="1570d6af-e180-4d23-98f1-73c8f03260c4">
+            <classMoniker Id="e23d3f08-5d5b-406a-ae21-da8333bee26e" LastKnownName="Portfolio" />
+            <elementDefinition Id="60742b00-2189-4a5e-92c7-abab00fe831b" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property Id="d5efb581-a287-4f0e-8dcc-d2bd9727321a" name="Portfolio" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b92bcbda-10ea-4a97-8133-1b76d35bdb85" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bff1c1c3-88e4-40fe-91d8-cff84b3e5007" LastKnownName="Portfolio" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1f10c7f4-511a-4574-9a61-637ee4da8d5e" name="AccountEvent" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="139f256d-999c-42f1-8884-cc0ecc2663d0" />
+        <suppliersInternal>
+          <dependency Id="68f4c686-4ea0-471a-834e-bcfd88ade150">
+            <interfaceMoniker Id="51c3880a-9ef3-4754-bb5f-8b8738f712f6" LastKnownName="IEvent" />
+            <elementDefinition Id="f9bfbe58-e422-41f8-80e1-18da7a822b9c" />
+          </dependency>
+          <dependency Id="0a1523e3-27f0-4f28-8435-f655ed748213">
+            <classMoniker Id="2040e05f-9977-49c9-bd9a-313bcc539ef7" LastKnownName="Account1" />
+            <elementDefinition Id="e4713909-f73e-4460-bda1-3a2353e4da61" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property Id="8edeb386-0b59-49be-8eda-780f30f0d025" name="Account" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="590a2e6d-9b8e-47fb-967a-5eef99d26967" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="79c612f3-eb55-40a8-baee-3df7be6ca92e" LastKnownName="Account" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="1f5fdc41-a141-4ba6-914e-360d77acc99d" name="IReturn" isAbstract="false" isLeaf="false" cachedFullName="Diagrams::IReturn">
+        <elementDefinition Id="ad445dd0-2501-4aa2-9edb-6e321a38cdff" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="1060a9c9-ce10-4765-aa38-2e39375eff94" name="string" isAbstract="false" isLeaf="false" cachedFullName="string">
+        <elementDefinition Id="1128e817-e1ac-4e5b-963c-449f471c1859" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="bff1c1c3-88e4-40fe-91d8-cff84b3e5007" name="Portfolio" isAbstract="false" isLeaf="false" cachedFullName="Diagrams::Portfolio">
+        <elementDefinition Id="f795ae42-5040-4361-81b6-3c0c82a90aa3" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="431d53b7-ff80-4f51-a3cd-4c6819d416ca" name="Diagrams">
     <elementDefinition Id="faa57594-31e4-4855-9f8e-67f94ae0611e" />
+    <profileInstances>
+      <packageHasProfileInstances Id="a8761d53-ba1f-419c-9d86-819916fbf894">
+        <profileInstance Id="7840f071-a1ae-4dbe-8be0-aafe52a3c18a" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="98126156-d2b1-480f-a77d-c8caef3198e5">
+        <profileInstance Id="febc2a9b-0076-400e-b8ac-d61d1b7d659d" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
