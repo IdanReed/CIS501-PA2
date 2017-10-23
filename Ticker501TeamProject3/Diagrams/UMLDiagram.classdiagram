@@ -70,8 +70,13 @@
                 <parameter Id="80cd13c1-5498-4348-b7d3-8ba7f4a3a940" direction="Return" isUnique="false">
                   <elementDefinition Id="e6cbe834-c7b4-48b8-867c-b3cbf15c27f6" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" LastKnownName="Error" />
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c9ae0934-e94a-4538-a443-0a074057416f" name="AccountEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="8a950f19-66ae-4194-9579-8f3946a595e3" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -83,8 +88,13 @@
                 <parameter Id="6f15e9bb-71cf-4ad8-8f97-540d551e587c" direction="Return" isUnique="false">
                   <elementDefinition Id="faec8da0-6886-471f-81e1-01fd1317c11b" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" LastKnownName="Error" />
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9c55b956-4193-44af-a1a0-73aef9109d2b" name="AccountEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="335355f4-9b06-4c7d-a587-26a8df7c6cb1" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -96,8 +106,13 @@
                 <parameter Id="c68f5c61-f2e3-4f3a-9eef-03a3c2fa4d4d" direction="Return" isUnique="false">
                   <elementDefinition Id="45efa0da-d825-4ddb-9c4e-a9662d26aade" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" LastKnownName="Error" />
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9a05cd84-7e6d-4cb3-8548-427f0b8e9929" name="AccountEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="fcb07009-9298-4c7f-b4ef-6191f27840e5" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -109,8 +124,13 @@
                 <parameter Id="eb52988e-bcc5-4d5c-8304-1b270df2f44d" direction="Return" isUnique="false">
                   <elementDefinition Id="d2ee5d49-2325-4d34-8903-aad9e1433325" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" LastKnownName="Error" />
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8399fe86-cfa7-4a89-94c0-d356963578fb" name="AccountEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="f3d4bf33-bcd0-46e8-b8e8-94f8b869c2ff" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -122,8 +142,13 @@
                 <parameter Id="7a75cf1a-cd6e-49f2-b585-1959b392fadf" direction="Return" isUnique="false">
                   <elementDefinition Id="077d0135-ac79-4000-9518-dda2f5d8ed22" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" LastKnownName="Error" />
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0a9c7b3f-2019-4307-b192-d7ed3b7220fe" name="AccountEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="333bfa10-a625-4937-bb33-d6f4c3f05016" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -135,8 +160,13 @@
                 <parameter Id="a9b1e458-7f4d-442d-b704-2d3e85ab7466" direction="Return" isUnique="false">
                   <elementDefinition Id="da3a2031-a073-4f27-9cbc-d02a592fb4a4" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" LastKnownName="Error" />
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5ab2d8f8-0e64-45f6-810f-c04298d9b4a2" name="PortfolioEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="cc179567-4b5d-4081-b9b9-7a4996098054" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -148,8 +178,13 @@
                 <parameter Id="064e10f8-6a64-41c3-80e4-1f52232934dc" direction="Return" isUnique="false">
                   <elementDefinition Id="db4ff829-db81-45e4-9b7d-9d0f7867d6f8" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" LastKnownName="Error" />
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e7b4900a-4ebe-4bd9-97c1-9de9dec47bae" name="PortfolioEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="cd8d26a1-309d-46a0-bf72-8335db78dd51" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -161,8 +196,13 @@
                 <parameter Id="996e7dc6-5d38-46b6-baa7-8c0914031359" direction="Return" isUnique="false">
                   <elementDefinition Id="cb38ff7b-ca86-4e89-a557-51e0c2748029" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" LastKnownName="Error" />
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e3ad1d81-3c0f-4ccf-915c-bd5d8a4fe093" name="PortfolioEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="e7504883-ccfd-461e-b64e-0cfe825fcd2f" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -174,8 +214,13 @@
                 <parameter Id="cc8d5682-0acc-43f1-bb21-03f3c054e091" direction="Return" isUnique="false">
                   <elementDefinition Id="d8335c2f-3502-4522-b28e-28276219aead" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" LastKnownName="Error" />
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c3e28b8f-90a9-4ebf-81aa-c17ef67d3823" name="AccountEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="1eab0d60-60a7-459a-8e3a-6e184c14645c" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -535,45 +580,203 @@
           </operation>
           <operation Id="e662de3c-45f0-42d4-9f43-1e0801c05185" name="UpdateAccPercentInfo" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="b4d4fdc4-395e-4296-8d58-e889bae24806" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1b38aadc-67b9-4b08-a85c-61b751c0e469" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="56322512-7f78-4eb2-9810-c03f84cf8c6f" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d24be4e5-0587-45f6-8feb-fdf43e732dfe" direction="Return" isUnique="false">
+                  <elementDefinition Id="8afffb32-70be-43f0-8536-cebde16fbb70" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="3ef9e976-94a7-4be6-a57f-5df27b6d2f6c" name="UpdateAccStocksHeld" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="28a89dee-0c3a-42f5-ba5c-a8457dc341ec" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d9f30e3f-112b-4590-91e0-4273138fe3dd" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="a45b9986-0efd-4839-81a4-01fa1913715a" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="21b32f69-df2f-4252-9e78-96b736a40564" direction="Return" isUnique="false">
+                  <elementDefinition Id="e5043768-2193-4ae2-8fd8-3d792194c73e" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="a392dd19-958c-46c1-ba75-f68d25a07a1c" name="UpdatePortLBs" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="3665176d-5e4e-464d-8ce8-a77306aef846" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9b011dc4-4194-4487-84a9-7b7633dfa604" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="ab9d677a-fbb7-4515-a9d1-1ed5549430e3" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4ba424dd-34f6-43ca-bf99-40180df94736" direction="Return" isUnique="false">
+                  <elementDefinition Id="07522c99-156b-44ec-a00c-703ee32302d1" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="a9a3e74e-4fd9-4e68-92f6-616f54d8a5c4" name="UpdatePortStocks" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="9e3d06a0-4d01-4f8c-b8cf-a0fbfec021b3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d3307e16-5d32-488c-b056-40e2924ebb04" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="7a5d2001-fa54-4949-b3ac-44d847d7000f" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e9f60fce-3c03-4894-914e-a712b4edbb91" direction="Return" isUnique="false">
+                  <elementDefinition Id="a70accb7-5b22-410d-9754-e80d7f9a974e" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="0cf6a375-c004-43e8-a6cf-37b823879360" name="UpdateTickerList" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="f48fb0e0-01df-4b0d-97fa-7176fa83689c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="003d7b75-fd7b-4126-b399-c3e925be5e3c" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="802a3ca2-28b6-4f96-a429-d73d3628883e" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d7b60d06-205b-4a31-941d-c77a88105109" direction="Return" isUnique="false">
+                  <elementDefinition Id="d4d9a469-adb0-4c5b-b087-d74e8ead4da0" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="5f2a24dd-d902-4ede-9c16-3ca54ed41684" name="UpdateBuySellState" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="56691859-ca4f-4557-b4c2-60c6ec0529c7" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ad951fc8-4232-4f21-a3d1-2ad16585a69e" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="7602df4f-d9b5-4b95-824c-f4e7cf14f86b" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="51497749-f0c5-4175-a141-79b4719b738b" direction="Return" isUnique="false">
+                  <elementDefinition Id="24632f31-4d61-44ef-aeb5-c89b56a533d3" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="a831b987-54e9-40fa-ad00-9b2cd0d0a37f" name="UpdateSelectStock" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="ff9f76e7-614e-4942-a01c-a64b948f96e7" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a37b3701-b644-42f6-949d-72c54abf2f4f" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="d0614787-640d-4064-88a2-e0494074b1b4" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6d39ff33-8bd4-4980-998d-045a0e23fd83" direction="Return" isUnique="false">
+                  <elementDefinition Id="341d2919-14b1-47a9-974c-509947098d51" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="941d697f-487f-48c6-91be-9e8c9210eede" name="UpdatePortInfo" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="ac2b4fb3-d556-42ce-8c69-64ca13527678" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="07aac938-14f9-4913-a5cd-9fb2b532cb97" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="1423a40f-3dc2-42f9-b4b0-56906df01e17" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c0227975-fcc9-46e1-aebf-d02b86fc3c74" direction="Return" isUnique="false">
+                  <elementDefinition Id="c48feb6f-d983-4ad2-9f16-53738920a1ae" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="c95ae075-ee30-47ad-b0d7-e8b10eba3293" name="UpdateAccGainsLosses" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="dadac8d7-4ccc-4648-9b96-7a9d7721e464" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e8d2edc6-9774-4dad-8198-807b068965a7" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="b96e54a4-c39a-4d6b-b522-d4ee73daeb94" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7f37bb48-49e1-431a-9c97-cde8d7201bf8" direction="Return" isUnique="false">
+                  <elementDefinition Id="94bde51e-6fe0-4e7a-81bc-65ab5a2602c2" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="d6106b20-2b57-496a-be35-c0bcad69895a" name="UpdatePortGainsLosses" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="9c43d35d-67c6-4327-88a9-e3e89e9e91e3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="dd07927c-9685-483d-98d8-6c02403d64a8" name="DisplayEvent" direction="In" isUnique="false">
+                  <elementDefinition Id="224549a9-311f-45d2-961e-9d454c22bdfd" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7a9d9f4b-e793-49a8-95e1-3ff630527766" direction="Return" isUnique="false">
+                  <elementDefinition Id="c959b080-3131-4922-805a-2c8421ef19ea" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="cc5488c5-95e4-416c-9677-b859da178260" name="DepositFunds" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="f21a5c57-9681-4cfb-960f-8b8e8afb7dde" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="875fdec3-8e07-4dd2-b2c0-4f50eb228e4e" name="object" direction="In" isUnique="false">
-                  <elementDefinition Id="f5c94398-ccb8-4df0-94ef-ed9b680fd7f7" />
+                <parameter Id="7048b822-362c-4aa8-abaf-68e4558b714f" name="object" direction="In" isUnique="false">
+                  <elementDefinition Id="497e318c-e38e-4819-9a88-0fab20d6be58" />
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="406143bb-e077-4045-8b42-2b60a5b1e597" name="EventArgs" direction="In" isUnique="false">
-                  <elementDefinition Id="8ec2a666-592d-49d0-9e5f-8d988aa45c9b" />
+                <parameter Id="67a86b39-72a9-4816-b1b3-750cdbb3e22b" name="EventArgs" direction="In" isUnique="false">
+                  <elementDefinition Id="237b99d5-4bd4-4b42-9ba9-14d7b006436d" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="74427bd5-f8e5-466f-a09c-e58c843faf94" direction="Return" isUnique="false">
+                  <elementDefinition Id="657fa8e0-5a29-4f2f-b48c-68ca77cf5a66" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8bd14683-d491-4cbe-837a-565c8f361e72" LastKnownName="Error" />
+                  </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -769,11 +972,6 @@
     <packageHasNamedElement>
       <referencedType Id="e340d75c-1eea-45de-942c-41289c9b35a6" name="EventListener&lt;Error&gt;" isAbstract="false" isLeaf="false" cachedFullName="EventListener&lt;Error&gt;">
         <elementDefinition Id="b35552a9-227a-436b-9173-d327b5379189" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="e13968fc-b766-49b6-8a0c-13f5d905e2bf" name="Error" isAbstract="false" isLeaf="false" cachedFullName="Error">
-        <elementDefinition Id="37beecfb-67aa-462d-a724-0f9ddbd60124" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1337,6 +1535,11 @@
     <packageHasNamedElement>
       <referencedType Id="bff1c1c3-88e4-40fe-91d8-cff84b3e5007" name="Portfolio" isAbstract="false" isLeaf="false" cachedFullName="Diagrams::Portfolio">
         <elementDefinition Id="f795ae42-5040-4361-81b6-3c0c82a90aa3" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="8bd14683-d491-4cbe-837a-565c8f361e72" name="Error" isAbstract="false" isLeaf="false" cachedFullName="Diagrams::Error">
+        <elementDefinition Id="23a1cec3-29bf-4c71-bcec-1ab0bfa73562" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
