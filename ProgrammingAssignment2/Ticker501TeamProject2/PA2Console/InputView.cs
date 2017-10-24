@@ -7,13 +7,29 @@ using System.Threading.Tasks;
 
 namespace PA2Console
 {
+    /// <summary>
+    /// The inputView for the console app. Handles all console input
+    /// </summary>
     class InputView
     {
+        /// <summary>
+        /// The InputHandler to pass all the events to
+        /// </summary>
         private InputHandler _inputHandler;
+        /// <summary>
+        /// The Main menu to display on startup
+        /// </summary>
         private MenuHelper _mainMenu;
+        /// <summary>
+        /// The portfolio menu to display when viewing a portfolio
+        /// </summary>
         private MenuHelper _portfolioMenu;
 
 
+        /// <summary>
+        /// The main constructor which takes an InputHandler and creates the menus
+        /// </summary>
+        /// <param name="han">The inputhandler to used</param>
         public InputView(InputHandler han)
         {
             _inputHandler = han;
@@ -31,18 +47,24 @@ namespace PA2Console
             _portfolioMenu = new MenuHelper("Please select an option below:");
             _portfolioMenu
                 .Add("Buy Stocks", PortBuy)
-                .Add("Sell Stocks", null)
+                .Add("Sell Stocks", PortSell)
                 .Add("View Portfolio Statistics", PortStats);
                 
         }
         
         
         #region AccountLevel
+        /// <summary>
+        /// Starts the MainMenu;
+        /// </summary>
         public void Start()
         {
             _mainMenu.ShowMenu(() => _inputHandler(new Event("accountBalance")));
         }
 
+        /// <summary>
+        /// Prompts the user for the name of a new portfolio and calls the "newPort" event
+        /// </summary>
         private void CreatePortfolio()
         {
             bool canContinue;
@@ -68,6 +90,9 @@ namespace PA2Console
             MenuHelper.PressEnter();
         }
 
+        /// <summary>
+        /// Prompts the user for the name of a portfolio to delete and calls the "deletePort" event
+        /// </summary>
         private void DeletePortfolio()
         {
             bool canContinue;
@@ -93,6 +118,9 @@ namespace PA2Console
             MenuHelper.PressEnter();
         }
 
+        /// <summary>
+        /// Prompts the user for an amount to deposit and calls the "deposit" event
+        /// </summary>
         private void Deposit()
         {
             bool canContinue;
@@ -121,6 +149,9 @@ namespace PA2Console
             MenuHelper.PressEnter();
         }
 
+        /// <summary>
+        /// Prompts the user for an amount to withdraw and calls the "withdraw" event
+        /// </summary>
         private void Withdraw()
         {
             bool canContinue; 
@@ -149,11 +180,17 @@ namespace PA2Console
             MenuHelper.PressEnter();
         }
         
+        /// <summary>
+        /// Calls the "accountStats" event
+        /// </summary>
         private void AccountStats()
         {
             _inputHandler(new Event("accountStats"));
         }
 
+        /// <summary>
+        /// Prompts the user for the name of a portfolio to view and calls the portView event
+        /// </summary>
         private void ViewPortfolio()
         {
             _inputHandler(new Event("showPortfolios"));
@@ -183,11 +220,18 @@ namespace PA2Console
         #endregion Account Level
 
         #region Portfolio Level
+        /// <summary>
+        /// Shows the portfolio menu
+        /// </summary>
         private void PortfolioMenu()
         {
             _portfolioMenu.ShowMenu();
         }
 
+        /// <summary>
+        /// Prompts the user for the abbreviation of the stock to buy and then their method of purchase and then
+        /// the amount for their purchase. Calls either the "portBuyShares" or the "portBuyCost" depending on what they select.
+        /// </summary>
         private void PortBuy()
         {
             _inputHandler(new Event("showStocks"));
@@ -248,10 +292,40 @@ namespace PA2Console
             MenuHelper.PressEnter();
         }
 
+        /// <summary>
+        /// Prompts the user for the abbreviation of the stock they's like to sell and the amount then
+        /// calls the "portSell" event.
+        /// </summary>
         private void PortSell()
         {
-            
+            bool canContinue;
+            do
+            {
+                canContinue = true;
+                _inputHandler(new Event("showPortStocks"));
+                MenuHelper.PromptString(
+                    "Enter the abbreviation of the stock you'd like to sell",
+                    "Abbreviation: "
+                    ).Then(abbreviation =>
+                    {
+                        MenuHelper.PromptInt(
+                            "Enter the number of stocks you'd like to sell of " + abbreviation,
+                            "Amount: "
+                            ).Then(amount =>
+                            {
+                                _inputHandler(new Event(Tuple.Create(abbreviation, amount), "portSell")).Catch(e =>
+                                {
+                                    MenuHelper.PrintError(e);
+                                    canContinue = false;
+                                });
+                            });
+                    });
+
+            } while (!canContinue);
         }
+        /// <summary>
+        /// Calls the "portStats" event
+        /// </summary>
         private void PortStats()
         {
             _inputHandler(new Event("portStats"));
@@ -260,11 +334,11 @@ namespace PA2Console
         #endregion Portfolio Level
 
 
+        /// <summary>
+        /// Prompts the user for the volitility and then calls "simulate"
+        /// </summary>
         private void Volatility()
         {
-            //Should be good to go.
-            //Event name is "simulate" and requires a string which will be either "high", "med", "low" and will return error if not.
-            //The "simulate" event will broadcast a "showStocks" event which will print the updated stocks in the console.
             
             bool canContinue;
             do
@@ -289,8 +363,12 @@ namespace PA2Console
             MenuHelper.PressEnter();
         }
 
+        /// <summary>
+        /// Calls "deleteAllPortfolios" and "accountStats" events and then exits.
+        /// </summary>
         private void Exit()
         {
+            _inputHandler(new Event("deleteAllPortfolios"));
             _inputHandler(new Event("accountStats"));
             Environment.Exit(0);
         }
