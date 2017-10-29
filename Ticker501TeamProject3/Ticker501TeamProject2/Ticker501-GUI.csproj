@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F9407608-DD43-4E3F-91F1-6DA797A63CD3}</ProjectGuid>
+    <ProjectGuid>{654544BD-9994-4618-A6CD-1582BFDDD72A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ticker501TeamProject3</RootNamespace>
-    <AssemblyName>Ticker501TeamProject3</AssemblyName>
+    <RootNamespace>Ticker501TeamProject2</RootNamespace>
+    <AssemblyName>Ticker501TeamProject2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,8 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller.cs" />
-    <Compile Include="Events.cs" />
     <Compile Include="MainGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,9 +80,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MVCPrototype\MVCEventSystem\MVCEventSystem.csproj">
-      <Project>{2e7e92a6-2e5c-45b2-9841-db31b7852398}</Project>
-      <Name>MVCEventSystem</Name>
+    <ProjectReference Include="..\Class-Library\Class-Library.csproj">
+      <Project>{4A39A390-69CF-426C-86B0-965AD6E0F4E4}</Project>
+      <Name>Class-Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
