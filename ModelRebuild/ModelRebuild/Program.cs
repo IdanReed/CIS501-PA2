@@ -10,6 +10,12 @@ namespace ModelRebuild
     {
         static void Main(string[] args)
         {
+            MainModel mm = new MainModel();
+            mm.LoadTickersFromFile();
+            mm.account.CreatePortfolio("CreatedPortOne");
+            
+            mm.account.portfolios[0].
+            Console.ReadLine();
         }
     }
 }

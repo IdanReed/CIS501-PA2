@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelRebuild", "ModelRebuild\ModelRebuild.csproj", "{04B4CB8F-56BF-4828-929A-E179A4A6C9C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelRebuildTest", "ModelRebuildTest\ModelRebuildTest.csproj", "{A21C42D2-651E-4132-AC5F-3B4F14A2BDFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{04B4CB8F-56BF-4828-929A-E179A4A6C9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04B4CB8F-56BF-4828-929A-E179A4A6C9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04B4CB8F-56BF-4828-929A-E179A4A6C9C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21C42D2-651E-4132-AC5F-3B4F14A2BDFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21C42D2-651E-4132-AC5F-3B4F14A2BDFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21C42D2-651E-4132-AC5F-3B4F14A2BDFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21C42D2-651E-4132-AC5F-3B4F14A2BDFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
