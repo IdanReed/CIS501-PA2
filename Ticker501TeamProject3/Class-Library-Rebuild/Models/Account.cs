@@ -8,6 +8,7 @@ namespace ModelRebuild
 {
     public class Account
     {
+        public const int MAX_NUMER_OF_PORTFOLIOS = 3;
         private double _funds = 0;
         private List<Transaction> _transactions = new List<Transaction>();
         private List<Portfolio> _portfolios = new List<Portfolio>();
@@ -82,14 +83,22 @@ namespace ModelRebuild
         }
         public bool CreatePortfolio(string name, StockVerifier ver)
         {
-            if (_portfolios.Count > 2)
+            bool flag = false;
+            foreach(Portfolio p in Portfolios)
             {
-                return false;
+                if(p.Name == name)
+                {
+                    flag = true;
+                }
+            }
+            if (_portfolios.Count < MAX_NUMER_OF_PORTFOLIOS && )
+            {
+                _portfolios.Add(new Portfolio(name, ver, ManageFunds));
+                return true;
             }
             else
             {
-                _portfolios.Add(new Portfolio(name, ver));
-                return true;
+                return false;
             }
 
         }
@@ -97,5 +106,22 @@ namespace ModelRebuild
         {
             return _portfolios.Find((p) => p.Name == name);
         }
+        private bool ManageFunds(BuyOrSell.BuyOrSellEnum type, double cost)
+        {
+            if(BuyOrSell.BuyOrSellEnum.Sell == type)
+            {
+                _funds += cost;
+                return true;
+            }else if(BuyOrSell.BuyOrSellEnum.Buy == type)
+            {
+                if(_funds >= cost)
+                {
+                    _funds -= cost;
+                    return true;
+                }
+            }
+            return false;
+        }
+        
     }
 }
