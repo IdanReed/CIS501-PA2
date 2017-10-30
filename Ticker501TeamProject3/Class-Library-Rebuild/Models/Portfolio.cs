@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 namespace ModelRebuild
 {
     public delegate bool StockVerifier(Stock stock);
+    public delegate bool FundsVerifier(BuyOrSell.BuyOrSellEnum type, double cost);
     public class Portfolio
     {
         private List<Transaction> _transactionList = new List<Transaction>();
-        private StockVerifier _verifier;
+        private StockVerifier _verifierStock;
+        private FundsVerifier _fundsManager;
         public readonly string Name;
 
         public List<Transaction> TransactionList
@@ -18,10 +20,11 @@ namespace ModelRebuild
             get { return _transactionList; }
         }
 
-        public Portfolio(string nameIn, StockVerifier ver)
+        public Portfolio(string nameIn, StockVerifier verifierStock, FundsVerifier fundsManager)
         {
             Name = nameIn;
-            _verifier = ver;
+            _verifierStock = verifierStock;
+            _fundsManager = fundsManager;
         }
         public double GainLoss(List<Stock> stockList)
         {
@@ -31,9 +34,52 @@ namespace ModelRebuild
                 gainLossSum += transaction.GainLossInfluence;
             }
 
-            gainLossSum += Value(stockList);
+            gainLossSum += PurchasedValue(stockList);
 
             return gainLossSum;
+        }
+        public double PurchasedValue(List<Stock> stockList)
+        {
+            List<Tuple<string, double, int>> HeldStockList = new List<Tuple<string, double, int>>();
+
+            foreach (Transaction curTrans in _transactionList)
+            {
+
+                if (curTrans.GetType() == typeof(BuyOrSell))
+                {
+                    BuyOrSell curBOS = (BuyOrSell)curTrans;
+
+                    Tuple<string, double, int> createdTuple = null;
+                    Tuple<string, double, int> foundTuple = null;
+                    foreach (Tuple<string, double, int> heldTuple in HeldStockList)
+                    {
+                        if (curBOS.StockName == heldTuple.Item1)
+                        {
+                            if (curBOS.BuyOrSellState == BuyOrSell.BuyOrSellEnum.Buy)
+                            {
+                                createdTuple = Tuple.Create(heldTuple.Item1, heldTuple.Item2, (int)heldTuple.Item3 + curBOS.Quantity);
+
+                            }
+                            else
+                            {
+                                createdTuple = Tuple.Create(heldTuple.Item1, heldTuple.Item2, (int)heldTuple.Item3 - curBOS.Quantity);
+
+                            }
+                            break;
+                        }
+                    }
+                    if (createdTuple != null)
+                    {
+                        HeldStockList[HeldStockList.IndexOf(foundTuple)] = createdTuple;
+                    }
+                    else
+                    {
+                        HeldStockList.Add(createdTuple);
+                    }
+
+                }
+
+            }
         }
         public double Value(List<Stock> stockList)
         {
@@ -95,16 +141,31 @@ namespace ModelRebuild
 
         public void PurchaseStock(Stock stock, int amount)
         {
-            if (_verifier(stock))
+            if (_verifierStock(stock))
             {
-                BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Buy);
+                if(_fundsManager(BuyOrSell.BuyOrSellEnum.Buy, (stock.Price * amount + Fee.BUY_OR_SELL)))
+                {
+                    BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Buy);
+                }
+                else
+                {
+                    throw new ArgumentException("Not enough cash");
+                }
             }
         }
         public void SellStock(Stock stock, int amount)
         {
-            if (_verifier(stock))
+            if (_verifierStock(stock))
             {
-                BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Buy);
+                if (_fundsManager(BuyOrSell.BuyOrSellEnum.Sell, (stock.Price * amount + Fee.BUY_OR_SELL)))
+                {
+                    BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Sell);
+
+                }
+                else
+                {
+                    throw new ArgumentException("Not enough cash");
+                }
             }
         }
     }

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class-Library-Rebuild", "Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCEventSystem", "MVCEventSystem\MVCEventSystem.csproj", "{A73E2F36-AB8D-4474-9C75-2AA12DE961DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTests", "ModelTests\ModelTests.csproj", "{C944BE98-4DA5-4EE9-8A19-CF22A21F086F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A73E2F36-AB8D-4474-9C75-2AA12DE961DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A73E2F36-AB8D-4474-9C75-2AA12DE961DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A73E2F36-AB8D-4474-9C75-2AA12DE961DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C944BE98-4DA5-4EE9-8A19-CF22A21F086F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C944BE98-4DA5-4EE9-8A19-CF22A21F086F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C944BE98-4DA5-4EE9-8A19-CF22A21F086F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C944BE98-4DA5-4EE9-8A19-CF22A21F086F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
