@@ -8,7 +8,7 @@ namespace ModelRebuild
 {
     public class Fee : Transaction
     {
-        public enum FeeSelect { Deposit, BuyOrSell };
+        public enum FeeSelect { DepositOrWithdraw, BuyOrSell };
 
         public const double DEPOSIT = -4.99;
         public const double BUY_OR_SELL = -9.99;
@@ -23,7 +23,7 @@ namespace ModelRebuild
         {
             get
             {
-                if (SelectedFee == FeeSelect.Deposit)
+                if (SelectedFee == FeeSelect.DepositOrWithdraw)
                 {
                     return DEPOSIT;
                 }

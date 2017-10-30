@@ -9,8 +9,6 @@ namespace ModelRebuild
     public class Account
     {
         private double _funds = 0;
-        private double _depositedAmount = 0;
-        private double _withdrawAmount = 0;
         private List<Transaction> _transactions = new List<Transaction>();
 
         public double Funds
@@ -30,7 +28,7 @@ namespace ModelRebuild
         public void Deposit(double amount)
         {
             _funds += amount + Fee.DEPOSIT;
-            _transactions.Add(new Fee(Fee.FeeSelect.Deposit));
+            _transactions.Add(new Fee(Fee.FeeSelect.DepositOrWithdraw));
         }
 
         /// <summary>
@@ -45,7 +43,7 @@ namespace ModelRebuild
                 _funds -= amount;
                 _funds += Fee.DEPOSIT;
 
-                _transactions.Add(new Fee(Fee.FeeSelect.Deposit)); 
+                _transactions.Add(new Fee(Fee.FeeSelect.DepositOrWithdraw)); 
             }
             else
             {
