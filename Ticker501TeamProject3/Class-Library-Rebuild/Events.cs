@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ticker501TeamProject3
 {
-    class DisplayEvent : IEvent
+    public class DisplayEvent : IEvent
     {
         private string _type;
         public string Type
@@ -23,7 +23,7 @@ namespace Ticker501TeamProject3
         }
     }
 
-    class DepositWithdrawEvent : IEvent
+    public class DepositWithdrawEvent : IEvent
     {
         private string _type;
         private double _amount;
@@ -46,7 +46,7 @@ namespace Ticker501TeamProject3
         }
     }
 
-    class PortfolioEvent: IEvent
+    public class PortfolioEvent: IEvent
     {
         private string _type;
         private string _portfolioName;
@@ -66,7 +66,7 @@ namespace Ticker501TeamProject3
         }
     }
 
-    class StockEvent: IEvent
+    public class StockEvent: IEvent
     {
         private string _type;
         private int _amount;
