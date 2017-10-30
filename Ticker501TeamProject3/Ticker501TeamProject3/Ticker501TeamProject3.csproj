@@ -46,8 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller.cs" />
-    <Compile Include="Events.cs" />
     <Compile Include="MainGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,7 +80,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MVCEventSystem\MVCEventSystem.csproj">
+    <ProjectReference Include="..\Class-Library-Rebuild\Class-Library-Rebuild.csproj">
+      <Project>{aa61fa15-5ed1-4785-8f3f-bdfcdc29f414}</Project>
+      <Name>Class-Library-Rebuild</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCEventSystem\MVCEventSystem.csproj">
       <Project>{a73e2f36-ab8d-4474-9c75-2aa12de961da}</Project>
       <Name>MVCEventSystem</Name>
     </ProjectReference>
