@@ -1,4 +1,4 @@
-﻿namespace Ticker501TeamProject2
+﻿namespace Ticker501TeamProject3
 {
     partial class MainGUI
     {

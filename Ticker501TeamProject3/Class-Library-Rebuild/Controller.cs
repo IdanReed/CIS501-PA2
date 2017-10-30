@@ -1,14 +1,13 @@
-﻿using ModelRebuild;
-using MVCEventSystem;
+﻿using MVCEventSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ticker501TeamProject3
+namespace ModelRebuild
 {
-    class Controller: MVCEventSystem.Broadcaster<Error>
+    public class Controller: MVCEventSystem.Broadcaster<Error>
     {
         private MainModel _mainModel;
         private Portfolio _currentPortfolio;
@@ -114,6 +113,7 @@ namespace Ticker501TeamProject3
         private Error NewPortfolio(PortfolioEvent e)
         {
             _mainModel.Account.CreatePortfolio(e.PortfolioName, _mainModel.VerifyStock);
+            _currentPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
             Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
             return Error.None;
         }
@@ -141,7 +141,7 @@ namespace Ticker501TeamProject3
             Stock s = _mainModel.Stocks.Find((stock) => stock.Name == e.Name);
             if(s != null)
             {
-                //_currentPortfolio.PurchaseStock()
+                _currentPortfolio.SellStock(s, e.Amount);
             }
             Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
             return Error.None;
