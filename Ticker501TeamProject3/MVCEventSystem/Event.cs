@@ -21,15 +21,29 @@ namespace MVCEventSystem
     /// <param name="e">The event of type IEvent</param>
     /// <returns>The return type of type U</returns>
     public delegate U EventListener<U>(IEvent e) where U :IEventReturn;
+
+    /// <summary>
+    /// The type used for all events
+    /// </summary>
     public interface IEvent
     {
+        /// <summary>
+        /// The type of event. ie: "updateEvent" or "changedDate"
+        /// </summary>
         string Type
         {
             get;
         }
     }
+
+    /// <summary>
+    /// The return type used for all events. 
+    /// </summary>
     public interface IEventReturn
     {
+        /// <summary>
+        /// The default for this return type. ie: Error.None or State.NoChange
+        /// </summary>
         IEventReturn Default
         {
             get;

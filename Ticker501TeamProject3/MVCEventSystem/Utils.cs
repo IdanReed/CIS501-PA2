@@ -42,19 +42,36 @@ namespace MVCEventSystem
     {
         private string _name;
         private Type _type;
+
+        /// <summary>
+        /// The event name specified in the attribute
+        /// </summary>
         public string Name
         {
             get { return _name; }
         }
+
+        /// <summary>
+        /// The event type specified in the attribute
+        /// </summary>
         public Type Type
         {
             get { return _type; }
         }
 
+        /// <summary>
+        /// Creates a new event attributes that responds to an event by name
+        /// </summary>
+        /// <param name="name">The name of the event to respond to</param>
         public EventListenerAttr(string name)
         {
             _name = name;
         }
+
+        /// <summary>
+        /// Creates an event attribute that responds to an event by type
+        /// </summary>
+        /// <param name="type">The type of event to respond to</param>
         public EventListenerAttr(Type type)
         {
             _type = type;
