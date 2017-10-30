@@ -82,8 +82,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MVCPrototype\MVCEventSystem\MVCEventSystem.csproj">
-      <Project>{2e7e92a6-2e5c-45b2-9841-db31b7852398}</Project>
+    <ProjectReference Include="..\..\MVCEventSystem\MVCEventSystem.csproj">
+      <Project>{a73e2f36-ab8d-4474-9c75-2aa12de961da}</Project>
       <Name>MVCEventSystem</Name>
     </ProjectReference>
   </ItemGroup>
