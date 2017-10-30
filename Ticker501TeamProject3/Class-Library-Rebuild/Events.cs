@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ticker501TeamProject3
+namespace ModelRebuild
 {
     public class DisplayEvent : IEvent
     {

@@ -5,10 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ticker501TeamProject3
+namespace ModelRebuild
 {
-    class Controller: MVCEventSystem.Broadcaster<Error>
+    public class Controller: MVCEventSystem.Broadcaster<Error>
     {
+        private MainModel _mainModel;
+        private Portfolio _currentPortfolio;
+        public Controller(MainModel m)
+        {
+            _mainModel = m;
+        }
         /*
          * case "deposit":
                     return Deposit((double) e.Data);
@@ -52,25 +58,36 @@ namespace Ticker501TeamProject3
         [EventListenerAttr("deposit")]
         private Error Deposit(DepositWithdrawEvent e)
         {
-            
+            _mainModel.Account.Deposit(e.Amount);
+            Broadcast(new DisplayEvent("account"));
             return Error.None;
         }
 
         [EventListenerAttr("withdraw")]
         private Error Withdraw(DepositWithdrawEvent e)
         {
+            try
+            {
+                _mainModel.Account.Withdraw(e.Amount);
+            }
+            catch(ArgumentException err)
+            {
+                return new Error(err.Message);
+            }
+            Broadcast(new DisplayEvent("account"));
             return Error.None;
         }
 
-        [EventListenerAttr("deleteAllPortfolios")]
+        /*[EventListenerAttr("deleteAllPortfolios")]
         private Error DeleteAllPortfolios(IEvent e)
         {
             return Error.None;
-        }
+        }*/
 
         [EventListenerAttr("simulate")]
         private Error Simulate(IEvent e)
         {
+            Broadcast(new DisplayEvent("account"));
             return Error.None;
         }
         #endregion AccountMethods
@@ -79,6 +96,15 @@ namespace Ticker501TeamProject3
         [EventListenerAttr("deletePortfolio")]
         private Error DeletePortfolio(PortfolioEvent e)
         {
+            try
+            {
+                _mainModel.Account.DeletePortfolio(e.PortfolioName);
+            }
+            catch(ArgumentException err)
+            {
+                return new Error(err.Message);
+            }
+            Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
             return Error.None;
         }
 
@@ -86,6 +112,9 @@ namespace Ticker501TeamProject3
         [EventListenerAttr("newPortfolio")]
         private Error NewPortfolio(PortfolioEvent e)
         {
+            _mainModel.Account.CreatePortfolio(e.PortfolioName, _mainModel.VerifyStock);
+            _currentPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
+            Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
             return Error.None;
         }
 
@@ -93,6 +122,15 @@ namespace Ticker501TeamProject3
         [EventListenerAttr("viewPortfolio")]
         private Error ViewPortfolio(PortfolioEvent e)
         {
+            if(_mainModel.Account.Portfolios.Exists((p) => p.Name == e.PortfolioName))
+            {
+                _currentPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
+            }
+            else
+            {
+                return new Error("No portfolio exists with that name.");
+            }
+            Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
             return Error.None;
         }
 
@@ -100,11 +138,30 @@ namespace Ticker501TeamProject3
         [EventListenerAttr("sellStocks")]
         private Error SellStocks(StockEvent e)
         {
+            Stock s = _mainModel.Stocks.Find((stock) => stock.Name == e.Name);
+            if(s != null)
+            {
+                _currentPortfolio.SellStock(s, e.Amount);
+            }
+            Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
             return Error.None;
         }
         [EventListenerAttr("buyStocks")]
         private Error BuyStocks(StockEvent e)
         {
+            Stock s = _mainModel.Stocks.Find((stock) => stock.Name == e.Name);
+            if(s != null)
+            {
+                try
+                {
+                    _currentPortfolio.PurchaseStock(s, e.Amount);
+                }
+                catch(ArgumentException err)
+                {
+                    return new Error(err.Message);
+                }
+            }
+            Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
             return Error.None;
         }
 
