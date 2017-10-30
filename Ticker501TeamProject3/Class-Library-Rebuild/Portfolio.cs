@@ -100,5 +100,12 @@ namespace ModelRebuild
                 BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Buy);
             }
         }
+        public void SellStock(Stock stock, int amount)
+        {
+            if (_verifier(stock))
+            {
+                BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Buy);
+            }
+        }
     }
 }
