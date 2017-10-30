@@ -24,8 +24,8 @@ namespace ModelRebuild
 
         public BuyOrSell(Stock stock, int quanittyIn, BuyOrSellEnum BORSIn)
         {
-            StockName = stock.name;
-            PricePerStock = stock.price;
+            StockName = stock.Name;
+            PricePerStock = stock.Price;
 
             Quantity = quanittyIn;
             

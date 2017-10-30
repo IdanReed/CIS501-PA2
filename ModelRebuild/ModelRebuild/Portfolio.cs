@@ -6,22 +6,27 @@ using System.Threading.Tasks;
 
 namespace ModelRebuild
 {
-    public delegate bool StockVerifier(Stock);
+    public delegate bool StockVerifier(Stock stock);
     public class Portfolio
     {
-        List<Transaction> TransactionList = new List<Transaction>();
+        private List<Transaction> _transactionList = new List<Transaction>();
         private StockVerifier _verifier;
-        public readonly string name;
+        public readonly string Name;
+
+        public List<Transaction> TransactionList
+        {
+            get { return _transactionList; }
+        }
 
         public Portfolio(string nameIn, StockVerifier ver)
         {
-            name = nameIn;
+            Name = nameIn;
             _verifier = ver;
         }
         public double GainLoss(List<Stock> stockList)
         {
             double gainLossSum = 0;
-            foreach (Transaction transaction in TransactionList)
+            foreach (Transaction transaction in _transactionList)
             {
                 gainLossSum += transaction.GainLossInfluence;
             }
@@ -34,7 +39,7 @@ namespace ModelRebuild
         {
             List<Tuple<string, int>> HeldStockList = new List<Tuple<string, int>>();
 
-            foreach (Transaction curTrans in TransactionList)
+            foreach (Transaction curTrans in _transactionList)
             {
 
                 if (curTrans.GetType() == typeof(BuyOrSell))
@@ -78,9 +83,9 @@ namespace ModelRebuild
                 double heldStockPrice;
                 foreach (Stock stock in stockList)
                 {
-                    if (heldStock.Item1 == stock.name)
+                    if (heldStock.Item1 == stock.Name)
                     {
-                        sum += heldStock.Item2 * stock.price;
+                        sum += heldStock.Item2 * stock.Price;
                     }
                 }
             }
@@ -92,7 +97,7 @@ namespace ModelRebuild
         {
             if (_verifier(stock))
             {
-                BuyOrSell buyOrSell = new BuyOrSell()
+                BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Buy);
             }
         }
     }

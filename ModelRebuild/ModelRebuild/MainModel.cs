@@ -8,9 +8,17 @@ namespace ModelRebuild
 {
     public class MainModel
     {
-        public Account account = new Account();
-        public List<Stock> stocks = new List<Stock>();
+        private Account _account = new Account();
+        private List<Stock> _stocks = new List<Stock>();
 
+        public Account Account
+        {
+            get { return _account; }
+        }
+        public List<Stock> Stocks
+        {
+            get { return _stocks; }
+        }
         public MainModel()
         {
         }
@@ -26,13 +34,14 @@ namespace ModelRebuild
                 double price = Convert.ToDouble(parts[2].Substring(1));
 
                 Stock stock = new Stock(name, tag, price);
-                stocks.Add(stock);
+                _stocks.Add(stock);
             }
         }
         public bool VerifyStock(Stock stock)
         {
-            return stocks.Contains(stock);
+            return _stocks.Contains(stock);
             //return stocks.Find((s) => s.Equals(stock)) != null;
         }
+        
     }
 }

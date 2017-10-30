@@ -8,25 +8,25 @@ namespace ModelRebuild
 {
     public class Stock
     {
-        public readonly string name;
-        public readonly string tag;
-        public readonly double price;
+        public readonly string Name;
+        public readonly string Tag;
+        public readonly double Price;
 
         public Stock(string nameIn, string tagIn, double priceIn)
         {
-            name = nameIn;
-            tag = tagIn;
-            price = priceIn;
+            Name = nameIn;
+            Tag = tagIn;
+            Price = priceIn;
         }
-        public string ToString()
+        public override string ToString()
         {
-            return name + "-" + tag + "-" + price;
+            return Name + "-" + Tag + "-" + Price;
         }
         public override bool Equals(Object obj)
         {
             Stock stock = obj as Stock;
             if (stock == null) return false;
-            return name == stock.name && tag == stock.tag && price == stock.price;
+            return Name == stock.Name && Tag == stock.Tag && Price == stock.Price;
         }
 
     }
