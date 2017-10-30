@@ -36,7 +36,8 @@ namespace Ticker501TeamProject2
             _eventListener = listener;
 
             _handler = new MVCEventSystem.EventHandler<Error>();
-            _handler.AddEventListener("update", Update);
+            _handler.AddEventListener<DisplayEvent>(typeof(DisplayEvent), Update);
+            _handler.AddEventListener<PortfolioEvent>(typeof(PortfolioEvent), UpdatePortfolio);
            /* _inputHandle = inputHander;
             _acct = a;
             _tickers = tickers;
@@ -59,9 +60,14 @@ namespace Ticker501TeamProject2
         /// </summary>
         /// <param name="e"></param>
         /// 
-        public Error Update(IEvent e)
+        public Error Update(DisplayEvent e)
         {
 
+
+            return Error.None;
+        }
+        public Error UpdatePortfolio(PortfolioEvent e)
+        {
 
             return Error.None;
         }
