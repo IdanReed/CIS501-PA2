@@ -10,6 +10,7 @@ namespace ModelRebuild
     {
         private double _funds = 0;
         private List<Transaction> _transactions = new List<Transaction>();
+        private List<Portfolio> _portfolios = new List<Portfolio>();
 
         public double Funds
         {
@@ -19,23 +20,15 @@ namespace ModelRebuild
         {
             get { return _transactions; }
         }
-        private List<Portfolio> _portfolios = new List<Portfolio>();
         public List<Portfolio> Portfolios
         {
             get { return _portfolios; }
         }
-        
         public void Deposit(double amount)
         {
             _funds += amount + Fee.DEPOSIT;
             _transactions.Add(new Fee(Fee.FeeSelect.DepositOrWithdraw));
         }
-
-        /// <summary>
-        /// Withdraws an amount of money from the account
-        /// </summary>
-        /// <param name="amount">The amount to withdraw</param>
-        /// <exception cref="ArgumentException"></exception>
         public void Withdraw(double amount)
         {
             if(_funds >= amount - Fee.DEPOSIT)
@@ -82,7 +75,10 @@ namespace ModelRebuild
         }
         public void DeletePortfolio(string name)
         {
-            _portfolios.RemoveAll((p) => p.Name == name);
+            if (_portfolios.RemoveAll((p) => p.Name == name) == 0)
+            {
+                throw new ArgumentException("No portfolio exists with that name.");
+            }
         }
         public bool CreatePortfolio(string name, StockVerifier ver)
         {
