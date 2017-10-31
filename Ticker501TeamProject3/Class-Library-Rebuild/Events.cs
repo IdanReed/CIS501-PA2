@@ -90,4 +90,23 @@ namespace ModelRebuild
             _amount = amount;
         }
     }
+
+    public class SimulateEvent: IEvent
+    {
+        private string _type;
+        private string _vol;
+        public string Type
+        {
+            get { return _type; }
+        }
+        public string Volatility
+        {
+            get { return _vol; }
+        }
+        public SimulateEvent(string type, string vol)
+        {
+            _vol = vol;
+            _type = type;
+        }
+    }
 }
