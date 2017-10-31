@@ -66,19 +66,23 @@ namespace Ticker501TeamProject3
         public Error Update(DisplayEvent e)
         {
             #region uxPanDepositWithdrawl
+            //funds
             uxTBFundsAmount.Text = _mainModel.Account.Funds.ToString("N2");
 
             double accTotalValue = _mainModel.Account.CalculateValue(_mainModel.Stocks);
             double accPosValue = accTotalValue - _mainModel.Account.Funds;
             if (!(accTotalValue == 0))
             {
+                //cash percent
                 uxTBCashPercent.Text = String.Format("{0:0.0}", (_mainModel.Account.Funds / accTotalValue) * 100) + "%";
+                //positions percent
                 uxTBPositonsPercent.Text = String.Format("{0:0.0}", (accPosValue / accTotalValue) * 100) + "%";
             }
-
+            //positions amount
             uxTBPositionsAmount.Text = "$" + String.Format("{0:0.0}", accPosValue);
 
-            //
+            //total value
+            uxTBTotalValue.Text ="$" + String.Format("{0:0.0}", accTotalValue);
 
             #endregion DepositWithdrawPanel
 
@@ -92,10 +96,17 @@ namespace Ticker501TeamProject3
             #region uxPanPortfoliosCreateDelete
             #endregion uxPanPortfoliosCreateDelete
 
+            #region uxPanAllStocks
+            #endregion uxPanAllStocks
+
+            #region uxPanSimulate
+            #endregion uxPanSimulate
+
             return Error.None;
         }
         public Error UpdatePortfolio(PortfolioEvent e)
         {
+            Update(new DisplayEvent("account"));
 
             #region PortfoliosPanel
 
@@ -111,6 +122,22 @@ namespace Ticker501TeamProject3
             }
 
             #endregion PortfoliosPanel
+
+            #region uxPanSelecPort
+            #endregion uxPanSelecPort
+
+            #region uxPanPortHeldStock
+            #endregion uxPanPortHeldStock
+
+            #region uxPanPortGainLoss
+            #endregion uxPanPortGainLoss
+
+            #region uxPanPortInfo
+            #endregion uxPanPortInfo
+
+            #region uxPanBuySellStock
+            #endregion uxPanBuySellStock
+
 
             return Error.None;
         }
@@ -451,5 +478,7 @@ namespace Ticker501TeamProject3
         {
 
         }
+
+       
     }
 }
