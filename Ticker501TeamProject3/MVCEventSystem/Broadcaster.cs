@@ -23,6 +23,10 @@ namespace MVCEventSystem
         /// outgoing. 
         /// </summary>
         List<Type> _routings;
+
+        /// <summary>
+        /// The main constructor for Broadcaster
+        /// </summary>
         public Broadcaster()
         {
             _routings = new List<Type>();

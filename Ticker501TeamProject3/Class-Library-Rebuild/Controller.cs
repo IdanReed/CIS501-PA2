@@ -11,50 +11,21 @@ namespace ModelRebuild
     {
         private MainModel _mainModel;
         private Portfolio _currentPortfolio;
+
+        /// <summary>
+        /// The main contructor for Controller
+        /// </summary>
+        /// <param name="m">The main model for the program</param>
         public Controller(MainModel m)
         {
             _mainModel = m;
         }
-        /*
-         * case "deposit":
-                    return Deposit((double) e.Data);
-                case "withdraw":
-                    return Withdraw((double) e.Data);
-
-                case "deleteAllPortfolios":
-                    DeleteAllPortfolios();
-                    break;
-
-                //Portfolio Events
-                case "deletePort":
-                    Error deletePortErr = DeletePortfolio((string)e.Data);
-                    Broadcast(new Event("deletePort"));
-                    return deletePortErr;
-                case "showPortfolios":
-                    Broadcast(new Class_Library.Event("showPortfolios"));
-                    break;
-                case "newPort":
-                    Error err = NewPortfolio((string)e.Data);
-                    Broadcast(new Event("newPort"));
-                    return err;
-                case "portView":
-                    return PortView((string)e.Data);
-                case "portBuyShares":
-                    Tuple<string, int> buyData = (Tuple<string, int>) e.Data;
-                    return PortBuy(buyData.Item1, buyData.Item2);
-                case "portBuyCost":
-                    Tuple<string, double> buyDataCost = (Tuple<string, double>)e.Data;
-                    return PortBuy(buyDataCost.Item1, buyDataCost.Item2);
-                case "portSell":
-                    Tuple<string, int> sellData = (Tuple<string, int>)e.Data;
-                    return PortSell(sellData.Item1, sellData.Item2);
-          
-
-                //Ticker Events
-                case "simulate":
-                    return Simulate((string)e.Data);                   
-              */
         #region AccountMethods
+        /// <summary>
+        /// Deposits money into the account
+        /// </summary>
+        /// <param name="e">The deposit event sent from the input view</param>
+        /// <returns>Error.None always</returns>
         [EventListenerAttr("deposit")]
         private Error Deposit(DepositWithdrawEvent e)
         {
@@ -63,6 +34,11 @@ namespace ModelRebuild
             return Error.None;
         }
 
+        /// <summary>
+        /// Withdraws money from the account
+        /// </summary>
+        /// <param name="e">The withdraw event sent from the input view</param>
+        /// <returns>An error if not enough money. Otherwise Error.None</returns>
         [EventListenerAttr("withdraw")]
         private Error Withdraw(DepositWithdrawEvent e)
         {
@@ -78,12 +54,11 @@ namespace ModelRebuild
             return Error.None;
         }
 
-        /*[EventListenerAttr("deleteAllPortfolios")]
-        private Error DeleteAllPortfolios(IEvent e)
-        {
-            return Error.None;
-        }*/
-
+        /// <summary>
+        /// Simulates the stock prices
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns>Error.None always</returns>
         [EventListenerAttr("simulate")]
         private Error Simulate(IEvent e)
         {
@@ -93,6 +68,12 @@ namespace ModelRebuild
         #endregion AccountMethods
 
         #region PortfolioMethods
+
+        /// <summary>
+        /// Deletes the specified portfolio from the account
+        /// </summary>
+        /// <param name="e">The portfolio event containing the name of the portfolio to delete</param>
+        /// <returns>An error if the portfolio doesn't exist, otherwise Error.None</returns>
         [EventListenerAttr("deletePortfolio")]
         private Error DeletePortfolio(PortfolioEvent e)
         {
@@ -108,7 +89,11 @@ namespace ModelRebuild
             return Error.None;
         }
 
-
+        /// <summary>
+        /// Creates a portfolio with the specified name
+        /// </summary>
+        /// <param name="e">The portfolio event containing the name of the portfolio to create</param>
+        /// <returns>Error.None always</returns>
         [EventListenerAttr("newPortfolio")]
         private Error NewPortfolio(PortfolioEvent e)
         {
@@ -118,7 +103,11 @@ namespace ModelRebuild
             return Error.None;
         }
 
-
+        /// <summary>
+        /// Sets _currentPortfolio to the Portfolio with the specified name
+        /// </summary>
+        /// <param name="e">The portfolio event containing the name of the portfolio to set as current</param>
+        /// <returns>An error if the portfolio doesn't exist, otherwise Error.None</returns>
         [EventListenerAttr("viewPortfolio")]
         private Error ViewPortfolio(PortfolioEvent e)
         {
@@ -134,7 +123,11 @@ namespace ModelRebuild
             return Error.None;
         }
 
-
+        /// <summary>
+        /// Sells the specified number of stocks from the current portfolio
+        /// </summary>
+        /// <param name="e">The stock event containing the name and number of stocks to sell</param>
+        /// <returns>An error if there is no such stock, otherwise Error.None</returns>
         [EventListenerAttr("sellStocks")]
         private Error SellStocks(StockEvent e)
         {
@@ -146,6 +139,12 @@ namespace ModelRebuild
             Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
             return Error.None;
         }
+
+        /// <summary>
+        /// Buys the specified number of stocks from the current portfolio
+        /// </summary>
+        /// <param name="e">The stock event containing the name and number of stocks to buy</param>
+        /// <returns>An error if there is no such stock, otherwise Error.None</returns>
         [EventListenerAttr("buyStocks")]
         private Error BuyStocks(StockEvent e)
         {
