@@ -146,9 +146,16 @@ namespace ModelRebuild
         [EventListenerAttr("newPortfolio")]
         private Error NewPortfolio(PortfolioEvent e)
         {
-            _mainModel.Account.CreatePortfolio(e.PortfolioName, _mainModel.VerifyStock);
-            _currentPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
-            Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
+            try
+            {
+                _mainModel.Account.CreatePortfolio(e.PortfolioName, _mainModel.VerifyStock);
+                _currentPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
+                Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
+            }
+            catch(ArgumentException err)
+            {
+                return new Error(err.Message);
+            }
             return Error.None;
         }
 
@@ -168,7 +175,14 @@ namespace ModelRebuild
             {
                 return new Error("No portfolio exists with that name.");
             }
-            Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
+            if (_currentPortfolio != null)
+            {
+                Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
+            }
+            else
+            {
+                Broadcast(new PortfolioEvent("portfolio", ""));
+            }
             return Error.None;
         }
 

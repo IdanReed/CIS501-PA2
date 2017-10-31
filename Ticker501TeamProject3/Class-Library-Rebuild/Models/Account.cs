@@ -131,7 +131,7 @@ namespace ModelRebuild
         /// <param name="name">Name of the portfolio to be created</param>
         /// <param name="ver">Stock Verifier delegate for the portfolio</param>
         /// <returns>Boolean saying if the creation was completed</returns>
-        public bool CreatePortfolio(string name, StockVerifier ver)
+        public void CreatePortfolio(string name, StockVerifier ver)
         {
             bool flag = false;
             foreach(Portfolio p in Portfolios)
@@ -141,15 +141,10 @@ namespace ModelRebuild
                     flag = true;
                 }
             }
-            if (_portfolios.Count < MAX_NUMER_OF_PORTFOLIOS )
-            {
-                _portfolios.Add(new Portfolio(name, ver, ManageFunds));
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (_portfolios.Count >= MAX_NUMER_OF_PORTFOLIOS) throw new ArgumentException("Max number of portfolios reached.");
+            if (_portfolios.Exists(p => p.Name == name)) throw new ArgumentException("A portfolio with that name already exists");
+
+            _portfolios.Add(new Portfolio(name, ver, ManageFunds));
 
         }
 
