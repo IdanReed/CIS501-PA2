@@ -9,14 +9,14 @@ namespace ModelRebuild
 {
     public class Controller: MVCEventSystem.Broadcaster<Error>
     {
-        private const int HIGH_VOL_MAX = 16;
-        private const int HIGH_VOL_MIN = 3;
-        
-        private const int MED_VOL_MAX = 9;
-        private const int MED_VOL_MIN = 2;
-        
-        private const int LOW_VOL_MAX = 5;
-        private const int LOW_VOL_MIN = 1;
+        public const int HIGH_VOL_MAX = 16;
+        public const int HIGH_VOL_MIN = 3;
+
+        public const int MED_VOL_MAX = 9;
+        public const int MED_VOL_MIN = 2;
+
+        public const int LOW_VOL_MAX = 5;
+        public const int LOW_VOL_MIN = 1;
         
         private MainModel _mainModel;
         private Portfolio _currentPortfolio;
