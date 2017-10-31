@@ -10,7 +10,13 @@ namespace ModelRebuild
     {
         public readonly string Name;
         public readonly string Tag;
-        public readonly double Price;
+
+        private double _price;
+        public double Price
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
 
         /// <summary>
         /// Constructor for stock object
@@ -22,7 +28,7 @@ namespace ModelRebuild
         {
             Name = nameIn;
             Tag = tagIn;
-            Price = priceIn;
+            _price = priceIn;
         }
 
         /// <summary>
@@ -31,7 +37,7 @@ namespace ModelRebuild
         /// <returns>String containing stock name, tag, and current price</returns>
         public override string ToString()
         {
-            return Name + "-" + Tag + "-" + Price;
+            return Name + "-" + Tag + "-" + _price;
         }
 
         /// <summary>
@@ -43,7 +49,7 @@ namespace ModelRebuild
         {
             Stock stock = obj as Stock;
             if (stock == null) return false;
-            return Name == stock.Name && Tag == stock.Tag && Price == stock.Price;
+            return Name == stock.Name && Tag == stock.Tag && _price == stock.Price;
         }
 
     }

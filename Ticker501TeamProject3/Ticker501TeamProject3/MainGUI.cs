@@ -65,7 +65,7 @@ namespace Ticker501TeamProject3
         /// 
         public Error Update(DisplayEvent e)
         {
-            #region DepositWithdrawPanel
+            #region uxPanDepositWithdrawl
             uxTBFundsAmount.Text = _mainModel.Account.Funds.ToString("N2");
 
             double accTotalValue = _mainModel.Account.CalculateValue(_mainModel.Stocks);
@@ -78,8 +78,19 @@ namespace Ticker501TeamProject3
 
             uxTBPositionsAmount.Text = "$" + String.Format("{0:0.0}", accPosValue);
 
+            //
+
             #endregion DepositWithdrawPanel
 
+            #region uxPanAccHeldStocks
+
+            #endregion uxPanAccHeldStocks
+
+            #region uxPanGainLossAcc
+            #endregion uxPanGainLossAcc
+
+            #region uxPanPortfoliosCreateDelete
+            #endregion uxPanPortfoliosCreateDelete
 
             return Error.None;
         }
@@ -419,6 +430,11 @@ namespace Ticker501TeamProject3
         /// <param name="e"></param>
         private void uxBSimulatePrice_Click(object sender, EventArgs e)
         {
+            _eventListener(new SimulateEvent("simulate", uxDUDSelecVolatilty.SelectedItem.ToString()))
+                .Catch(error =>
+                {
+                    MessageBox.Show(error.Message);
+                });
             /*_inputHandle(new Event(uxDUDSelecVolatilty.SelectedItem.ToString(), "simulate"))
                 .Catch(message =>
                 {
