@@ -9,6 +9,15 @@ namespace ModelRebuild
 {
     public class Controller: MVCEventSystem.Broadcaster<Error>
     {
+        private const int HIGH_VOL_MAX = 16;
+        private const int HIGH_VOL_MIN = 3;
+        
+        private const int MED_VOL_MAX = 9;
+        private const int MED_VOL_MIN = 2;
+        
+        private const int LOW_VOL_MAX = 5;
+        private const int LOW_VOL_MIN = 1;
+        
         private MainModel _mainModel;
         private Portfolio _currentPortfolio;
 
@@ -60,8 +69,47 @@ namespace ModelRebuild
         /// <param name="e"></param>
         /// <returns>Error.None always</returns>
         [EventListenerAttr("simulate")]
-        private Error Simulate(IEvent e)
+        private Error Simulate(SimulateEvent e)
         {
+            string vol = e.Volatility.ToUpper();
+
+            int volMax = 0;
+            int volMin = 0;
+            switch (vol)
+            {
+                case "HIGH":
+                    volMax = HIGH_VOL_MAX;
+                    volMin = HIGH_VOL_MIN;
+                    break;
+                case "MED":
+                    volMax = MED_VOL_MAX;
+                    volMin = MED_VOL_MIN;
+                    break;
+                case "LOW":
+                    volMax = LOW_VOL_MAX;
+                    volMin = LOW_VOL_MIN;
+                    break;
+                default:
+                    return new Error(e.Volatility + " is not a valid volatility level.");
+            }
+
+            Random r = new Random();
+            foreach(Stock s in _mainModel.Stocks)
+            {
+                double selectedVol = r.Next(volMin, volMax)/100.0;
+                int addSubtract = r.Next(2);
+
+                double percOfStock = selectedVol * s.Price;
+                if(addSubtract == 1) //Subtract
+                {
+                    s.Price -= percOfStock;
+                }
+                else
+                {
+                    s.Price += percOfStock;
+                }
+            }
+
             Broadcast(new DisplayEvent("account"));
             return Error.None;
         }

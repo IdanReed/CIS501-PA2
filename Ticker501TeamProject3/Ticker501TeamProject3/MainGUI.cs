@@ -419,6 +419,11 @@ namespace Ticker501TeamProject3
         /// <param name="e"></param>
         private void uxBSimulatePrice_Click(object sender, EventArgs e)
         {
+            _eventListener(new SimulateEvent("simulate", uxDUDSelecVolatilty.SelectedItem.ToString()))
+                .Catch(error =>
+                {
+                    MessageBox.Show(error.Message);
+                });
             /*_inputHandle(new Event(uxDUDSelecVolatilty.SelectedItem.ToString(), "simulate"))
                 .Catch(message =>
                 {
