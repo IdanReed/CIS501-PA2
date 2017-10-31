@@ -104,7 +104,7 @@ namespace Ticker501TeamProject3
             List<string> formatedHeldStocks = new List<string>();
             foreach(BuyOrSell curBOS in allHeldBOS)
             {
-                formatedHeldStocks.Add(curBOS.StockName +" "+ curBOS.Quantity);
+                formatedHeldStocks.Add(curBOS.StockName +" #:"+ curBOS.Quantity);
             }
             uxLBStocksHeld.DataSource = formatedHeldStocks;
             #endregion uxPanAccHeldStocks

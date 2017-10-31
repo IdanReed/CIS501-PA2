@@ -618,7 +618,7 @@
             this.Controls.Add(this.uxPanDepositWithdrawl);
             this.MaximizeBox = false;
             this.Name = "MainGUI";
-            this.Text = "Form1";
+            this.Text = "Ticker501-Team01";
             this.Load += new System.EventHandler(this.MainGUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uxNBFundsInput)).EndInit();
             this.uxPanDepositWithdrawl.ResumeLayout(false);
