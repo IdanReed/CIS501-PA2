@@ -27,14 +27,17 @@ namespace ModelRebuild
             string[] lines = System.IO.File.ReadAllLines("Ticker.txt");
             foreach (string line in lines)
             {
-                string[] parts = line.Split('-');
+                if (line != "")
+                {
+                    string[] parts = line.Split('-');
 
-                string name = parts[1];
-                string tag = parts[0];
-                double price = Convert.ToDouble(parts[2].Substring(1));
+                    string name = parts[1];
+                    string tag = parts[0];
+                    double price = Convert.ToDouble(parts[2].Substring(1));
 
-                Stock stock = new Stock(name, tag, price);
-                _stocks.Add(stock);
+                    Stock stock = new Stock(name, tag, price);
+                    _stocks.Add(stock);
+                }
             }
         }
         public bool VerifyStock(Stock stock)
