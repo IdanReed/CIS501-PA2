@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ModelRebuild
 {
-    public class Account
+    public class Account_M
     {
         public const int MAX_NUMER_OF_PORTFOLIOS = 3;
         private double _funds = 0;
         private List<Transaction> _transactions = new List<Transaction>();
-        private List<Portfolio> _portfolios = new List<Portfolio>();
+        private List<Portfolio_M> _portfolios = new List<Portfolio_M>();
 
         
         /// <summary>
@@ -37,7 +37,7 @@ namespace ModelRebuild
         /// <summary>
         /// Getter for the list of portfolios in the account
         /// </summary>
-        public List<Portfolio> Portfolios
+        public List<Portfolio_M> Portfolios
         {
             get { return _portfolios; }
         }
@@ -48,8 +48,8 @@ namespace ModelRebuild
         /// <param name="amount">Amount to deposit</param>
         public void Deposit(double amount)
         {
-            _funds += amount + Fee.DEPOSIT;
-            _transactions.Add(new Fee(Fee.FeeSelect.DepositOrWithdraw));
+            _funds += amount + Fee_M.DEPOSIT;
+            _transactions.Add(new Fee_M(Fee_M.FeeSelect.DepositOrWithdraw));
         }
 
         /// <summary>
@@ -58,12 +58,12 @@ namespace ModelRebuild
         /// <param name="amount">Amount to withdraw</param>
         public void Withdraw(double amount)
         {
-            if(_funds >= amount + Fee.DEPOSIT)
+            if(_funds >= amount + Fee_M.DEPOSIT)
             {
                 _funds -= amount;
-                _funds += Fee.DEPOSIT;
+                _funds += Fee_M.DEPOSIT;
 
-                _transactions.Add(new Fee(Fee.FeeSelect.DepositOrWithdraw)); 
+                _transactions.Add(new Fee_M(Fee_M.FeeSelect.DepositOrWithdraw)); 
             }
             else
             {
@@ -76,10 +76,10 @@ namespace ModelRebuild
         /// </summary>
         /// <param name="stockList">Current list of stocks</param>
         /// <returns>Total value of account</returns>
-        public double CalculateValue(List<Stock> stockList)
+        public double CalculateValue(List<Stock_M> stockList)
         {
             double sum = 0;
-            foreach (Portfolio portfolio in _portfolios)
+            foreach (Portfolio_M portfolio in _portfolios)
             {
                 sum += portfolio.HeldValueCurrent(stockList);
             }
@@ -92,10 +92,10 @@ namespace ModelRebuild
         /// </summary>
         /// <param name="stockList">Current list of all stocks</param>
         /// <returns>Total gain/loss</returns>
-        public double CalculateGainLoss(List<Stock> stockList)
+        public double CalculateGainLoss(List<Stock_M> stockList)
         {
             double sum = 0;
-            foreach (Portfolio portfolio in _portfolios)
+            foreach (Portfolio_M portfolio in _portfolios)
             {
                 sum += portfolio.GainLoss();
             }
@@ -111,13 +111,13 @@ namespace ModelRebuild
         /// Deletes a portfolio from the account
         /// </summary>
         /// <param name="name">Name of portfolio to be deleted</param>
-        public void DeletePortfolio(string name, List<Stock> stocks)
+        public void DeletePortfolio(string name, List<Stock_M> stocks)
         {
-            Portfolio selectedPortfolio = GetPortfolioByName(name);
+            Portfolio_M selectedPortfolio = GetPortfolioByName(name);
             
-            foreach(BuyOrSell BOS in selectedPortfolio.CurrentlyHeld())
+            foreach(BuyOrSell_M BOS in selectedPortfolio.CurrentlyHeld())
             {
-                Stock stock = stocks.Find(s => BOS.StockName == s.Name);
+                Stock_M stock = stocks.Find(s => BOS.StockName == s.Name);
                 selectedPortfolio.SellStock(stock, BOS.Quantity);
             }
 
@@ -137,7 +137,7 @@ namespace ModelRebuild
         public void CreatePortfolio(string name, StockVerifier ver)
         {
             bool flag = false;
-            foreach(Portfolio p in Portfolios)
+            foreach(Portfolio_M p in Portfolios)
             {
                 if(p.Name == name)
                 {
@@ -147,7 +147,7 @@ namespace ModelRebuild
             if (_portfolios.Count >= MAX_NUMER_OF_PORTFOLIOS) throw new ArgumentException("Max number of portfolios reached.");
             if (_portfolios.Exists(p => p.Name == name)) throw new ArgumentException("A portfolio with that name already exists");
 
-            _portfolios.Add(new Portfolio(name, ver, ManageFunds));
+            _portfolios.Add(new Portfolio_M(name, ver, ManageFunds));
 
         }
 
@@ -156,7 +156,7 @@ namespace ModelRebuild
         /// </summary>
         /// <param name="name">Name of portfolio to find</param>
         /// <returns>The portfolio that was found</returns>
-        public Portfolio GetPortfolioByName(string name)
+        public Portfolio_M GetPortfolioByName(string name)
         {
             return _portfolios.Find((p) => p.Name == name);
         }
@@ -167,15 +167,15 @@ namespace ModelRebuild
         /// <param name="type">Either a buy or sell transaction</param>
         /// <param name="cost">Total cost of transaction</param>
         /// <returns>Boolean of whether or not the buy/sell was complete</returns>
-        private bool ManageFunds(BuyOrSell.BuyOrSellEnum type, double cost, double fee)
+        private bool ManageFunds(BuyOrSell_M.BuyOrSellEnum type, double cost, double fee)
         {
             _funds += fee;
 
-            if (BuyOrSell.BuyOrSellEnum.Sell == type)
+            if (BuyOrSell_M.BuyOrSellEnum.Sell == type)
             {
                 _funds += cost;
                 return true;
-            }else if(BuyOrSell.BuyOrSellEnum.Buy == type)
+            }else if(BuyOrSell_M.BuyOrSellEnum.Buy == type)
             {
                 if(_funds >= cost)
                 {

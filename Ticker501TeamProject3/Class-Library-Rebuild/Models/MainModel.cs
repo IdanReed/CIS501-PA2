@@ -11,15 +11,15 @@ namespace ModelRebuild
     /// Holds the account and the list of company stocks
     /// Loads the stocks in from the file and puts it into a list
     /// </summary>
-    public class MainModel
+    public class MainModel_M
     {
-        private Account _account = new Account();
-        private List<Stock> _stocks = new List<Stock>();
+        private Account_M _account = new Account_M();
+        private List<Stock_M> _stocks = new List<Stock_M>();
 
         /// <summary>
         /// Getter for the account
         /// </summary>
-        public Account Account
+        public Account_M Account
         {
             get { return _account; }
         }
@@ -27,7 +27,7 @@ namespace ModelRebuild
         /// <summary>
         /// Getter for the list of stocks
         /// </summary>
-        public List<Stock> Stocks
+        public List<Stock_M> Stocks
         {
             get { return _stocks; }
         }
@@ -49,7 +49,7 @@ namespace ModelRebuild
                     string tag = parts[0];
                     double price = Convert.ToDouble(parts[2].Substring(1));
 
-                    Stock stock = new Stock(name, tag, price);
+                    Stock_M stock = new Stock_M(name, tag, price);
                     _stocks.Add(stock);
                 }
             }
@@ -60,7 +60,7 @@ namespace ModelRebuild
         /// </summary>
         /// <param name="stock"></param>
         /// <returns></returns>
-        public bool VerifyStock(Stock stock)
+        public bool VerifyStock(Stock_M stock)
         {
             return _stocks.Contains(stock);
             //return stocks.Find((s) => s.Equals(stock)) != null;

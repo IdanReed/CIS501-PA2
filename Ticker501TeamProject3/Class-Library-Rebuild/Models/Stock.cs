@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelRebuild
 {
-    public class Stock
+    public class Stock_M
     {
         public readonly string Name;
         public readonly string Tag;
@@ -24,7 +24,7 @@ namespace ModelRebuild
         /// <param name="nameIn">Name of stock (eg. Microsoft Inc.)</param>
         /// <param name="tagIn">Stock tage (eg. MSFT)</param>
         /// <param name="priceIn">Starting price of stock</param>
-        public Stock(string nameIn, string tagIn, double priceIn)
+        public Stock_M(string nameIn, string tagIn, double priceIn)
         {
             Name = nameIn;
             Tag = tagIn;
@@ -47,7 +47,7 @@ namespace ModelRebuild
         /// <returns>Boolean value of whether or not two stock objects are equal</returns>
         public override bool Equals(Object obj)
         {
-            Stock stock = obj as Stock;
+            Stock_M stock = obj as Stock_M;
             if (stock == null) return false;
             return Name == stock.Name && Tag == stock.Tag && _price == stock.Price;
         }

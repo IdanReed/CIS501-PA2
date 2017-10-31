@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ModelRebuild
 {
-    public delegate bool StockVerifier(Stock stock);
-    public delegate bool FundsVerifier(BuyOrSell.BuyOrSellEnum type, double cost, double fee);
+    public delegate bool StockVerifier(Stock_M stock);
+    public delegate bool FundsVerifier(BuyOrSell_M.BuyOrSellEnum type, double cost, double fee);
     /// <summary>
     /// Portfolio holds the name of itself and the stocks that it currently holds
     /// It can return its current value and purchase or sell stocks
     /// </summary>
-    public class Portfolio
+    public class Portfolio_M
     {
         private List<Transaction> _transactionList = new List<Transaction>();
         private StockVerifier _verifierStock;
@@ -29,7 +29,7 @@ namespace ModelRebuild
         /// <param name="nameIn"></param>
         /// <param name="verifierStock"></param>
         /// <param name="fundsManager"></param>
-        public Portfolio(string nameIn, StockVerifier verifierStock, FundsVerifier fundsManager)
+        public Portfolio_M(string nameIn, StockVerifier verifierStock, FundsVerifier fundsManager)
         {
             Name = nameIn;
             _verifierStock = verifierStock;
@@ -59,11 +59,11 @@ namespace ModelRebuild
         /// </summary>
         /// <param name="stockList"></param>
         /// <returns></returns>
-        public double HeldValueCurrent(List<Stock> stockList)
+        public double HeldValueCurrent(List<Stock_M> stockList)
         {
-            List<BuyOrSell> heldList = CurrentlyHeld();
+            List<BuyOrSell_M> heldList = CurrentlyHeld();
             double sum = 0;
-            foreach(BuyOrSell curBOS in heldList)
+            foreach(BuyOrSell_M curBOS in heldList)
             {
 
                 double price = stockList.Find((s) => curBOS.StockName == s.Name).Price;
@@ -79,10 +79,10 @@ namespace ModelRebuild
         /// <returns></returns>
         public double HeldValueAtPurchase()
         {
-            List<BuyOrSell> historicHeld = CurrentlyHeld();
+            List<BuyOrSell_M> historicHeld = CurrentlyHeld();
 
             double sum = 0;
-            foreach (BuyOrSell curBOS in historicHeld)
+            foreach (BuyOrSell_M curBOS in historicHeld)
             {
                 sum += curBOS.Quantity * curBOS.PricePerStock;
             }
@@ -93,33 +93,33 @@ namespace ModelRebuild
         /// Returns the List of stocks held in the portfolio
         /// </summary>
         /// <returns></returns>
-        public List<BuyOrSell> CurrentlyHeld()
+        public List<BuyOrSell_M> CurrentlyHeld()
         {
-            List<BuyOrSell> HeldStockList = new List<BuyOrSell>();
+            List<BuyOrSell_M> HeldStockList = new List<BuyOrSell_M>();
 
             //Dictionary<BuyOrSell, int> amounts
             foreach (Transaction curTrans in _transactionList)
             {
 
-                if (curTrans.GetType() == typeof(BuyOrSell))
+                if (curTrans.GetType() == typeof(BuyOrSell_M))
                 {
-                   BuyOrSell curBOS = (BuyOrSell)curTrans;
+                   BuyOrSell_M curBOS = (BuyOrSell_M)curTrans;
                     
-                    BuyOrSell found = HeldStockList.Find(bos => curBOS.StockName == bos.StockName);
+                    BuyOrSell_M found = HeldStockList.Find(bos => curBOS.StockName == bos.StockName);
 
                     if(found == null)
                     {
                         HeldStockList.Add(curBOS);
                     }else
                     {
-                        if(curBOS.BuyOrSellState == BuyOrSell.BuyOrSellEnum.Buy)
+                        if(curBOS.BuyOrSellState == BuyOrSell_M.BuyOrSellEnum.Buy)
                         {
-                            HeldStockList[HeldStockList.IndexOf(found)] = new BuyOrSell(curBOS.StockName,curBOS.Quantity+found.Quantity, curBOS.PricePerStock, BuyOrSell.BuyOrSellEnum.Buy);
+                            HeldStockList[HeldStockList.IndexOf(found)] = new BuyOrSell_M(curBOS.StockName,curBOS.Quantity+found.Quantity, curBOS.PricePerStock, BuyOrSell_M.BuyOrSellEnum.Buy);
                         }else
                         {
                             if(curBOS.Quantity - found.Quantity != 0)
                             {
-                                HeldStockList[HeldStockList.IndexOf(found)] = new BuyOrSell(curBOS.StockName, found.Quantity - curBOS.Quantity, curBOS.PricePerStock, BuyOrSell.BuyOrSellEnum.Buy);
+                                HeldStockList[HeldStockList.IndexOf(found)] = new BuyOrSell_M(curBOS.StockName, found.Quantity - curBOS.Quantity, curBOS.PricePerStock, BuyOrSell_M.BuyOrSellEnum.Buy);
                             }else
                             {
                                 HeldStockList.Remove(found);
@@ -140,15 +140,15 @@ namespace ModelRebuild
         /// </summary>
         /// <param name="stock"></param>
         /// <param name="amount"></param>
-        public void PurchaseStock(Stock stock, int amount)
+        public void PurchaseStock(Stock_M stock, int amount)
         {
             if (_verifierStock(stock))
             {
-                if(_fundsManager(BuyOrSell.BuyOrSellEnum.Buy, (stock.Price * amount), Fee.BUY_OR_SELL))
+                if(_fundsManager(BuyOrSell_M.BuyOrSellEnum.Buy, (stock.Price * amount), Fee_M.BUY_OR_SELL))
                 {
-                    BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Buy);
+                    BuyOrSell_M buyOrSell = new BuyOrSell_M(stock, amount, BuyOrSell_M.BuyOrSellEnum.Buy);
                     _transactionList.Add(buyOrSell);
-                    Fee fee = new Fee(Fee.FeeSelect.BuyOrSell);
+                    Fee_M fee = new Fee_M(Fee_M.FeeSelect.BuyOrSell);
                     _transactionList.Add(fee);
                 }
                 else
@@ -163,15 +163,15 @@ namespace ModelRebuild
         /// </summary>
         /// <param name="stock"></param>
         /// <param name="amount"></param>
-        public void SellStock(Stock stock, int amount)
+        public void SellStock(Stock_M stock, int amount)
         {
             if (_verifierStock(stock))
             {
-                if (_fundsManager(BuyOrSell.BuyOrSellEnum.Sell, (stock.Price * amount), Fee.BUY_OR_SELL))
+                if (_fundsManager(BuyOrSell_M.BuyOrSellEnum.Sell, (stock.Price * amount), Fee_M.BUY_OR_SELL))
                 {
-                    BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Sell);
+                    BuyOrSell_M buyOrSell = new BuyOrSell_M(stock, amount, BuyOrSell_M.BuyOrSellEnum.Sell);
                     _transactionList.Add(buyOrSell);
-                    Fee fee = new Fee(Fee.FeeSelect.BuyOrSell);
+                    Fee_M fee = new Fee_M(Fee_M.FeeSelect.BuyOrSell);
                     _transactionList.Add(fee);
                 }
                 else

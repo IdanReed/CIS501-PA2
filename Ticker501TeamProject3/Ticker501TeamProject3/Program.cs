@@ -17,9 +17,9 @@ namespace Ticker501TeamProject3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MainModel mm = new MainModel();
+            MainModel_M mm = new MainModel_M();
             mm.LoadTickersFromFile();
-            Controller c = new Controller(mm);
+            Controller_C c = new Controller_C(mm);
 
             MainGUI gui = new MainGUI(c.EventHandle, mm);
 

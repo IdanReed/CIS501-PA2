@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelRebuild
 {
-    public class BuyOrSell : Transaction
+    public class BuyOrSell_M : Transaction
     {
         public readonly string StockName;
         public readonly int Quantity;
@@ -22,7 +22,7 @@ namespace ModelRebuild
         /// <param name="quantityIn">Nuber of shares bought</param>
         /// <param name="pricePerStockIn">Price per share</param>
         /// <param name="BORSIn">Whether the stock was bought or sold</param>
-        public BuyOrSell(string stockNameIn, int quantityIn, double pricePerStockIn, BuyOrSellEnum BORSIn)
+        public BuyOrSell_M(string stockNameIn, int quantityIn, double pricePerStockIn, BuyOrSellEnum BORSIn)
         {
             StockName = stockNameIn;
             Quantity = quantityIn;
@@ -36,7 +36,7 @@ namespace ModelRebuild
         /// <param name="stock">Stock object that is being bought or sold</param>
         /// <param name="quanittyIn">Number of shares bought</param>
         /// <param name="BORSIn">Whether the stock was bought or sold</param>
-        public BuyOrSell(Stock stock, int quanittyIn, BuyOrSellEnum BORSIn)
+        public BuyOrSell_M(Stock_M stock, int quanittyIn, BuyOrSellEnum BORSIn)
         {
             StockName = stock.Name;
             PricePerStock = stock.Price;

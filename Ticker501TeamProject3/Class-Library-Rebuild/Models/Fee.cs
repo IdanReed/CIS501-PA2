@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelRebuild
 {
-    public class Fee : Transaction
+    public class Fee_M : Transaction
     {
         public enum FeeSelect { DepositOrWithdraw, BuyOrSell }; //enum for selecting the type of fee to be applied
 
@@ -19,7 +19,7 @@ namespace ModelRebuild
         /// Constructor for Fee object
         /// </summary>
         /// <param name="feeSelectIn">Type of fee to be applied</param>
-        public Fee(FeeSelect feeSelectIn)
+        public Fee_M(FeeSelect feeSelectIn)
         {
             SelectedFee = feeSelectIn;
         }

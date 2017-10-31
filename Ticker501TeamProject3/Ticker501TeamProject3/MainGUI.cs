@@ -25,21 +25,21 @@ namespace Ticker501TeamProject3
         {
             get { return _handler; }
         }
-        private MainModel _mainModel;
+        private MainModel_M _mainModel;
         /// <summary>
         /// Sets up the class varibles also fills volitiliy select and makes sure that the correct buttons are enabled.
         /// </summary>
         /// <param name="a"></param>
         /// <param name="tickers"></param>
         /// <param name="inputHander"></param>
-        public MainGUI(EventListener<Error> listener, MainModel mm)
+        public MainGUI(EventListener<Error> listener, MainModel_M mm)
         {
             InitializeComponent();
 
             _mainModel = mm;
 
             _mainModel.LoadTickersFromFile();
-            foreach(Stock stock in _mainModel.Stocks)
+            foreach(Stock_M stock in _mainModel.Stocks)
             {
                 uxDUDSelecStock.Items.Add(stock.Tag);
             }
@@ -94,15 +94,15 @@ namespace Ticker501TeamProject3
             #endregion DepositWithdrawPanel
 
             #region uxPanAccHeldStocks
-            List<BuyOrSell> allHeldBOS = new List<BuyOrSell>();
+            List<BuyOrSell_M> allHeldBOS = new List<BuyOrSell_M>();
 
-            foreach(Portfolio curPortfolio in _mainModel.Account.Portfolios)
+            foreach(Portfolio_M curPortfolio in _mainModel.Account.Portfolios)
             {
                 allHeldBOS.AddRange(curPortfolio.CurrentlyHeld());
             }
 
             List<string> formatedHeldStocks = new List<string>();
-            foreach(BuyOrSell curBOS in allHeldBOS)
+            foreach(BuyOrSell_M curBOS in allHeldBOS)
             {
                 formatedHeldStocks.Add(curBOS.StockName +" #:"+ curBOS.Quantity);
             }
@@ -115,7 +115,7 @@ namespace Ticker501TeamProject3
 
             #region uxPanPortfoliosCreateDelete
             List<string> portfolioNames = new List<string>();
-            foreach(Portfolio portfolio in _mainModel.Account.Portfolios)
+            foreach(Portfolio_M portfolio in _mainModel.Account.Portfolios)
             {
                 portfolioNames.Add(portfolio.Name);
             }
@@ -133,7 +133,7 @@ namespace Ticker501TeamProject3
             #region uxPanAllStocks
 
             List<string> allStockStrings = new List<string>();
-            foreach (Stock stock in _mainModel.Stocks)
+            foreach (Stock_M stock in _mainModel.Stocks)
             {
                 allStockStrings.Add(stock.Tag + " " + stock.Price);
             }
@@ -152,7 +152,7 @@ namespace Ticker501TeamProject3
             #region uxPanSelecPort
 
             List<string> portfolioNames = new List<string>();
-            foreach (Portfolio portfolio in _mainModel.Account.Portfolios)
+            foreach (Portfolio_M portfolio in _mainModel.Account.Portfolios)
             {
                 portfolioNames.Add(portfolio.Name);
             }
@@ -165,14 +165,14 @@ namespace Ticker501TeamProject3
 
             if (e.PortfolioName != "")
             {
-                Portfolio selectedPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
+                Portfolio_M selectedPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
 
                 #region uxPanPortHeldStock
                 List<string> portHeldStocks = new List<string>();
-                foreach (BuyOrSell curBos in selectedPortfolio.CurrentlyHeld())
+                foreach (BuyOrSell_M curBos in selectedPortfolio.CurrentlyHeld())
                 {
                     double stockPrice = 0;
-                    foreach (Stock stock in _mainModel.Stocks)
+                    foreach (Stock_M stock in _mainModel.Stocks)
                     {
                         if(stock.Name == curBos.StockName)
                         {
@@ -196,15 +196,15 @@ namespace Ticker501TeamProject3
                 uxTBTotalVal.Text = String.Format("{0:0.00}", portfolioValue);
 
                 double count = 0;
-                foreach(Portfolio p in _mainModel.Account.Portfolios)
+                foreach(Portfolio_M p in _mainModel.Account.Portfolios)
                 {
-                    foreach(BuyOrSell BOS in p.CurrentlyHeld())
+                    foreach(BuyOrSell_M BOS in p.CurrentlyHeld())
                     {
                         count += BOS.Quantity;
                     }
                 }
                 double numerator = 0;
-                foreach(BuyOrSell BOS in selectedPortfolio.CurrentlyHeld())
+                foreach(BuyOrSell_M BOS in selectedPortfolio.CurrentlyHeld())
                 {
                     numerator += BOS.Quantity;
                 }

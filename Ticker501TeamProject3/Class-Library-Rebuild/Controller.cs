@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModelRebuild
 {
-    public class Controller: MVCEventSystem.Broadcaster<Error>
+    public class Controller_C: MVCEventSystem.Broadcaster<Error>
     {
         public const int HIGH_VOL_MAX = 16;
         public const int HIGH_VOL_MIN = 3;
@@ -18,14 +18,14 @@ namespace ModelRebuild
         public const int LOW_VOL_MAX = 5;
         public const int LOW_VOL_MIN = 1;
         
-        private MainModel _mainModel;
-        private Portfolio _currentPortfolio;
+        private MainModel_M _mainModel;
+        private Portfolio_M _currentPortfolio;
 
         /// <summary>
         /// The main contructor for Controller
         /// </summary>
         /// <param name="m">The main model for the program</param>
-        public Controller(MainModel m)
+        public Controller_C(MainModel_M m)
         {
             _mainModel = m;
         }
@@ -94,7 +94,7 @@ namespace ModelRebuild
             }
 
             Random r = new Random();
-            foreach(Stock s in _mainModel.Stocks)
+            foreach(Stock_M s in _mainModel.Stocks)
             {
                 double selectedVol = r.Next(volMin, volMax)/100.0;
                 int addSubtract = r.Next(2);
@@ -195,10 +195,10 @@ namespace ModelRebuild
         [EventListenerAttr("sellStocks")]
         private Error SellStocks(StockEvent e)
         {
-            Stock s = _mainModel.Stocks.Find((stock) => stock.Tag == e.Name);
+            Stock_M s = _mainModel.Stocks.Find((stock) => stock.Tag == e.Name);
             if(s != null)
             {
-                BuyOrSell bos = _currentPortfolio.CurrentlyHeld().Find(b => b.StockName == s.Name);
+                BuyOrSell_M bos = _currentPortfolio.CurrentlyHeld().Find(b => b.StockName == s.Name);
                 if (e.Amount > bos.Quantity) return new Error("Selling too many stocks");
                 _currentPortfolio.SellStock(s, e.Amount);
             }
@@ -214,7 +214,7 @@ namespace ModelRebuild
         [EventListenerAttr("buyStocks")]
         private Error BuyStocks(StockEvent e)
         {
-            Stock s = _mainModel.Stocks.Find((stock) => stock.Tag == e.Name);
+            Stock_M s = _mainModel.Stocks.Find((stock) => stock.Tag == e.Name);
             if(s != null)
             {
                 if (_currentPortfolio.CurrentlyHeld().Exists(b => b.StockName == s.Name)) return new Error("Cannot buy stock you already own");
