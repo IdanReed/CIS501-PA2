@@ -133,7 +133,8 @@ namespace ModelRebuild
             {
                 return new Error(err.Message);
             }
-            Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
+            _currentPortfolio = null;
+            Broadcast(new PortfolioEvent("portfolio", ""));
             return Error.None;
         }
 
