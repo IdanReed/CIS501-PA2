@@ -3487,8 +3487,8 @@
           <association
             Id="b28ae27f-4e3b-4103-a1c3-11a96dad0934"
             isDerived="false"
-            sourceEndRoleName="Account"
-            targetEndRoleName="Portfolio"
+            sourceEndRoleName=" "
+            targetEndRoleName=" "
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -3499,7 +3499,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="2855b605-53a9-4ce1-97ef-54360d82852b"
-                  name="Account"
+                  name=" "
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -3512,7 +3512,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="0f8750f2-89d6-4ad9-9e2c-10570b93b5bb"
-                  name="Portfolio"
+                  name=" "
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -3524,13 +3524,13 @@
                     <literalString
                       Id="acc0dbb8-4f7b-4a58-b49e-9b30b71eefca"
                       name="Lower"
-                      value="*" />
+                      value="0" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
                       Id="46f43783-b386-4d0b-a66a-aa30398d1f05"
                       name="Upper"
-                      value="*" />
+                      value="3" />
                   </upperValueInternal>
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -3660,8 +3660,8 @@
           <association
             Id="acb20ca8-519a-4c9c-9439-68d1089b96c6"
             isDerived="false"
-            sourceEndRoleName="Portfolio"
-            targetEndRoleName="StockPurchase"
+            sourceEndRoleName=" "
+            targetEndRoleName=" "
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -3672,7 +3672,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="ed01da78-99f9-421d-8aed-1d53efc608ce"
-                  name="Portfolio"
+                  name=" "
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -3685,7 +3685,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="0f64ed82-4a61-4757-a7a1-6b2eacc55317"
-                  name="StockPurchase"
+                  name=" "
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -6012,6 +6012,13 @@
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
+          <interfaceRealization
+            Id="3036b19f-343a-4737-902b-785fa2cc4a0d">
+            <interfaceMoniker
+              Id="d84065ef-a5a7-4b9e-b10c-e7d33056e299"
+              LastKnownName="Observer"
+              LastKnownLocation="P2ClassDiagram.uml" />
+          </interfaceRealization>
           <dependency
             Id="f67f60f6-3364-4f7a-8844-1e13ff6364a0">
             <classMoniker
@@ -6020,47 +6027,6 @@
               LastKnownLocation="P2ClassDiagram.uml" />
           </dependency>
         </suppliersInternal>
-        <targetEnds>
-          <association
-            Id="cb64e988-106d-47da-9e09-fc679d8243e6"
-            isDerived="false"
-            sourceEndRoleName="OutputView"
-            targetEndRoleName="Observer"
-            isLeaf="false"
-            isAbstract="false">
-            <interfaceMoniker
-              Id="d84065ef-a5a7-4b9e-b10c-e7d33056e299"
-              LastKnownName="Observer"
-              LastKnownLocation="P2ClassDiagram.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="246bb3f4-afd1-45e1-b92d-49b27489ba55"
-                  name="OutputView"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="af4beab7-457b-4910-8aba-198776f7535f"
-                  name="Observer"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="565a20d1-2083-4213-9143-c2249ab091fa"
@@ -6351,6 +6317,39 @@
             aggregation="None"
             isComposite="false" />
         </ownedAttributes>
+        <ownedOperations>
+          <operation
+            Id="0550fa6f-d3aa-4d00-8204-b27a9d786c15"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fe14801b-8aac-44ad-8f80-73bb377c7efb"
+                  name="Event"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5c5818a0-56c8-4adb-8ca5-bcbf4fe5ddc3"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="04af9eb4-fddf-419d-8de3-4826f5991afe"
+                      LastKnownName="void"
+                      LastKnownLocation="P2ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
       </Interface>
     </packageHasNamedElement>
     <packageHasNamedElement>
