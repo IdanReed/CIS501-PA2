@@ -91,7 +91,7 @@ namespace ModelRebuild
                     flag = true;
                 }
             }
-            if (_portfolios.Count < MAX_NUMER_OF_PORTFOLIOS && )
+            if (_portfolios.Count < MAX_NUMER_OF_PORTFOLIOS )
             {
                 _portfolios.Add(new Portfolio(name, ver, ManageFunds));
                 return true;

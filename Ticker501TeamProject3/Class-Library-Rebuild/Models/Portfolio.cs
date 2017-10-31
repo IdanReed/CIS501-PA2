@@ -34,11 +34,37 @@ namespace ModelRebuild
                 gainLossSum += transaction.GainLossInfluence;
             }
 
-            gainLossSum += PurchasedValue(stockList);
+            gainLossSum += HeldValueCurrent(CurrentlyHeld(), stockList);
 
             return gainLossSum;
         }
-        public double PurchasedValue(List<Stock> stockList)
+        public double HeldValueCurrent(List<Tuple<string, double, int>> heldList, List<Stock> stockList)
+        {
+            double sum = 0;
+            foreach(Tuple<string, double, int> curTuple in heldList)
+            {
+                foreach(Stock stock in stockList)
+                {
+                    if(stock.Name == curTuple.Item1)
+                    {
+                        sum += stock.Price * curTuple.Item3;
+                    }
+                }
+            }
+            return sum;
+        }
+        public double HeldValueAtPurchase()
+        {
+            List<Tuple<string, double, int>> historicHeld = CurrentlyHeld();
+
+            double sum = 0;
+            foreach (Tuple<string, double, int> curTuple in historicHeld)
+            {
+                sum += curTuple.Item2 * curTuple.Item3;
+            }
+            return sum;
+        }
+        public List<Tuple<string, double, int>> CurrentlyHeld()
         {
             List<Tuple<string, double, int>> HeldStockList = new List<Tuple<string, double, int>>();
 
@@ -78,8 +104,8 @@ namespace ModelRebuild
                     }
 
                 }
-
             }
+            return HeldStockList;
         }
         public double Value(List<Stock> stockList)
         {
