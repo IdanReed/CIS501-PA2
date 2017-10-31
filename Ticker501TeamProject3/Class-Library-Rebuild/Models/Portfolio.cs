@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ModelRebuild
 {
     public delegate bool StockVerifier(Stock stock);
-    public delegate bool FundsVerifier(BuyOrSell.BuyOrSellEnum type, double cost);
+    public delegate bool FundsVerifier(BuyOrSell.BuyOrSellEnum type, double cost, double fee);
     /// <summary>
     /// Portfolio holds the name of itself and the stocks that it currently holds
     /// It can return its current value and purchase or sell stocks
@@ -41,7 +41,7 @@ namespace ModelRebuild
         /// </summary>
         /// <param name="stockList"></param>
         /// <returns></returns>
-        public double GainLoss(List<Stock> stockList)
+        public double GainLoss()
         {
             double gainLossSum = 0;
             foreach (Transaction transaction in _transactionList)
@@ -49,7 +49,7 @@ namespace ModelRebuild
                 gainLossSum += transaction.GainLossInfluence;
             }
 
-            gainLossSum += HeldValueCurrent(stockList);
+            gainLossSum += HeldValueAtPurchase();
 
             return gainLossSum;
         }
@@ -65,13 +65,10 @@ namespace ModelRebuild
             double sum = 0;
             foreach(BuyOrSell curBOS in heldList)
             {
-                foreach(Stock stock in stockList)
-                {
-                    if(stock.Name == curBOS.StockName)
-                    {
-                        sum += stock.Price * curBOS.Quantity;
-                    }
-                }
+
+                double price = stockList.Find((s) => curBOS.StockName == s.Name).Price;
+                sum += price * curBOS.Quantity;
+                      
             }
             return sum;
         }
@@ -100,41 +97,38 @@ namespace ModelRebuild
         {
             List<BuyOrSell> HeldStockList = new List<BuyOrSell>();
 
+            //Dictionary<BuyOrSell, int> amounts
             foreach (Transaction curTrans in _transactionList)
             {
 
                 if (curTrans.GetType() == typeof(BuyOrSell))
                 {
-                    BuyOrSell curBOS = (BuyOrSell)curTrans;
+                   BuyOrSell curBOS = (BuyOrSell)curTrans;
+                    
+                    BuyOrSell found = HeldStockList.Find(bos => curBOS.StockName == bos.StockName);
 
-                    BuyOrSell createdTuple = null;
-                    BuyOrSell foundTuple = null;
-
-                    foreach (BuyOrSell heldTuple in HeldStockList)
+                    if(found == null)
                     {
-                        if (curBOS.StockName == heldTuple.StockName)
+                        HeldStockList.Add(curBOS);
+                    }else
+                    {
+                        if(curBOS.BuyOrSellState == BuyOrSell.BuyOrSellEnum.Buy)
                         {
-                            if (curBOS.BuyOrSellState == BuyOrSell.BuyOrSellEnum.Buy)
+                            HeldStockList[HeldStockList.IndexOf(found)] = new BuyOrSell(curBOS.StockName,curBOS.Quantity+found.Quantity, curBOS.PricePerStock, BuyOrSell.BuyOrSellEnum.Buy);
+                        }else
+                        {
+                            if(curBOS.Quantity - found.Quantity != 0)
                             {
-                                createdTuple = new BuyOrSell(heldTuple.StockName, (int)heldTuple.Quantity + curBOS.Quantity, heldTuple.PricePerStock, BuyOrSell.BuyOrSellEnum.Buy);
-
-                            }
-                            else
+                                HeldStockList[HeldStockList.IndexOf(found)] = new BuyOrSell(curBOS.StockName, found.Quantity - curBOS.Quantity, curBOS.PricePerStock, BuyOrSell.BuyOrSellEnum.Buy);
+                            }else
                             {
-                                createdTuple = new BuyOrSell(heldTuple.StockName, (int)heldTuple.Quantity - curBOS.Quantity, heldTuple.PricePerStock, BuyOrSell.BuyOrSellEnum.Buy);
-
+                                HeldStockList.Remove(found);
                             }
-                            break;
+                            
                         }
                     }
-                    if (createdTuple != null)
-                    {
-                        HeldStockList[HeldStockList.IndexOf(foundTuple)] = createdTuple;
-                    }
-                    else
-                    {
-                        HeldStockList.Add(createdTuple);
-                    }
+                 
+                    
 
                 }
             }
@@ -150,9 +144,12 @@ namespace ModelRebuild
         {
             if (_verifierStock(stock))
             {
-                if(_fundsManager(BuyOrSell.BuyOrSellEnum.Buy, (stock.Price * amount + Fee.BUY_OR_SELL)))
+                if(_fundsManager(BuyOrSell.BuyOrSellEnum.Buy, (stock.Price * amount), Fee.BUY_OR_SELL))
                 {
                     BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Buy);
+                    _transactionList.Add(buyOrSell);
+                    Fee fee = new Fee(Fee.FeeSelect.BuyOrSell);
+                    _transactionList.Add(fee);
                 }
                 else
                 {
@@ -170,10 +167,12 @@ namespace ModelRebuild
         {
             if (_verifierStock(stock))
             {
-                if (_fundsManager(BuyOrSell.BuyOrSellEnum.Sell, (stock.Price * amount + Fee.BUY_OR_SELL)))
+                if (_fundsManager(BuyOrSell.BuyOrSellEnum.Sell, (stock.Price * amount), Fee.BUY_OR_SELL))
                 {
                     BuyOrSell buyOrSell = new BuyOrSell(stock, amount, BuyOrSell.BuyOrSellEnum.Sell);
-
+                    _transactionList.Add(buyOrSell);
+                    Fee fee = new Fee(Fee.FeeSelect.BuyOrSell);
+                    _transactionList.Add(fee);
                 }
                 else
                 {

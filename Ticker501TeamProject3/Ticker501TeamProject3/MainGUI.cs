@@ -34,6 +34,7 @@ namespace Ticker501TeamProject3
         /// <param name="inputHander"></param>
         public MainGUI(EventListener<Error> listener, MainModel mm)
         {
+            InitializeComponent();
 
             _mainModel = mm;
 
@@ -49,15 +50,19 @@ namespace Ticker501TeamProject3
             _handler.AddEventListener<DisplayEvent>(typeof(DisplayEvent), Update);
             _handler.AddEventListener<PortfolioEvent>(typeof(PortfolioEvent), UpdatePortfolio);
 
-            InitializeComponent();
+            
           
-            uxDUDSelecVolatilty.Items.Add("High " + Controller.HIGH_VOL_MAX + " - " + Controller.HIGH_VOL_MIN + "%");
-            uxDUDSelecVolatilty.Items.Add("Med " + Controller.MED_VOL_MAX + " - " + Controller.MED_VOL_MIN + "%");
-            uxDUDSelecVolatilty.Items.Add("Low " + Controller.LOW_VOL_MAX + " - " + Controller.LOW_VOL_MIN + "%");
+            uxDUDSelecVolatilty.Items.Add("HIGH");
+            uxDUDSelecVolatilty.Items.Add("MED");
+            uxDUDSelecVolatilty.Items.Add("LOW");
             uxDUDSelecVolatilty.SelectedIndex = 0;
 
             uxBBuyStock.Enabled = false;
             uxBSellStock.Enabled = false;
+
+            uxDUDSelecStock.SelectedIndex = 0;
+
+            Update(new DisplayEvent("account"));
         }
         //#region OutputForm
         /// <summary>
@@ -76,15 +81,15 @@ namespace Ticker501TeamProject3
             if (!(accTotalValue == 0))
             {
                 //cash percent
-                uxTBCashPercent.Text = String.Format("{0:0.0}", (_mainModel.Account.Funds / accTotalValue) * 100) + "%";
+                uxTBCashPercent.Text = String.Format("{0:0.00}", (_mainModel.Account.Funds / accTotalValue) * 100) + "%";
                 //positions percent
-                uxTBPositonsPercent.Text = String.Format("{0:0.0}", (accPosValue / accTotalValue) * 100) + "%";
+                uxTBPositonsPercent.Text = String.Format("{0:0.00}", (accPosValue / accTotalValue) * 100) + "%";
             }
             //positions amount
-            uxTBPositionsAmount.Text = "$" + String.Format("{0:0.0}", accPosValue);
+            uxTBPositionsAmount.Text = "$" + String.Format("{0:0.00}", accPosValue);
 
             //total value
-            uxTBTotalValue.Text ="$" + String.Format("{0:0.0}", accTotalValue);
+            uxTBTotalValue.Text ="$" + String.Format("{0:0.00}", accTotalValue);
 
             #endregion DepositWithdrawPanel
 
@@ -97,16 +102,15 @@ namespace Ticker501TeamProject3
             }
 
             List<string> formatedHeldStocks = new List<string>();
-            formatedHeldStocks.Add("Name - Quanity");
             foreach(BuyOrSell curBOS in allHeldBOS)
             {
-                formatedHeldStocks.Add(curBOS.StockName +" "+ curBOS.Quantity);
+                formatedHeldStocks.Add(curBOS.StockName +" #:"+ curBOS.Quantity);
             }
             uxLBStocksHeld.DataSource = formatedHeldStocks;
             #endregion uxPanAccHeldStocks
 
             #region uxPanGainLossAcc
-            uxTBGainLoss.Text = String.Format("{0:0.0}", _mainModel.Account.CalculateGainLoss(_mainModel.Stocks));
+            uxTBGainLoss.Text = String.Format("{0:0.00}", _mainModel.Account.CalculateGainLoss(_mainModel.Stocks));
             #endregion uxPanGainLossAcc
 
             #region uxPanPortfoliosCreateDelete
@@ -116,6 +120,14 @@ namespace Ticker501TeamProject3
                 portfolioNames.Add(portfolio.Name);
             }
             uxLBPortfolios.DataSource = portfolioNames;
+
+            if(uxLBPortfolios.Items.Count == 0)
+            {
+                uxNewDelete.Enabled = false;
+            }else
+            {
+                uxNewDelete.Enabled = true;
+            }
             #endregion uxPanPortfoliosCreateDelete
 
             #region uxPanAllStocks
@@ -136,52 +148,97 @@ namespace Ticker501TeamProject3
             uxBSellStock.Enabled = true;
 
             Update(new DisplayEvent("account"));
-            Portfolio selectedPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
 
             #region uxPanSelecPort
+
             List<string> portfolioNames = new List<string>();
             foreach (Portfolio portfolio in _mainModel.Account.Portfolios)
             {
                 portfolioNames.Add(portfolio.Name);
             }
-            uxLBSelecPort.DataSource = portfolioNames;
 
+            if (uxLBSelecPort.Items.Count != portfolioNames.Count)
+            {
+                uxLBSelecPort.DataSource = portfolioNames;
+            }
             #endregion uxPanSelecPort
 
-            #region uxPanPortHeldStock
-            List<string> portHeldStocks = new List<string>();
-            foreach(BuyOrSell curBos in selectedPortfolio.CurrentlyHeld())
+            if (e.PortfolioName != "")
             {
-                portHeldStocks.Add(curBos.StockName + " " + curBos.Quantity);
-            }
-            uxLBPortStocks.DataSource = portHeldStocks;
+                Portfolio selectedPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
 
-            #endregion uxPanPortHeldStock
+                #region uxPanPortHeldStock
+                List<string> portHeldStocks = new List<string>();
+                foreach (BuyOrSell curBos in selectedPortfolio.CurrentlyHeld())
+                {
+                    double stockPrice = 0;
+                    foreach (Stock stock in _mainModel.Stocks)
+                    {
+                        if(stock.Name == curBos.StockName)
+                        {
+                            stockPrice = stock.Price;
+                        }
+                    }
+                    double totalValue = curBos.Quantity * stockPrice;
+                    portHeldStocks.Add(curBos.StockName + " $" + String.Format("{0:0.00}", totalValue) + " " + String.Format("{0:0.00}", (totalValue/ selectedPortfolio.HeldValueCurrent(_mainModel.Stocks))*100)+ " " + curBos.Quantity);
+                }
+                uxLBPortStocks.DataSource = portHeldStocks;
 
-            #region uxPanPortGainLoss
-            uxTBPortGainLoss.Text = String.Format("{0:0.0}", selectedPortfolio.GainLoss(_mainModel.Stocks));
-            #endregion uxPanPortGainLoss
+                #endregion uxPanPortHeldStock
 
-            #region uxPanPortInfo
-            double portfolioValue = selectedPortfolio.HeldValueCurrent(_mainModel.Stocks);
+                #region uxPanPortGainLoss
+                uxTBPortGainLoss.Text = String.Format("{0:0.00}", selectedPortfolio.GainLoss());
+                #endregion uxPanPortGainLoss
 
-            uxTBTotalVal.Text = String.Format("{0:0.0}", portfolioValue);
-            uxTBPortPercentOfAcc.Text = String.Format("{0:0.0}", portfolioValue / _mainModel.Account.CalculateValue(_mainModel.Stocks));
-            #endregion uxPanPortInfo
+                #region uxPanPortInfo
+                double portfolioValue = selectedPortfolio.HeldValueCurrent(_mainModel.Stocks);
 
-            #region uxPanBuySellStock
-            if(e.PortfolioName == "")
-            {
-                uxBBuyStock.Enabled = false;
-                uxBSellStock.Enabled = false;
+                uxTBTotalVal.Text = String.Format("{0:0.00}", portfolioValue);
+
+                double count = 0;
+                foreach(Portfolio p in _mainModel.Account.Portfolios)
+                {
+                    foreach(BuyOrSell BOS in p.CurrentlyHeld())
+                    {
+                        count += BOS.Quantity;
+                    }
+                }
+                double numerator = 0;
+                foreach(BuyOrSell BOS in selectedPortfolio.CurrentlyHeld())
+                {
+                    numerator += BOS.Quantity;
+                }
+                if(count != 0)
+                {
+
+                    uxTBPortPercentOfAcc.Text = String.Format("{0:0.00}", (numerator / count) * 100);
+                }
+                else
+                {
+                    uxTBPortPercentOfAcc.Text = "";
+                }
+                #endregion uxPanPortInfo
+
+                #region uxPanBuySellStock
+                if (e.PortfolioName == "")
+                {
+                    uxBBuyStock.Enabled = false;
+                    uxBSellStock.Enabled = false;
+                }
+                else
+                {
+                    uxBBuyStock.Enabled = true;
+                    uxBSellStock.Enabled = true;
+                }
+                #endregion uxPanBuySellStock
+
             }else
             {
-                uxBBuyStock.Enabled = true;
-                uxBSellStock.Enabled = true;
+                uxLBPortStocks.DataSource = null;
+                uxTBPortGainLoss.Text = "";
+                uxTBPortPercentOfAcc.Text = "";
+                uxTBTotalVal.Text = "";
             }
-            #endregion uxPanBuySellStock
-
-
             return Error.None;
         }
         /*
