@@ -1,4 +1,5 @@
 ﻿//using Class_Library;
+using ModelRebuild;
 using MVCEventSystem;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Ticker501TeamProject3;
 
-namespace Ticker501TeamProject2
+namespace Ticker501TeamProject3
 {
     public partial class MainGUI : Form
     {
@@ -25,18 +25,22 @@ namespace Ticker501TeamProject2
         {
             get { return _handler; }
         }
+        private MainModel _mainModel;
         /// <summary>
         /// Sets up the class varibles also fills volitiliy select and makes sure that the correct buttons are enabled.
         /// </summary>
         /// <param name="a"></param>
         /// <param name="tickers"></param>
         /// <param name="inputHander"></param>
-        public MainGUI(EventListener<Error> listener)
+        public MainGUI(EventListener<Error> listener, MainModel mm)
         {
+
+            _mainModel = mm;
             _eventListener = listener;
 
             _handler = new MVCEventSystem.EventHandler<Error>();
-            _handler.AddEventListener("update", Update);
+            _handler.AddEventListener<DisplayEvent>(typeof(DisplayEvent), Update);
+            _handler.AddEventListener<PortfolioEvent>(typeof(PortfolioEvent), UpdatePortfolio);
            /* _inputHandle = inputHander;
             _acct = a;
             _tickers = tickers;
@@ -59,9 +63,43 @@ namespace Ticker501TeamProject2
         /// </summary>
         /// <param name="e"></param>
         /// 
-        public Error Update(IEvent e)
+        public Error Update(DisplayEvent e)
+        {
+            #region DepositWithdrawPanel
+            uxTBFundsAmount.Text = _mainModel.Account.Funds.ToString("N2");
+
+            double accTotalValue = _mainModel.Account.CalculateValue(_mainModel.Stocks);
+            double accPosValue = accTotalValue - _mainModel.Account.Funds;
+            if (!(accTotalValue == 0))
+            {
+                uxTBCashPercent.Text = String.Format("{0:0.0}", (_mainModel.Account.Funds / accTotalValue) * 100) + "%";
+                uxTBPositonsPercent.Text = String.Format("{0:0.0}", (accPosValue / accTotalValue) * 100) + "%";
+            }
+
+            uxTBPositionsAmount.Text = "$" + String.Format("{0:0.0}", accPosValue);
+
+            #endregion DepositWithdrawPanel
+
+
+            return Error.None;
+        }
+        public Error UpdatePortfolio(PortfolioEvent e)
         {
 
+            #region PortfoliosPanel
+
+            List<ListBox> boxes = new List<ListBox>();
+            boxes.Add(uxLBPortfolios);
+            boxes.Add(uxLBSelecPort);
+
+            List<Portfolio> portfolios = _mainModel.Account.Portfolios;
+
+            foreach(ListBox lb in boxes)
+            {
+                lb.DataSource = portfolios.Select(p => p.Name).ToList();
+            }
+
+            #endregion PortfoliosPanel
 
             return Error.None;
         }
@@ -292,8 +330,22 @@ namespace Ticker501TeamProject2
         #region uxPanDepositWithdrawl
         private void DepositFunds(object sender, EventArgs e)
         {
-
+            _eventListener(new DepositWithdrawEvent("deposit", (double)uxNBFundsInput.Value))
+                .Catch(error =>
+                {
+                    MessageBox.Show(error.Message);
+                });
         }
+        private void WithdrawFunds(object sender, EventArgs e)
+        {
+
+            _eventListener(new DepositWithdrawEvent("withdraw", (double)uxNBFundsInput.Value))
+                .Catch(error =>
+                {
+                    MessageBox.Show(error.Message);
+                });
+        }
+
         #endregion uxPanDepositWithdrawl
 
         #region uxPanPortfoliosCreateDelete
@@ -380,11 +432,6 @@ namespace Ticker501TeamProject2
         #endregion InputForm
 
         private void MainGUI_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void WithdrawFunds(object sender, EventArgs e)
         {
 
         }
