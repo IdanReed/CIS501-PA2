@@ -65,7 +65,7 @@ namespace Ticker501TeamProject3
         /// 
         public Error Update(DisplayEvent e)
         {
-            #region DepositWithdrawPanel
+            #region uxPanDepositWithdrawl
             uxTBFundsAmount.Text = _mainModel.Account.Funds.ToString("N2");
 
             double accTotalValue = _mainModel.Account.CalculateValue(_mainModel.Stocks);
@@ -78,8 +78,19 @@ namespace Ticker501TeamProject3
 
             uxTBPositionsAmount.Text = "$" + String.Format("{0:0.0}", accPosValue);
 
+            //
+
             #endregion DepositWithdrawPanel
 
+            #region uxPanAccHeldStocks
+
+            #endregion uxPanAccHeldStocks
+
+            #region uxPanGainLossAcc
+            #endregion uxPanGainLossAcc
+
+            #region uxPanPortfoliosCreateDelete
+            #endregion uxPanPortfoliosCreateDelete
 
             return Error.None;
         }

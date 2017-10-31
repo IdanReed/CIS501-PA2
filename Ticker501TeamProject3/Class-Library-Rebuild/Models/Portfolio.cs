@@ -34,20 +34,21 @@ namespace ModelRebuild
                 gainLossSum += transaction.GainLossInfluence;
             }
 
-            gainLossSum += HeldValueCurrent(CurrentlyHeld(), stockList);
+            gainLossSum += HeldValueCurrent(stockList);
 
             return gainLossSum;
         }
-        public double HeldValueCurrent(List<Tuple<string, double, int>> heldList, List<Stock> stockList)
+        public double HeldValueCurrent(List<Stock> stockList)
         {
+            List<BuyOrSell> heldList = CurrentlyHeld();
             double sum = 0;
-            foreach(Tuple<string, double, int> curTuple in heldList)
+            foreach(BuyOrSell curBOS in heldList)
             {
                 foreach(Stock stock in stockList)
                 {
-                    if(stock.Name == curTuple.Item1)
+                    if(stock.Name == curBOS.StockName)
                     {
-                        sum += stock.Price * curTuple.Item3;
+                        sum += stock.Price * curBOS.Quantity;
                     }
                 }
             }
@@ -55,18 +56,18 @@ namespace ModelRebuild
         }
         public double HeldValueAtPurchase()
         {
-            List<Tuple<string, double, int>> historicHeld = CurrentlyHeld();
+            List<BuyOrSell> historicHeld = CurrentlyHeld();
 
             double sum = 0;
-            foreach (Tuple<string, double, int> curTuple in historicHeld)
+            foreach (BuyOrSell curBOS in historicHeld)
             {
-                sum += curTuple.Item2 * curTuple.Item3;
+                sum += curBOS.Quantity * curBOS.PricePerStock;
             }
             return sum;
         }
-        public List<Tuple<string, double, int>> CurrentlyHeld()
+        public List<BuyOrSell> CurrentlyHeld()
         {
-            List<Tuple<string, double, int>> HeldStockList = new List<Tuple<string, double, int>>();
+            List<BuyOrSell> HeldStockList = new List<BuyOrSell>();
 
             foreach (Transaction curTrans in _transactionList)
             {
@@ -75,20 +76,21 @@ namespace ModelRebuild
                 {
                     BuyOrSell curBOS = (BuyOrSell)curTrans;
 
-                    Tuple<string, double, int> createdTuple = null;
-                    Tuple<string, double, int> foundTuple = null;
-                    foreach (Tuple<string, double, int> heldTuple in HeldStockList)
+                    BuyOrSell createdTuple = null;
+                    BuyOrSell foundTuple = null;
+
+                    foreach (BuyOrSell heldTuple in HeldStockList)
                     {
-                        if (curBOS.StockName == heldTuple.Item1)
+                        if (curBOS.StockName == heldTuple.StockName)
                         {
                             if (curBOS.BuyOrSellState == BuyOrSell.BuyOrSellEnum.Buy)
                             {
-                                createdTuple = Tuple.Create(heldTuple.Item1, heldTuple.Item2, (int)heldTuple.Item3 + curBOS.Quantity);
+                                createdTuple = new BuyOrSell(heldTuple.StockName, (int)heldTuple.Quantity + curBOS.Quantity, heldTuple.PricePerStock, BuyOrSell.BuyOrSellEnum.Buy);
 
                             }
                             else
                             {
-                                createdTuple = Tuple.Create(heldTuple.Item1, heldTuple.Item2, (int)heldTuple.Item3 - curBOS.Quantity);
+                                createdTuple = new BuyOrSell(heldTuple.StockName, (int)heldTuple.Quantity - curBOS.Quantity, heldTuple.PricePerStock, BuyOrSell.BuyOrSellEnum.Buy);
 
                             }
                             break;
@@ -107,64 +109,7 @@ namespace ModelRebuild
             }
             return HeldStockList;
         }
-        public double Value(List<Stock> stockList)
-        {
-            List<Tuple<string, int>> HeldStockList = new List<Tuple<string, int>>();
-
-            foreach (Transaction curTrans in _transactionList)
-            {
-
-                if (curTrans.GetType() == typeof(BuyOrSell))
-                {
-                    BuyOrSell curBOS = (BuyOrSell)curTrans;
-
-                    Tuple<string, int> createdTuple = null;
-                    Tuple<string, int> foundTuple = null;
-                    foreach (Tuple<string, int> heldTuple in HeldStockList)
-                    {
-                        if (curBOS.StockName == heldTuple.Item1)
-                        {
-                            if (curBOS.BuyOrSellState == BuyOrSell.BuyOrSellEnum.Buy)
-                            {
-                                createdTuple = Tuple.Create(heldTuple.Item1, heldTuple.Item2 + curBOS.Quantity);
-
-                            }
-                            else
-                            {
-                                createdTuple = Tuple.Create(heldTuple.Item1, heldTuple.Item2 - curBOS.Quantity);
-
-                            }
-                            break;
-                        }
-                    }
-                    if (createdTuple != null)
-                    {
-                        HeldStockList[HeldStockList.IndexOf(foundTuple)] = createdTuple;
-                    }
-                    else
-                    {
-                        HeldStockList.Add(createdTuple);
-                    }
-
-                }
-
-            }
-            double sum = 0;
-            foreach (Tuple<string, int> heldStock in HeldStockList)
-            {
-                double heldStockPrice;
-                foreach (Stock stock in stockList)
-                {
-                    if (heldStock.Item1 == stock.Name)
-                    {
-                        sum += heldStock.Item2 * stock.Price;
-                    }
-                }
-            }
-
-            return sum;
-        }
-
+       
         public void PurchaseStock(Stock stock, int amount)
         {
             if (_verifierStock(stock))

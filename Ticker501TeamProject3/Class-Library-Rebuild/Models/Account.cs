@@ -49,7 +49,7 @@ namespace ModelRebuild
             double sum = 0;
             foreach (Portfolio portfolio in _portfolios)
             {
-                sum += portfolio.Value(stockList);
+                sum += portfolio.HeldValueCurrent(stockList);
             }
             sum += _funds;
             return sum;
