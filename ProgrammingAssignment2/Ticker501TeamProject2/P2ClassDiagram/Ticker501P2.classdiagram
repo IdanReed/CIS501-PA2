@@ -414,23 +414,23 @@
       <class Id="fdb6a1ad-f3f5-4a33-8acb-5d4ba72b91f3" name="Account" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="e779da40-166d-4c5e-a909-eae156cc91bf" />
         <targetEnds>
-          <association Id="99d00ea6-a90a-46a4-8c69-7c06ea73cd39" isDerived="false" sourceEndRoleName="Account" targetEndRoleName="Portfolio" isLeaf="false" isAbstract="false">
+          <association Id="99d00ea6-a90a-46a4-8c69-7c06ea73cd39" isDerived="false" sourceEndRoleName=" " targetEndRoleName=" " isLeaf="false" isAbstract="false">
             <classMoniker Id="d2847f16-f328-469d-8368-e6f254992339" LastKnownName="Portfolio" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="909cba10-c9eb-4636-8c99-240286831ff3" name="Account" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="909cba10-c9eb-4636-8c99-240286831ff3" name=" " isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="2855b605-53a9-4ce1-97ef-54360d82852b" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="55d3157b-15f3-47f7-9708-b8d821022c14" name="Portfolio" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                <memberEnd Id="55d3157b-15f3-47f7-9708-b8d821022c14" name=" " isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
                   <lowerValueInternal>
-                    <literalString Id="dbc29da4-2129-483a-bb1a-5392eaafa36a" name="Lower" value="*">
+                    <literalString Id="dbc29da4-2129-483a-bb1a-5392eaafa36a" name="Lower" value="0">
                       <elementDefinition Id="acc0dbb8-4f7b-4a58-b49e-9b30b71eefca" />
                     </literalString>
                   </lowerValueInternal>
                   <upperValueInternal>
-                    <literalString Id="11382736-e4e1-4528-829d-0a60693b975a" name="Upper" value="*">
+                    <literalString Id="11382736-e4e1-4528-829d-0a60693b975a" name="Upper" value="3">
                       <elementDefinition Id="46f43783-b386-4d0b-a66a-aa30398d1f05" />
                     </literalString>
                   </upperValueInternal>
@@ -485,16 +485,16 @@
       <class Id="d2847f16-f328-469d-8368-e6f254992339" name="Portfolio" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="4784e24c-6355-418b-8312-1b9f5133a247" />
         <targetEnds>
-          <association Id="231f6a70-39a6-44cc-b1f3-1700206a74c3" isDerived="false" sourceEndRoleName="Portfolio" targetEndRoleName="StockPurchase" isLeaf="false" isAbstract="false">
+          <association Id="231f6a70-39a6-44cc-b1f3-1700206a74c3" isDerived="false" sourceEndRoleName=" " targetEndRoleName=" " isLeaf="false" isAbstract="false">
             <classMoniker Id="c53b86dc-64bd-4931-bb74-f3ca7482e226" LastKnownName="StockPurchase" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="e6b03093-d2ab-4ed4-95e2-d70df12c5ff3" name="Portfolio" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="e6b03093-d2ab-4ed4-95e2-d70df12c5ff3" name=" " isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="ed01da78-99f9-421d-8aed-1d53efc608ce" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="b06a50d9-50d4-4604-a9d5-d2c11630b3f7" name="StockPurchase" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                <memberEnd Id="b06a50d9-50d4-4604-a9d5-d2c11630b3f7" name=" " isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
                   <lowerValueInternal>
                     <literalString Id="a35c1e5b-ffb6-41c3-9997-d101b2204c60" name="Lower" value="*">
                       <elementDefinition Id="e28078f7-2023-47ed-a116-800b13e87009" />
@@ -1844,25 +1844,11 @@
             <classMoniker Id="9f1e50e8-6fee-4114-b000-2cc7ca5bc31a" LastKnownName="MenuHelper" />
             <elementDefinition Id="f67f60f6-3364-4f7a-8844-1e13ff6364a0" />
           </dependency>
-        </suppliersInternal>
-        <targetEnds>
-          <association Id="1f4fb856-6cc2-4689-b75d-48c2fbcf700b" isDerived="false" sourceEndRoleName="OutputView" targetEndRoleName="Observer" isLeaf="false" isAbstract="false">
+          <interfaceRealization Id="a5cc4853-54ec-47b6-8b89-44ca239979ee">
             <interfaceMoniker Id="a35a8510-df51-4228-af8b-c262ca05e685" LastKnownName="Observer" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="45d2c26a-9bff-45c8-8426-4dd32bf4af3a" name="OutputView" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="246bb3f4-afd1-45e1-b92d-49b27489ba55" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="ca0c4310-beca-4f0c-b57e-c6e26d3d8dcf" name="Observer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="af4beab7-457b-4910-8aba-198776f7535f" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="cb64e988-106d-47da-9e09-fc679d8243e6" />
-          </association>
-        </targetEnds>
+            <elementDefinition Id="3036b19f-343a-4737-902b-785fa2cc4a0d" />
+          </interfaceRealization>
+        </suppliersInternal>
         <ownedAttributesInternal>
           <property Id="f371bb7d-f3b3-4349-96d9-0a896e390c64" name="_acct" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="565a20d1-2083-4213-9143-c2249ab091fa" />
@@ -2015,6 +2001,26 @@
             <elementDefinition Id="ecc13f93-0936-4398-85ea-3800d6d6924b" />
           </property>
         </ownedAttributes>
+        <ownedOperations>
+          <operation Id="84abbf51-5292-4bee-8229-bc51a28b02fe" name="Update" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0550fa6f-d3aa-4d00-8204-b27a9d786c15" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="be79d49e-c57c-495c-b321-b8ef6054c92b" name="Event" direction="In" isUnique="false">
+                  <elementDefinition Id="fe14801b-8aac-44ad-8f80-73bb377c7efb" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="dcb4cdb4-ffe3-4d43-ab48-c01301d27511" direction="Return" isUnique="false">
+                  <elementDefinition Id="5c5818a0-56c8-4adb-8ca5-bcbf4fe5ddc3" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="d25121e0-d37e-4a28-bc40-fc374aa01573" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
       </Interface>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
