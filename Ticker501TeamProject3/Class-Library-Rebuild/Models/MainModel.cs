@@ -6,22 +6,36 @@ using System.Threading.Tasks;
 
 namespace ModelRebuild
 {
+
+    /// <summary>
+    /// Holds the account and the list of company stocks
+    /// Loads the stocks in from the file and puts it into a list
+    /// </summary>
     public class MainModel
     {
         private Account _account = new Account();
         private List<Stock> _stocks = new List<Stock>();
 
+        /// <summary>
+        /// Getter for the account
+        /// </summary>
         public Account Account
         {
             get { return _account; }
         }
+
+        /// <summary>
+        /// Getter for the list of stocks
+        /// </summary>
         public List<Stock> Stocks
         {
             get { return _stocks; }
         }
-        public MainModel()
-        {
-        }
+        
+
+        /// <summary>
+        /// Gets the name, tag, and price for all the companies in the text file and puts them into stocks
+        /// </summary>
         public void LoadTickersFromFile()
         {
             string[] lines = System.IO.File.ReadAllLines("Ticker.txt");
@@ -40,6 +54,12 @@ namespace ModelRebuild
                 }
             }
         }
+
+        /// <summary>
+        /// Returns whether the stock is contained in the list of stocks
+        /// </summary>
+        /// <param name="stock"></param>
+        /// <returns></returns>
         public bool VerifyStock(Stock stock)
         {
             return _stocks.Contains(stock);
