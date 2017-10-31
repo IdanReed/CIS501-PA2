@@ -13,12 +13,17 @@ namespace ModelRebuild
         private List<Transaction> _transactions = new List<Transaction>();
         private List<Portfolio> _portfolios = new List<Portfolio>();
 
+        
         /// <summary>
         /// Getter for funds in the account
         /// </summary>
         public double Funds
         {
-            get { return _funds; }
+            get
+            {
+                return _funds;
+
+            }
         }
 
         /// <summary>
@@ -53,7 +58,7 @@ namespace ModelRebuild
         /// <param name="amount">Amount to withdraw</param>
         public void Withdraw(double amount)
         {
-            if(_funds >= amount - Fee.DEPOSIT)
+            if(_funds >= amount + Fee.DEPOSIT)
             {
                 _funds -= amount;
                 _funds += Fee.DEPOSIT;
@@ -92,7 +97,7 @@ namespace ModelRebuild
             double sum = 0;
             foreach (Portfolio portfolio in _portfolios)
             {
-                sum += portfolio.GainLoss(stockList);
+                sum += portfolio.GainLoss();
             }
             foreach(Transaction trans in _transactions)
             {
@@ -101,24 +106,22 @@ namespace ModelRebuild
             return sum;
         }
 
-        /// <summary>
-        /// Deletes a portfolio from the account
-        /// </summary>
-        /// <param name="portNum">Position of the portfolio in the list</param>
-        public void DeletePortfolio(int portNum)
-        {
-            if(portNum < _portfolios.Count)
-            {
-                _portfolios[portNum] = null;
-            }
-        }
 
         /// <summary>
         /// Deletes a portfolio from the account
         /// </summary>
         /// <param name="name">Name of portfolio to be deleted</param>
-        public void DeletePortfolio(string name)
+        public void DeletePortfolio(string name, List<Stock> stocks)
         {
+            Portfolio selectedPortfolio = GetPortfolioByName(name);
+            
+            foreach(BuyOrSell BOS in selectedPortfolio.CurrentlyHeld())
+            {
+                Stock stock = stocks.Find(s => BOS.StockName == s.Name);
+                selectedPortfolio.SellStock(stock, BOS.Quantity);
+            }
+
+            _transactions.AddRange(selectedPortfolio.TransactionList);
             if (_portfolios.RemoveAll((p) => p.Name == name) == 0)
             {
                 throw new ArgumentException("No portfolio exists with that name.");
@@ -169,9 +172,11 @@ namespace ModelRebuild
         /// <param name="type">Either a buy or sell transaction</param>
         /// <param name="cost">Total cost of transaction</param>
         /// <returns>Boolean of whether or not the buy/sell was complete</returns>
-        private bool ManageFunds(BuyOrSell.BuyOrSellEnum type, double cost)
+        private bool ManageFunds(BuyOrSell.BuyOrSellEnum type, double cost, double fee)
         {
-            if(BuyOrSell.BuyOrSellEnum.Sell == type)
+            _funds += fee;
+
+            if (BuyOrSell.BuyOrSellEnum.Sell == type)
             {
                 _funds += cost;
                 return true;

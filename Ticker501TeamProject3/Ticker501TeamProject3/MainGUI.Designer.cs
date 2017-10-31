@@ -410,6 +410,7 @@
             // uxLBPortStocks
             // 
             this.uxLBPortStocks.FormattingEnabled = true;
+            this.uxLBPortStocks.HorizontalScrollbar = true;
             this.uxLBPortStocks.Location = new System.Drawing.Point(6, 22);
             this.uxLBPortStocks.Name = "uxLBPortStocks";
             this.uxLBPortStocks.SelectionMode = System.Windows.Forms.SelectionMode.None;

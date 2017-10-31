@@ -109,8 +109,9 @@ namespace ModelRebuild
                     s.Price += percOfStock;
                 }
             }
+            if(_currentPortfolio != null) Broadcast(new PortfolioEvent("account", _currentPortfolio.Name));
+            else Broadcast(new PortfolioEvent("account", ""));
 
-            Broadcast(new DisplayEvent("account"));
             return Error.None;
         }
         #endregion AccountMethods
@@ -127,7 +128,7 @@ namespace ModelRebuild
         {
             try
             {
-                _mainModel.Account.DeletePortfolio(e.PortfolioName);
+                _mainModel.Account.DeletePortfolio(e.PortfolioName, _mainModel.Stocks);
             }
             catch(ArgumentException err)
             {
@@ -180,9 +181,11 @@ namespace ModelRebuild
         [EventListenerAttr("sellStocks")]
         private Error SellStocks(StockEvent e)
         {
-            Stock s = _mainModel.Stocks.Find((stock) => stock.Name == e.Name);
+            Stock s = _mainModel.Stocks.Find((stock) => stock.Tag == e.Name);
             if(s != null)
             {
+                BuyOrSell bos = _currentPortfolio.CurrentlyHeld().Find(b => b.StockName == s.Name);
+                if (e.Amount > bos.Quantity) return new Error("Selling too many stocks");
                 _currentPortfolio.SellStock(s, e.Amount);
             }
             Broadcast(new PortfolioEvent("portfolio", _currentPortfolio.Name));
@@ -197,9 +200,10 @@ namespace ModelRebuild
         [EventListenerAttr("buyStocks")]
         private Error BuyStocks(StockEvent e)
         {
-            Stock s = _mainModel.Stocks.Find((stock) => stock.Name == e.Name);
+            Stock s = _mainModel.Stocks.Find((stock) => stock.Tag == e.Name);
             if(s != null)
             {
+                if (_currentPortfolio.CurrentlyHeld().Exists(b => b.StockName == s.Name)) return new Error("Cannot buy stock you already own");
                 try
                 {
                     _currentPortfolio.PurchaseStock(s, e.Amount);
