@@ -170,7 +170,7 @@ namespace Ticker501TeamProject3
             #endregion uxPanPortInfo
 
             #region uxPanBuySellStock
-            if(e == null)
+            if(e.PortfolioName == "")
             {
                 uxBBuyStock.Enabled = false;
                 uxBSellStock.Enabled = false;
