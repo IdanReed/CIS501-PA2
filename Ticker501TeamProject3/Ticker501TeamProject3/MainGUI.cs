@@ -36,26 +36,28 @@ namespace Ticker501TeamProject3
         {
 
             _mainModel = mm;
+
+            _mainModel.LoadTickersFromFile();
+            foreach(Stock stock in _mainModel.Stocks)
+            {
+                uxDUDSelecStock.Items.Add(stock.Tag);
+            }
+
             _eventListener = listener;
 
             _handler = new MVCEventSystem.EventHandler<Error>();
             _handler.AddEventListener<DisplayEvent>(typeof(DisplayEvent), Update);
             _handler.AddEventListener<PortfolioEvent>(typeof(PortfolioEvent), UpdatePortfolio);
-           /* _inputHandle = inputHander;
-            _acct = a;
-            _tickers = tickers;
-*/
+
             InitializeComponent();
-            /*
-            UpdateSelectStock();
-            UpdateTickerList();
-            */
-            uxDUDSelecVolatilty.Items.Add("HIGH");
-            uxDUDSelecVolatilty.Items.Add("MED");
-            uxDUDSelecVolatilty.Items.Add("LOW");
+          
+            uxDUDSelecVolatilty.Items.Add("High " + Controller.HIGH_VOL_MAX + " - " + Controller.HIGH_VOL_MIN + "%");
+            uxDUDSelecVolatilty.Items.Add("Med " + Controller.MED_VOL_MAX + " - " + Controller.MED_VOL_MIN + "%");
+            uxDUDSelecVolatilty.Items.Add("Low " + Controller.LOW_VOL_MAX + " - " + Controller.LOW_VOL_MIN + "%");
             uxDUDSelecVolatilty.SelectedIndex = 0;
 
-            //UpdateBuySellState();
+            uxBBuyStock.Enabled = false;
+            uxBSellStock.Enabled = false;
         }
         //#region OutputForm
         /// <summary>
@@ -87,55 +89,96 @@ namespace Ticker501TeamProject3
             #endregion DepositWithdrawPanel
 
             #region uxPanAccHeldStocks
+            List<BuyOrSell> allHeldBOS = new List<BuyOrSell>();
 
+            foreach(Portfolio curPortfolio in _mainModel.Account.Portfolios)
+            {
+                allHeldBOS.AddRange(curPortfolio.CurrentlyHeld());
+            }
+
+            List<string> formatedHeldStocks = new List<string>();
+            formatedHeldStocks.Add("Name - Quanity");
+            foreach(BuyOrSell curBOS in allHeldBOS)
+            {
+                formatedHeldStocks.Add(curBOS.StockName +" "+ curBOS.Quantity);
+            }
+            uxLBStocksHeld.DataSource = formatedHeldStocks;
             #endregion uxPanAccHeldStocks
 
             #region uxPanGainLossAcc
+            uxTBGainLoss.Text = String.Format("{0:0.0}", _mainModel.Account.CalculateGainLoss(_mainModel.Stocks));
             #endregion uxPanGainLossAcc
 
             #region uxPanPortfoliosCreateDelete
+            List<string> portfolioNames = new List<string>();
+            foreach(Portfolio portfolio in _mainModel.Account.Portfolios)
+            {
+                portfolioNames.Add(portfolio.Name);
+            }
+            uxLBPortfolios.DataSource = portfolioNames;
             #endregion uxPanPortfoliosCreateDelete
 
             #region uxPanAllStocks
+
+            List<string> allStockStrings = new List<string>();
+            foreach (Stock stock in _mainModel.Stocks)
+            {
+                allStockStrings.Add(stock.Tag + " " + stock.Price);
+            }
+            uxLBAllStock.DataSource = allStockStrings;
             #endregion uxPanAllStocks
-
-            #region uxPanSimulate
-            #endregion uxPanSimulate
-
+            
             return Error.None;
         }
         public Error UpdatePortfolio(PortfolioEvent e)
         {
+            uxBBuyStock.Enabled = true;
+            uxBSellStock.Enabled = true;
+
             Update(new DisplayEvent("account"));
-
-            #region PortfoliosPanel
-
-            List<ListBox> boxes = new List<ListBox>();
-            boxes.Add(uxLBPortfolios);
-            boxes.Add(uxLBSelecPort);
-
-            List<Portfolio> portfolios = _mainModel.Account.Portfolios;
-
-            foreach(ListBox lb in boxes)
-            {
-                lb.DataSource = portfolios.Select(p => p.Name).ToList();
-            }
-
-            #endregion PortfoliosPanel
+            Portfolio selectedPortfolio = _mainModel.Account.GetPortfolioByName(e.PortfolioName);
 
             #region uxPanSelecPort
+            List<string> portfolioNames = new List<string>();
+            foreach (Portfolio portfolio in _mainModel.Account.Portfolios)
+            {
+                portfolioNames.Add(portfolio.Name);
+            }
+            uxLBSelecPort.DataSource = portfolioNames;
+
             #endregion uxPanSelecPort
 
             #region uxPanPortHeldStock
+            List<string> portHeldStocks = new List<string>();
+            foreach(BuyOrSell curBos in selectedPortfolio.CurrentlyHeld())
+            {
+                portHeldStocks.Add(curBos.StockName + " " + curBos.Quantity);
+            }
+            uxLBPortStocks.DataSource = portHeldStocks;
+
             #endregion uxPanPortHeldStock
 
             #region uxPanPortGainLoss
+            uxTBPortGainLoss.Text = String.Format("{0:0.0}", selectedPortfolio.GainLoss(_mainModel.Stocks));
             #endregion uxPanPortGainLoss
 
             #region uxPanPortInfo
+            double portfolioValue = selectedPortfolio.HeldValueCurrent(_mainModel.Stocks);
+
+            uxTBTotalVal.Text = String.Format("{0:0.0}", portfolioValue);
+            uxTBPortPercentOfAcc.Text = String.Format("{0:0.0}", portfolioValue / _mainModel.Account.CalculateValue(_mainModel.Stocks));
             #endregion uxPanPortInfo
 
             #region uxPanBuySellStock
+            if(e.PortfolioName == "")
+            {
+                uxBBuyStock.Enabled = false;
+                uxBSellStock.Enabled = false;
+            }else
+            {
+                uxBBuyStock.Enabled = true;
+                uxBSellStock.Enabled = true;
+            }
             #endregion uxPanBuySellStock
 
 

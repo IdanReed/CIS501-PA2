@@ -67,12 +67,10 @@
             this.uxTBPortGainLoss = new System.Windows.Forms.TextBox();
             this.uxLabelPortGainLoss = new System.Windows.Forms.Label();
             this.uxPanPortInfo = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.uxTBTotalVal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.uxTBPortPercentOfAcc = new System.Windows.Forms.TextBox();
-            this.uxTBAmountInvested = new System.Windows.Forms.TextBox();
             this.uxLabelPortPercentOfAcc = new System.Windows.Forms.Label();
-            this.uxLabelPortInvestAmount = new System.Windows.Forms.Label();
             this.uxPanBuySellStock = new System.Windows.Forms.Panel();
             this.uxPanGainLossAcc = new System.Windows.Forms.Panel();
             this.uxTBGainLoss = new System.Windows.Forms.TextBox();
@@ -406,7 +404,7 @@
             this.uxPanPortHeldStock.Controls.Add(this.uxLabelStockHeldPort);
             this.uxPanPortHeldStock.Location = new System.Drawing.Point(237, 105);
             this.uxPanPortHeldStock.Name = "uxPanPortHeldStock";
-            this.uxPanPortHeldStock.Size = new System.Drawing.Size(169, 210);
+            this.uxPanPortHeldStock.Size = new System.Drawing.Size(169, 229);
             this.uxPanPortHeldStock.TabIndex = 12;
             // 
             // uxLBPortStocks
@@ -415,7 +413,7 @@
             this.uxLBPortStocks.Location = new System.Drawing.Point(6, 22);
             this.uxLBPortStocks.Name = "uxLBPortStocks";
             this.uxLBPortStocks.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.uxLBPortStocks.Size = new System.Drawing.Size(156, 186);
+            this.uxLBPortStocks.Size = new System.Drawing.Size(156, 199);
             this.uxLBPortStocks.TabIndex = 11;
             // 
             // uxLabelStockHeldPort
@@ -431,7 +429,7 @@
             // 
             this.uxPanPortGainLoss.Controls.Add(this.uxTBPortGainLoss);
             this.uxPanPortGainLoss.Controls.Add(this.uxLabelPortGainLoss);
-            this.uxPanPortGainLoss.Location = new System.Drawing.Point(237, 321);
+            this.uxPanPortGainLoss.Location = new System.Drawing.Point(237, 341);
             this.uxPanPortGainLoss.Name = "uxPanPortGainLoss";
             this.uxPanPortGainLoss.Size = new System.Drawing.Size(169, 54);
             this.uxPanPortGainLoss.TabIndex = 11;
@@ -455,29 +453,27 @@
             // 
             // uxPanPortInfo
             // 
-            this.uxPanPortInfo.Controls.Add(this.textBox1);
+            this.uxPanPortInfo.Controls.Add(this.uxTBTotalVal);
             this.uxPanPortInfo.Controls.Add(this.label2);
             this.uxPanPortInfo.Controls.Add(this.uxTBPortPercentOfAcc);
-            this.uxPanPortInfo.Controls.Add(this.uxTBAmountInvested);
             this.uxPanPortInfo.Controls.Add(this.uxLabelPortPercentOfAcc);
-            this.uxPanPortInfo.Controls.Add(this.uxLabelPortInvestAmount);
-            this.uxPanPortInfo.Location = new System.Drawing.Point(237, 381);
+            this.uxPanPortInfo.Location = new System.Drawing.Point(237, 401);
             this.uxPanPortInfo.Name = "uxPanPortInfo";
-            this.uxPanPortInfo.Size = new System.Drawing.Size(169, 80);
+            this.uxPanPortInfo.Size = new System.Drawing.Size(169, 60);
             this.uxPanPortInfo.TabIndex = 9;
             // 
-            // textBox1
+            // uxTBTotalVal
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(99, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(63, 20);
-            this.textBox1.TabIndex = 17;
+            this.uxTBTotalVal.Enabled = false;
+            this.uxTBTotalVal.Location = new System.Drawing.Point(99, 33);
+            this.uxTBTotalVal.Name = "uxTBTotalVal";
+            this.uxTBTotalVal.Size = new System.Drawing.Size(63, 20);
+            this.uxTBTotalVal.TabIndex = 17;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 57);
+            this.label2.Location = new System.Drawing.Point(6, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 16;
@@ -486,36 +482,19 @@
             // uxTBPortPercentOfAcc
             // 
             this.uxTBPortPercentOfAcc.Enabled = false;
-            this.uxTBPortPercentOfAcc.Location = new System.Drawing.Point(99, 28);
+            this.uxTBPortPercentOfAcc.Location = new System.Drawing.Point(99, 7);
             this.uxTBPortPercentOfAcc.Name = "uxTBPortPercentOfAcc";
             this.uxTBPortPercentOfAcc.Size = new System.Drawing.Size(63, 20);
             this.uxTBPortPercentOfAcc.TabIndex = 15;
             // 
-            // uxTBAmountInvested
-            // 
-            this.uxTBAmountInvested.Enabled = false;
-            this.uxTBAmountInvested.Location = new System.Drawing.Point(99, 3);
-            this.uxTBAmountInvested.Name = "uxTBAmountInvested";
-            this.uxTBAmountInvested.Size = new System.Drawing.Size(63, 20);
-            this.uxTBAmountInvested.TabIndex = 14;
-            // 
             // uxLabelPortPercentOfAcc
             // 
             this.uxLabelPortPercentOfAcc.AutoSize = true;
-            this.uxLabelPortPercentOfAcc.Location = new System.Drawing.Point(6, 31);
+            this.uxLabelPortPercentOfAcc.Location = new System.Drawing.Point(6, 10);
             this.uxLabelPortPercentOfAcc.Name = "uxLabelPortPercentOfAcc";
             this.uxLabelPortPercentOfAcc.Size = new System.Drawing.Size(73, 13);
             this.uxLabelPortPercentOfAcc.TabIndex = 13;
             this.uxLabelPortPercentOfAcc.Text = "% of Account:";
-            // 
-            // uxLabelPortInvestAmount
-            // 
-            this.uxLabelPortInvestAmount.AutoSize = true;
-            this.uxLabelPortInvestAmount.Location = new System.Drawing.Point(3, 6);
-            this.uxLabelPortInvestAmount.Name = "uxLabelPortInvestAmount";
-            this.uxLabelPortInvestAmount.Size = new System.Drawing.Size(90, 13);
-            this.uxLabelPortInvestAmount.TabIndex = 12;
-            this.uxLabelPortInvestAmount.Text = "Amount Invested:";
             // 
             // uxPanBuySellStock
             // 
@@ -700,9 +679,7 @@
         private System.Windows.Forms.Panel uxPanBuySellStock;
         private System.Windows.Forms.Panel uxPanPortInfo;
         private System.Windows.Forms.TextBox uxTBPortPercentOfAcc;
-        private System.Windows.Forms.TextBox uxTBAmountInvested;
         private System.Windows.Forms.Label uxLabelPortPercentOfAcc;
-        private System.Windows.Forms.Label uxLabelPortInvestAmount;
         private System.Windows.Forms.Panel uxPanPortHeldStock;
         private System.Windows.Forms.ListBox uxLBPortStocks;
         private System.Windows.Forms.Label uxLabelStockHeldPort;
@@ -725,7 +702,7 @@
         private System.Windows.Forms.TextBox uxTBNewPortName;
         private System.Windows.Forms.TextBox uxTBTotalValue;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox uxTBTotalVal;
         private System.Windows.Forms.Label label2;
     }
 }
